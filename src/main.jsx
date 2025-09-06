@@ -49,7 +49,8 @@ const router = createBrowserRouter([
         path: "/checkout",   // 👈 nueva ruta
         element: <Checkout/>
       }
-    ]
+    ],
+    basename: "/korean"  // 👈 aquí se define el basename
   },
 ]);
 
