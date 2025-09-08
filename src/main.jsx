@@ -19,6 +19,7 @@ import Shop from "./pages/Shop.jsx";
 import TipoPiel from "./pages/TipoPiel.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import NosotrosSection from "./pages/NosotrosSection.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
         element: <SingleProduct/>,
       },
       {
-        path: "/shop",
+        path: "/shop",  
         element: <Shop/>
       },
       {
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       {
         path: "/checkout",   // 👈 nueva ruta
         element: <Checkout/>
-      }
+      },
+      {
+        path: "/nosotros",
+        element: <NosotrosSection/>
+      },
     ]
   },
 ]);

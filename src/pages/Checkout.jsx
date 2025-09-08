@@ -9,14 +9,20 @@ const Checkout = () => {
 
   const [form, setForm] = useState({
     nombre: "",
-    email: "",
+    telefono: "",
+    tipoEntrega: "", // "delivery" o "shalom"
     direccion: "",
-    ciudad: "",
-    codigoPostal: "",
-    telefono: ""
+    distrito: "",
+    provincia: "",
+    direccionShalom: ""
   });
 
-  const envio = 6.0;
+  // Lógica de envío: gratuito si el subtotal es mayor a $160
+  const ENVIO_MINIMO = 160;
+  const COSTO_ENVIO_BASE = 8.0;
+  const envio = totalPrice >= ENVIO_MINIMO ? 0 : COSTO_ENVIO_BASE;
+  const envioGratuito = totalPrice >= ENVIO_MINIMO;
+  
   const impuestos = 0;
   const descuentoPromo = 0; // Aquí puedes agregar lógica de descuentos
   const totalGeneral = totalPrice + envio + impuestos - descuentoPromo;
@@ -31,13 +37,19 @@ const Checkout = () => {
     // Información del cliente
     mensaje += '👤 *DATOS DEL CLIENTE*\n';
     mensaje += `• Nombre: ${form.nombre}\n`;
-    mensaje += `• Email: ${form.email}\n`;
     mensaje += `• Teléfono: ${form.telefono}\n\n`;
     
-    // Dirección de envío
-    mensaje += '📍 *DIRECCIÓN DE ENVÍO*\n';
-    mensaje += `• ${form.direccion}\n`;
-    mensaje += `• ${form.ciudad}, ${form.codigoPostal}\n\n`;
+    // Información de entrega
+    mensaje += '🚚 *TIPO DE ENTREGA*\n';
+    if (form.tipoEntrega === 'delivery') {
+      mensaje += '• Delivery\n';
+      mensaje += `• Dirección: ${form.direccion}\n`;
+      mensaje += `• Distrito: ${form.distrito}\n`;
+      mensaje += `• Provincia: ${form.provincia}\n\n`;
+    } else if (form.tipoEntrega === 'shalom') {
+      mensaje += '• Recojo en Shalom\n';
+      mensaje += `• Dirección Shalom: ${form.direccionShalom}\n\n`;
+    }
     
     // Productos del pedido
     mensaje += '📦 *PRODUCTOS SOLICITADOS*\n';
@@ -53,6 +65,9 @@ const Checkout = () => {
     mensaje += '💰 *RESUMEN DEL PEDIDO*\n';
     mensaje += `• Subtotal: $${totalPrice.toFixed(2)}\n`;
     mensaje += `• Envío: ${envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}\n`;
+    if (envioGratuito) {
+      mensaje += '  ✅ Envío gratuito por compra mayor a $160\n';
+    }
     if (descuentoPromo > 0) {
       mensaje += `• Descuento: -$${descuentoPromo.toFixed(2)}\n`;
     }
@@ -69,13 +84,23 @@ const Checkout = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validar que todos los campos estén llenos
-    const camposRequeridos = ['nombre', 'email', 'direccion', 'ciudad', 'codigoPostal', 'telefono'];
-    const camposVacios = camposRequeridos.filter(campo => !form[campo].trim());
-    
-    if (camposVacios.length > 0) {
+    // Validar campos básicos
+    if (!form.nombre.trim() || !form.telefono.trim() || !form.tipoEntrega) {
       alert('Por favor, completa todos los campos requeridos');
       return;
+    }
+
+    // Validar campos específicos según tipo de entrega
+    if (form.tipoEntrega === 'delivery') {
+      if (!form.direccion.trim() || !form.distrito.trim() || !form.provincia.trim()) {
+        alert('Por favor, completa todos los campos de delivery');
+        return;
+      }
+    } else if (form.tipoEntrega === 'shalom') {
+      if (!form.direccionShalom.trim()) {
+        alert('Por favor, selecciona la dirección del Shalom');
+        return;
+      }
     }
 
     if (items.length === 0) {
@@ -112,16 +137,46 @@ const Checkout = () => {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="font-semibold" style={{ color: '#7FB069' }}>
-              Envío gratuito para miembros
+              {envioGratuito ? '¡Felicidades! Tienes envío gratuito' : 'Envío gratuito disponible'}
             </h3>
             <p className="text-sm text-gray-600 mt-1">
-              Hazte miembro para conseguir envíos rápidos y gratuitos. 
-              <button className="underline ml-1" style={{ color: '#4A90A4' }}>Únete a nosotros</button> o 
-              <button className="underline ml-1" style={{ color: '#4A90A4' }}>Iniciar sesión</button>
+              {envioGratuito 
+                ? 'Tu pedido califica para envío gratuito por ser mayor a $160' 
+                : `Agrega $${(ENVIO_MINIMO - totalPrice).toFixed(2)} más para obtener envío gratuito`
+              }
             </p>
           </div>
         </div>
       </div>
+
+      {/* Barra de progreso para envío gratuito */}
+      {!envioGratuito && totalPrice > 0 && (
+        <div className="mb-6 p-4 rounded-lg border" style={{ borderColor: '#A8D5BA', backgroundColor: '#F9F7F4' }}>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium" style={{ color: '#7FB069' }}>
+              Progreso hacia envío gratuito
+            </span>
+            <span className="text-sm font-medium" style={{ color: '#7FB069' }}>
+              ${totalPrice.toFixed(2)} / $${ENVIO_MINIMO.toFixed(2)}
+            </span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="h-2 rounded-full transition-all duration-300"
+              style={{ 
+                backgroundColor: '#A8D5BA',
+                width: `${Math.min((totalPrice / ENVIO_MINIMO) * 100, 100)}%`
+              }}
+            />
+          </div>
+          <p className="text-xs text-gray-600 mt-2">
+            {totalPrice < ENVIO_MINIMO 
+              ? `Te faltan $${(ENVIO_MINIMO - totalPrice).toFixed(2)} para envío gratuito`
+              : '¡Ya tienes envío gratuito!'
+            }
+          </p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Columna izquierda - Productos (Cesta) */}
@@ -169,7 +224,6 @@ const Checkout = () => {
                       </div>
                     </div>
 
-
                     {/* Controles inferiores */}
                     <div className="flex items-center justify-between">
                       {/* Controles de cantidad */}
@@ -214,16 +268,6 @@ const Checkout = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          )}
-
-          {/* Recogida gratuita */}
-          {items.length > 0 && (
-            <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-              <h3 className="font-semibold text-gray-900 mb-2">Recogida gratuita</h3>
-              <button className="text-sm underline" style={{ color: '#4A90A4' }}>
-                Buscar una tienda
-              </button>
             </div>
           )}
         </div>
@@ -277,8 +321,17 @@ const Checkout = () => {
               </div>
               
               <div className="flex items-center justify-between">
-                <span className="text-gray-700">Gastos de envío y gestión estimados</span>
-                <span className="font-medium">{envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}</span>
+                <div className="flex flex-col">
+                  <span className="text-gray-700">Gastos de envío y gestión</span>
+                  {envioGratuito && (
+                    <span className="text-xs" style={{ color: '#7FB069' }}>
+                      ¡Envío gratuito aplicado!
+                    </span>
+                  )}
+                </div>
+                <span className={`font-medium ${envioGratuito ? 'text-green-600' : ''}`}>
+                  {envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}
+                </span>
               </div>
 
               {descuentoPromo > 0 && (
@@ -299,6 +352,7 @@ const Checkout = () => {
             {/* Formulario de envío */}
             <form onSubmit={handleSubmit} className="space-y-4 mb-6">
               <div className="grid grid-cols-1 gap-4">
+                {/* Nombre completo */}
                 <input
                   type="text"
                   name="nombre"
@@ -309,56 +363,78 @@ const Checkout = () => {
                   required
                 />
                 
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Correo electrónico *"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                />
-                
-                <input
-                  type="text"
-                  name="direccion"
-                  placeholder="Dirección *"
-                  value={form.direccion}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                />
-                
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    name="ciudad"
-                    placeholder="Ciudad *"
-                    value={form.ciudad}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="codigoPostal"
-                    placeholder="Código postal *"
-                    value={form.codigoPostal}
-                    onChange={handleChange}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    required
-                  />
-                </div>
-                
+                {/* Teléfono */}
                 <input
                   type="tel"
                   name="telefono"
-                  placeholder="Teléfono *"
+                  placeholder="Número de teléfono *"
                   value={form.telefono}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
                 />
+                
+                {/* Tipo de entrega */}
+                <select
+                  name="tipoEntrega"
+                  value={form.tipoEntrega}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  required
+                >
+                  <option value="">Selecciona tipo de entrega *</option>
+                  <option value="delivery">Delivery</option>
+                  <option value="shalom">Recojo en Shalom</option>
+                </select>
+
+                {/* Campos condicionales para Delivery */}
+                {form.tipoEntrega === 'delivery' && (
+                  <>
+                    <input
+                      type="text"
+                      name="direccion"
+                      placeholder="Dirección *"
+                      value={form.direccion}
+                      onChange={handleChange}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      required
+                    />
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <input
+                        type="text"
+                        name="distrito"
+                        placeholder="Distrito *"
+                        value={form.distrito}
+                        onChange={handleChange}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        required
+                      />
+                      <input
+                        type="text"
+                        name="provincia"
+                        placeholder="Provincia *"
+                        value={form.provincia}
+                        onChange={handleChange}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        required
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* Campo condicional para Shalom */}
+                {form.tipoEntrega === 'shalom' && (
+                  <input
+                      type="text"
+                      name="direccionShalom"
+                      placeholder="Dirección Exacta - Shalom*"
+                      value={form.direccionShalom}
+                      onChange={handleChange}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      required
+                    />
+                )}
               </div>
 
               {/* Botón principal con WhatsApp */}
@@ -373,21 +449,11 @@ const Checkout = () => {
               </button>
             </form>
 
-            {/* PayPal alternativo */}
-            <button 
-              className="w-full bg-yellow-400 text-gray-900 py-4 rounded-full font-semibold text-lg hover:bg-yellow-500 transition-colors flex items-center justify-center gap-2 mb-6"
-              onClick={() => alert('Funcionalidad PayPal - Integrar con tu procesador de pagos')}
-            >
-              <FaPaypal size={20} />
-              PayPal
-            </button>
-
             {/* Información adicional */}
             <div className="text-xs text-gray-500 space-y-2 border-t pt-4">
               <p>📱 Al hacer clic en "Enviar pedido por WhatsApp", se abrirá tu aplicación de WhatsApp con todos los detalles del pedido</p>
               <p>✅ Confirma tu pedido directamente con nuestro equipo de ventas</p>
-              <p>🚚 Los miembros obtienen envío gratuito en pedidos de $150+</p>
-              <p>¿No eres miembro? <button className="underline" style={{ color: '#4A90A4' }}>Únete a nosotros.</button></p>
+              <p>🚚 Envío gratuito en pedidos de $160 o más</p>
             </div>
           </div>
         </div>

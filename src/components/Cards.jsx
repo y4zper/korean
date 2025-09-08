@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FaShoppingBag } from 'react-icons/fa';
+import { FaShoppingBag, FaStar , FaHeart  } from 'react-icons/fa';
 
 const Cards = ({ filteredItems }) => {
  // Función para generar estrellas
  const renderStars = (rating = 5) => {
    return Array.from({ length: 5 }, (_, index) => ( 
-     <FaShoppingBag 
+     <FaStar 
        key={index} 
-className={`text-sm ${index < rating ? 'text-[#7FB069]' : 'text-gray-300'}`}     />
+className={`text-sm ${index < rating ? 'text-[#fc7600]' : 'text-gray-300'}`}     />
    ));
  };
 
  // Función para formatear precio
  const formatPrice = (price) => {
-   return `US$ ${price.toFixed(2)}`;
+   return `S/${price.toFixed(2)}`;
  };
 
  return ( 
@@ -37,13 +37,13 @@ className={`text-sm ${index < rating ? 'text-[#7FB069]' : 'text-gray-300'}`}    
           {/* Badge de descuento */}
           {item.discount && (
             <div className="absolute top-2 left-2 bg-pink-600 text-white px-2 py-1 rounded text-xs font-bold shadow">
-              -{item.discount}%
+              -{item.discount}% OFF
             </div>
           )}
 
           {/* Ícono de favorito */}
           <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors duration-200">
-<FaShoppingBag className="text-gray-400 hover:text-[#7FB069] transition-colors duration-200 text-sm" />
+<FaHeart className="text-gray-400 hover:text-[#7FB069] transition-colors duration-200 text-sm" />
           </button>
 
           {/* Badge de estado (Best Sellers, etc.) */}
@@ -91,7 +91,7 @@ className={`text-sm ${index < rating ? 'text-[#7FB069]' : 'text-gray-300'}`}    
             <div className="flex items-center gap-1">
               {renderStars(5)}
             </div>
-            <span className="text-xs text-gray-500">13,658</span>
+            <span className="text-xs text-gray-500"></span>
           </div>
         </div>
       </div>

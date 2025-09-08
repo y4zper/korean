@@ -3,6 +3,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import CartSidebar from "./pages/CartSidebar";
+import ChatBot from "./components/Chatbot";
 
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
     <Outlet />
     <Footer />
     <CartSidebar />
+    <ChatBot />
     </>
   )
 }

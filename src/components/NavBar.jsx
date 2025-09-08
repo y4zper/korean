@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaBars, FaSearch, FaShoppingBag, FaTimes, FaUser } from 'react-icons/fa';
+import { FaBars, FaSearch, FaShoppingBag, FaTimes, FaUser,FaShoppingCart  } from 'react-icons/fa';
 import logo from "/img/logo1.png"; 
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -40,7 +40,7 @@ const NavBar = () => {
       <div className="bg-gradient-to-r from-[#A8D5BA] to-[#B8E6E6] text-gray-800 py-2 overflow-hidden relative">
         <div className="animate-marquee whitespace-nowrap">
           <span className="text-sm font-medium mx-4">
-            🎉 Aprovecha nuestros descuentos del 20% en skincare coreano - Envío gratis en compras mayores a S/150 🎉
+            🎉 Aprovecha nuestros descuentos del 20% en skincare coreano - Envío gratis en compras mayores a S/160 🎉
           </span>
         </div>
       </div>
@@ -50,7 +50,7 @@ const NavBar = () => {
         <nav className="flex justify-between items-center py-4">
           {/* Ícono búsqueda */}
           <motion.div whileHover={{ scale: 1.1 }}>
-            <FaSearch className="text-gray-700 w-6 h-6 cursor-pointer hover:text-[#7FB069] transition-colors duration-300" />
+            <FaSearch className="text-gray-900 w-6 h-6 cursor-pointer hover:text-[#7FB069] transition-colors duration-300" />
           </motion.div>
 
           {/* Logo central */}
@@ -63,10 +63,10 @@ const NavBar = () => {
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={toggleCart}
-              className="flex items-center gap-2 text-gray-700 hover:text-[#7FB069] transition-colors duration-300 relative"
+              className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300 relative"
             >
               <div className="relative">
-                <FaShoppingBag className="w-6 h-6" />
+                <FaShoppingCart  className="w-6 h-6" />
                 {totalItems > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
@@ -79,9 +79,7 @@ const NavBar = () => {
                   </motion.span>
                 )}
               </div>
-              <span className="text-sm font-medium">
-                Carrito {totalItems > 0 && `(${totalItems})`}
-              </span>
+              
             </motion.button>
 
             <motion.a
@@ -89,17 +87,17 @@ const NavBar = () => {
               href="https://wa.me/51999999999"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#4A90A4] hover:text-[#7FB069] transition-colors duration-300"
+              className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300"
             >
               <FaUser className="w-6 h-6" />
-              <span className="text-sm font-medium">WhatsApp</span>
+              
             </motion.a>
           </div>
 
           {/* Íconos móviles */}
           <div className="sm:hidden flex items-center gap-3">
             <button onClick={toggleCart} className="relative cursor-pointer">
-              <FaShoppingBag className="text-gray-900 w-5 h-5" />
+              <FaShoppingCart className="text-gray-900 w-5 h-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 min-w-[16px] h-[16px] flex items-center justify-center text-xs font-bold text-white rounded-full" style={{ backgroundColor: '#7FB069' }}>
                   {totalItems > 99 ? '99+' : totalItems}

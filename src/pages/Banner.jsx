@@ -4,10 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Banner = () => {
   const promoSlides = [
-    { id: 1, image: "https://images.unsplash.com/photo-1720176284777-e7f7642999eb?q=80&w=1470&auto=format&fit=crop" },
-    { id: 2, image: "https://images.unsplash.com/photo-1691162005291-6ccd384ba7b2?q=80&w=1470&auto=format&fit=crop" },
-    { id: 3, image: "https://images.unsplash.com/photo-1670087603931-cd90a40ada5e?q=80&w=1470&auto=format&fit=crop" },
-    { id: 4, image: "https://images.unsplash.com/photo-1602312771175-0a4f1f0f6214?q=80&w=1470&auto=format&fit=crop" },
+    { id: 1, image: "./img/banner1.jpeg" },
+    { id: 2, image: "./img/banner2.jpeg" },
+    { id: 3, image: "./img/banner1.jpeg" }
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -76,7 +75,7 @@ const Banner = () => {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
                 index === currentSlide
                   ? "bg-[#7FB069] scale-125 shadow-md"
                   : "bg-white/70 hover:bg-white/90"
@@ -91,16 +90,16 @@ const Banner = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-white text-sm sm:text-base font-semibold">
           <div className="flex items-center gap-2">
             <FaShoppingBag className="text-base animate-pulse" />
-            <span>¡Regalo Gratis!</span>
-            <span className="hidden sm:inline opacity-80">
+            <span className="text-xs">¡Regalo Gratis!</span>
+            <span className="text-xs hidden sm:inline opacity-80">
               Mascarilla con Cualquier Compra
             </span>
           </div>
           <div className="h-4 w-px bg-white/40 hidden sm:block"></div>
           <div className="flex items-center gap-2">
             <FaShoppingBag className="text-base animate-pulse" />
-            <span>Mascarilla + Limpiador</span>
-            <span className="opacity-80">con Compras +$120</span>
+            <span className="text-xs">Mascarilla + Limpiador</span>
+            <span className="text-xs opacity-80">con Compras +$120</span>
           </div>
         </div>
       </div>

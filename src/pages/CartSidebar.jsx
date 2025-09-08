@@ -168,7 +168,7 @@ const CartSidebar = () => {
                             <FaPlus size={10} className="text-gray-600" />
                           </button>
                         </div>
-                        
+                          
                         <span className="text-sm font-semibold text-gray-900">
                           ${(item.price * item.quantity).toFixed(2)}
                         </span>
@@ -200,7 +200,7 @@ const CartSidebar = () => {
                     onClick={handleCheckoutClick}
                     className="w-full flex items-center justify-center gap-2 text-white py-3 px-4 rounded-lg font-medium transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95 transform hover:shadow-lg"
                     style={{ backgroundColor: '#7FB069' }}
-                  >
+                  > 
                     <FaCreditCard size={16} />
                     Ver Pedido
                   </button>

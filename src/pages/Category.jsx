@@ -23,9 +23,9 @@ const Category = () => {
 
         {/* Placeholder for category content */}
 
-        {/* <div className='mt-8 flex flex-col md:flex-row items-center gap-4'>
+        <div className='mt-8 flex flex-col md:flex-row items-center gap-4'>
         <p className='font-semibold uppercase md:-rotate-90 text-center bg-black text-white md:p-1.5 p-2 rounded-sm inline-flex'> Explore new and popular</p>
-        <div>
+        <div> 
             <Link to="/"><img className="object-cover w-full hover:scale-105 transition-all duration-200" src="/img/category/2.jpg" alt="" /></Link>
         </div>
         <div className='md:w-1/2 h-70'>
@@ -36,7 +36,7 @@ const Category = () => {
             <Link to="/"><img className="object-cover w-full hover:scale-105 transition-all duration-200" src="/img/category/5.jpg" alt="" /></Link>
             </div>
         </div>
-        </div> */}
+        </div>
     </div>
   )
 }

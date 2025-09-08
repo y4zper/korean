@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";  
-import { FaHeart, FaShoppingBag, FaArrowRight } from 'react-icons/fa';
+import { FaStar, FaHeart, FaArrowRight } from 'react-icons/fa';
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
@@ -16,234 +16,143 @@ const BestSellers = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  const bestSellers = products.filter((item) => item.status === "Best Selers");
+  // 🔹 Filtrar Best Sellers
+  const bestSellers = products.filter((item) => item.status === "Mas vendidos");
+
+  // 🔹 Función para estrellas
+  const renderStars = (rating = 5) => {
+    return Array.from({ length: 5 }, (_, index) => (
+      <FaStar
+        key={index}
+        className={`text-sm ${index < rating ? 'text-[#fc7600]' : 'text-gray-300'}`}
+      />
+    ));
+  };
+
+  // 🔹 Formatear precios
+  const formatPrice = (price) => `S/${price.toFixed(2)}`;
 
   return (
-    <section className="w-full mx-auto xl:px-28 px-4 py-20 bg-gradient-to-br from-blue-50/30 via-white to-green-50/40" 
-             style={{
-               background: 'linear-gradient(135deg, #B8E6E6/10 0%, #FFFFFF 50%, #A8D5BA/15 100%)'
-             }}>
-      {/* Encabezado con colores de marca */}
+    <section className="w-full mx-auto xl:px-28 px-4 py-20 bg-gradient-to-b from-white via-blue-50/30 to-green-50/30">
+      {/* Encabezado */}
       <div className="flex items-center justify-between mb-12">
-        <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-emerald-700 border border-emerald-200"
-                  style={{
-                    backgroundColor: '#A8D5BA/20',
-                    borderColor: '#7FB069/30',
-                    color: '#7FB069'
-                  }}>
-              ✨ LO NUEVO
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
-            인기 제품
-          </h2>
-          <p className="text-lg text-gray-600 font-light max-w-lg">
-            Descubre los productos más populares seleccionados especialmente para ti
-          </p>
-        </div>
-        
+        <div className="flex items-center justify-between mb-12"> 
+  <div> 
+    <h2 className="text-2xl md:text-3xl font-light tracking-wide text-gray-900 font-serif"> 
+      Lo más <span className="text-[#7FB069] font-normal">nuevo</span> 
+    </h2> 
+    {/* Separador */} 
+    <div className="mt-2 h-1 w-20 bg-gradient-to-r from-[#7FB069] to-[#4A90A4] rounded-full"></div> 
+    <p className="mt-4 text-gray-600 text-base md:text-lg max-w-md font-light tracking-wide leading-relaxed"> 
+      Descubre las últimas novedades en skincare coreano seleccionadas para ti
+    </p> 
+  </div>
+</div>
+
+
+        {/* Botón “Ver todos” */}
         <Link 
-          to="/"
-          className="hidden md:flex items-center gap-2 px-6 py-3 text-gray-700 hover:text-blue-600 transition-colors group"
-          style={{ '--hover-color': '#4A90A4' }}
+          to="/shop"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2 border-2 border-[#7FB069] text-[#7FB069] rounded-full text-xs font-medium hover:bg-[#7FB069] hover:text-white transition-all duration-300"
         >
-          <span className="font-medium">Ver todos</span>
-          <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          Ver todos
+          <FaArrowRight className="w-4 h-4" />
         </Link>
       </div>
 
-      {/* Carrusel con colores de marca */}
+      {/* Carrusel */}
       <div className="relative">
         <Swiper
           slidesPerView={1}
           spaceBetween={20}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          pagination={{ 
-            clickable: true,
-            bulletActiveClass: 'swiper-pagination-bullet-active'
-          }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
           breakpoints={{
+            480: { slidesPerView: 2, spaceBetween: 15 },
             640: { slidesPerView: 2, spaceBetween: 20 },
             768: { slidesPerView: 3, spaceBetween: 25 },
             1024: { slidesPerView: 4, spaceBetween: 30 },
             1280: { slidesPerView: 5, spaceBetween: 30 },
           }}
-          navigation={{
-            nextEl: '.custom-next',
-            prevEl: '.custom-prev',
-          }}
+          navigation={{ nextEl: '.custom-next', prevEl: '.custom-prev' }}
           modules={[Autoplay, Pagination, Navigation]}
           className="!pb-12"
         >
-          {bestSellers.map((product) => (
-            <SwiperSlide key={product.id}>
-              <div className="group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-2xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2"
-                   style={{
-                     border: '1px solid #E8EAED',
-                     '--hover-border': '#A8D5BA/50'
-                   }}>
-                {/* Imagen con overlay */}
-                <div className="relative overflow-hidden">
-                  {/* Badge LO NUEVO con colores de marca */}
-                  <div className="absolute top-3 left-3 z-10">
-                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-bold text-white shadow-lg"
-                          style={{ backgroundColor: '#7FB069' }}>
-                      LO NUEVO
-                    </span>
-                  </div>
-                  
-                  {/* Botón de favoritos */}
-                  <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button className="p-2 backdrop-blur-sm rounded-full text-gray-600 hover:text-white shadow-lg transition-all duration-300"
-                            style={{
-                              backgroundColor: 'rgba(255,255,255,0.9)',
-                              '--hover-bg': '#4A90A4'
-                            }}
-                            onMouseEnter={(e) => e.target.style.backgroundColor = '#4A90A4'}
-                            onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.9)'}>
-                      <FaHeart className="w-4 h-4" />
-                    </button>
-                  </div>
+          {bestSellers.map((item) => (
+            <SwiperSlide key={item.id}>
+              <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group h-full flex flex-col">
+                {/* Imagen con badges */}
+<div className="relative overflow-hidden flex justify-center items-center bg-gray-50 h-60 sm:h-64 md:h-56">
+  <Link to={`/shop/${item.id}`} className="w-full h-full">
+    <img
+      src={item.image}
+      alt={item.title}
+      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+  </Link>
 
-                  <Link to={`/shop/${product.id}`} className="block">
-                    <div className="aspect-[3/4] overflow-hidden"
-                         style={{
-                           background: 'linear-gradient(135deg, #F9F7F4 0%, #E8EAED 100%)'
-                         }}>
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
-                  </Link>
-                  
-                  {/* Overlay gradient con tonos de marca */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                       style={{
-                         background: 'linear-gradient(to top, rgba(168,213,186,0.1), transparent)'
-                       }}></div>
-                </div>
+  {/* Badge descuento */}
+  {item.discount && (
+    <div className="absolute top-2 left-2 bg-pink-600 text-white px-2 py-1 rounded text-xs font-bold shadow">
+      -{item.discount}% OFF
+    </div>
+  )}
+
+  {/* Botón favorito */}
+  <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors duration-200">
+    <FaHeart className="text-gray-400 hover:text-[#7FB069] transition-colors duration-200 text-sm" />
+  </button>
+
+  {/* Badge estado */}
+  {item.status && (
+    <div className="absolute bottom-2 left-2 bg-[#4A90A4] text-white px-2 py-1 rounded text-xs font-medium">
+      {item.status}
+    </div>
+  )}
+</div>
+
 
                 {/* Contenido */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <div className="flex-grow space-y-3">
-                    {/* Marca con color de acento */}
-                    <h3 className="text-sm font-semibold uppercase tracking-wide"
-                        style={{ color: '#4A90A4' }}>
-                      {product.category}
-                    </h3>
-                    
-                    {/* Título del producto */}
-                    <h4 className="text-base font-medium text-gray-900 leading-snug group-hover:text-gray-700 transition-colors line-clamp-2 min-h-[3rem]">
-                      {product.title}
-                    </h4>
+                <div className="p-3 flex flex-col flex-grow">
+                  {item.flash && (
+                    <span className="text-xs text-[#7FB069] font-medium uppercase tracking-wide mb-1">
+                      OFERTA FLASH
+                    </span>
+                  )}
 
-                    {/* Precio */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-gray-900">
-                          S/ {product.price}
+                  {/* Título */}
+                  <Link to={`/shop/${item.id}`}>
+                    <h4 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 hover:text-[#7FB069] transition-colors duration-200">
+                      {item.title}
+                    </h4>
+                  </Link>
+
+                  {/* Precios */}
+                  <div className="mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-bold text-gray-900">
+                        {formatPrice(item.price)}
+                      </span>
+                      {item["comparison-price"] && (
+                        <span className="text-sm text-gray-500 line-through">
+                          {formatPrice(item["comparison-price"])}
                         </span>
-                      </div>
-                      
-                      {/* Rating con estrellas */}
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i} className="text-yellow-400 text-sm">⭐</span>
-                        ))}
-                        <span className="text-xs text-gray-500 ml-1">(4.8)</span>
-                      </div>
+                      )}
                     </div>
                   </div>
 
-                  {/* Botón de acción con colores de marca */}
-                  <div className="mt-4 pt-4 border-t" style={{ borderColor: '#E8EAED' }}>
-                    <Link
-                      to={`/shop/${product.id}`}
-                      className="w-full flex items-center justify-center gap-2 py-3 text-white text-sm font-medium rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-                      style={{
-                        backgroundColor: '#7FB069'
-                      }}
-                      onMouseEnter={(e) => e.target.style.backgroundColor = '#4A90A4'}
-                      onMouseLeave={(e) => e.target.style.backgroundColor = '#7FB069'}
-                    >
-                      <FaShoppingBag className="w-4 h-4" />
-                      <span>Ver Producto</span>
-                    </Link>
+                  {/* Estrellas */}
+                  <div className="flex items-center justify-between mt-auto">
+                    <div className="flex items-center gap-1">
+                      {renderStars(5)}
+                    </div>
                   </div>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Navegación personalizada con colores de marca */}
-        <div className="hidden lg:block">
-          <button className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center text-gray-600 transition-all duration-300 z-10 hover:shadow-2xl"
-                  style={{
-                    border: '1px solid #E8EAED'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = '#4A90A4';
-                    e.target.style.borderColor = '#A8D5BA';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = '#6B7280';
-                    e.target.style.borderColor = '#E8EAED';
-                  }}>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="custom-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center text-gray-600 transition-all duration-300 z-10 hover:shadow-2xl"
-                  style={{
-                    border: '1px solid #E8EAED'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = '#4A90A4';
-                    e.target.style.borderColor = '#A8D5BA';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = '#6B7280';
-                    e.target.style.borderColor = '#E8EAED';
-                  }}>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
       </div>
-
-      {/* Botón Ver Más para móviles con colores de marca */}
-      <div className="flex justify-center mt-8 md:hidden">
-        <Link 
-          to="/"
-          className="flex items-center gap-2 px-8 py-3 text-white rounded-full transition-all duration-300"
-          style={{
-            backgroundColor: '#7FB069'
-          }}
-          onMouseEnter={(e) => e.target.style.backgroundColor = '#4A90A4'}
-          onMouseLeave={(e) => e.target.style.backgroundColor = '#7FB069'}
-        >
-          <span className="font-medium">Ver todos</span>
-          <FaArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-
-      <style jsx>{`
-        .swiper-pagination-bullet-active {
-          background-color: #7FB069 !important;
-        }
-        .swiper-pagination-bullet {
-          background-color: #E8EAED !important;
-        }
-      `}</style>
     </section>
   );
 };

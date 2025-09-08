@@ -1,0 +1,414 @@
+[
+     {
+        "id": 41,
+        "title": "COSRX - Aloe Soothing Sun Cream",
+        "category": "Bloqueadores",
+        "price": 70.00,
+        "comparison-price": 100.00,
+        "description": "Crema solar que proporciona protección UVA/UVB con extracto de aloe vera al 5.5%. Calma la piel irritada, hidrata y protege del daño solar. - 50 ml",
+        "ingredients": [
+            "Extracto de hoja de aloe vera al 5.5%",
+            "Filtros solares de amplio espectro",
+            "Pantenol y extracto de té verde"
+        ],
+        "beneficios": [
+            "Calma la piel irritada y sensible, reduciendo rojez e inflamación",
+            "Hidratación profunda mantiene la piel suave y flexible",
+            "Protección solar efectiva sin obstruir poros"
+        ],
+        "textura": [
+            "Textura ligera y no pegajosa que se absorbe rápidamente",
+            "No deja residuos grasos ni sensación pegajosa",
+            "Excelente base para maquillaje"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 42,
+        "title": "Beauty of Joseon - Bloqueador en Barra Artemisia+Camellia",
+        "category": "Bloqueadores",
+        "price": 85.00,
+        "comparison-price": 120.00,
+        "description": "Barra solar mate sin sensación aceitosa o pegajosa. Higiénico y compacto para uso práctico en cualquier momento y lugar. - 18 gr",
+        "ingredients": [
+            "Artemisia Capillaris (propiedades refrescantes, vitaminas A y C)",
+            "Polvo de sílice (control de sebo)",
+            "Camellia, aloe vera, ácido hialurónico, centella asiática, pantenol"
+        ],
+        "beneficios": [
+            "Regula la producción de grasa con polvo de sílice",
+            "Mayor adherencia y acabado suave y mate",
+            "Textura suave de piel preservando hidratación",
+            "Ingredientes nutritivos calman la piel irritada"
+        ],
+        "textura": [
+            "No deja sensación pegajosa ni capa blanquecina",
+            "Proporciona efecto mate por varias horas",
+            "Aplicación suave y uniforme"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 43,
+        "title": "Beauty of Joseon - Ginseng Moist Sun Serum",
+        "category": "Bloqueadores",
+        "price": 90.00,
+        "comparison-price": 130.00,
+        "description": "Protector solar en formato de suero que ofrece hidratación profunda sin sensación grasosa. Con ginseng y ingredientes nutritivos. - 50 ml",
+        "ingredients": [
+            "Ginseng (antioxidante, revitalizante)",
+            "Ácido hialurónico (hidratación intensa)",
+            "Niacinamida (mejora textura, reduce envejecimiento)",
+            "Extracto de raíz de regaliz (calma, unifica tono)",
+            "Ceramidas (fortalecen barrera cutánea)"
+        ],
+        "beneficios": [
+            "Hidratación profunda y protección solar efectiva",
+            "Mejora textura de la piel suavizando su apariencia",
+            "Refuerza barrera natural protegiendo de agresores ambientales",
+            "Sin residuos blancos ni sensación pegajosa"
+        ],
+        "textura": [
+            "Textura ligera y acuosa de rápida absorción",
+            "Acabado fresco y sin brillos",
+            "No deja capa blanquecina ni sensación grasa"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 44,
+        "title": "SKIN1004 - Madagascar Centella Ampoule",
+        "category": "Serums",
+        "price": 90.00,
+        "comparison-price": 120.00,
+        "description": "Ampolla calmante con 100% extracto de Centella Asiática para calmar y restaurar el desequilibrio de la piel causado por ambientes hostiles. - 100 ml",
+        "ingredients": [
+            "Extracto de Centella Asiática (100%)"
+        ],
+        "beneficios": [
+            "Cuidado adicional calmante para piel agotada y cansada",
+            "Adecuado para pieles sensibles y propensas al acné",
+            "Repara la barrera protectora y regula producción de sebo",
+            "Hidrata profundamente y calma enrojecimiento e irritación",
+            "Ideal para pieles deshidratadas, sensibles y con tendencia al acné"
+        ],
+        "textura": [
+            "Textura muy ligera y acuosa",
+            "Absorción casi instantánea",
+            "Piel hidratada y no pegajosa"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 45,
+        "title": "ANUA - Heartleaf Pore Control Cleansing Oil",
+        "category": "Limpiadores",
+        "price": 100.00,
+        "comparison-price": 140.00,
+        "description": "Limpiador de aceite ligero y no comedogénico con mezcla de aceites vegetales y extracto de heartleaf. Limpia suavemente y controla sebo. - 200 ml",
+        "ingredients": [
+            "Aceites de jojoba, oliva y semilla de uva",
+            "Extracto de hoja de corazón (heartleaf)"
+        ],
+        "beneficios": [
+            "Limpieza suave pero efectiva sin despojar aceites naturales",
+            "Controla producción de sebo previniendo acné y poros obstruidos",
+            "Hidratante: deja la piel suave, lisa e hidratada"
+        ],
+        "textura": [
+            "Textura ultra-ligera no irrita piel ni ojos",
+            "No congestiona poros ni deja sensación grasosa"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 46,
+        "title": "Beauty of Joseon - Relief Sun Rice + Probiotics",
+        "category": "Bloqueadores",
+        "price": 85.00,
+        "comparison-price": 120.00,
+        "description": "Protector solar orgánico ligero y cremoso con 30% de extracto de arroz. Aporta hidratación y nutrición a la piel. - 50 ml",
+        "ingredients": [
+            "Extracto de arroz 30% + extractos fermentados de cereales",
+            "Niacinamida",
+            "Extracto de hoja de Camellia Sinensis",
+            "Extracto de raíz de Panax Ginseng"
+        ],
+        "beneficios": [
+            "Hidrata piel seca y calma cómodamente con vitaminas B, C, E, aminoácidos y minerales",
+            "Previene envejecimiento y atenúa líneas de expresión y manchas faciales",
+            "Brillo natural sin tono blanco después de la absorción"
+        ],
+        "textura": [
+            "Similar a crema humectante ligera, no pegajosa ni resbaladiza",
+            "No se apelmaza ni vuelve pastoso incluso con aplicaciones múltiples",
+            "Adecuado para usar antes del maquillaje"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 47,
+        "title": "TOCOBO - Coconut Clay Cleansing Foam",
+        "category": "Limpiadores",
+        "price": 70.00,
+        "comparison-price": 115.00,
+        "description": "Espuma limpiadora facial que combina poder purificante de arcilla con propiedades hidratantes del coco. Limpia impurezas y exceso de sebo. - 150 ml",
+        "ingredients": [
+            "Arcilla de caolín (purifica y limpia profundamente)",
+            "Extracto de coco (hidrata y nutre)",
+            "Extracto de té verde (antioxidantes, calmante)",
+            "Extracto de centella asiática (reparador, calmante)"
+        ],
+        "beneficios": [
+            "Limpia profundamente poros sin resecar la piel",
+            "Hidrata y nutre con extracto de coco",
+            "Aporta antioxidantes y calma la piel",
+            "Mantiene piel equilibrada y saludable"
+        ],
+        "textura": [
+            "Textura cremosa que se transforma en espuma rica y densa",
+            "Se extiende fácilmente proporcionando limpieza suave pero efectiva",
+            "Se enjuaga sin dejar residuos, piel limpia y confortable"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 48,
+        "title": "COSRX - Low pH Good Morning Gel Cleanser",
+        "category": "Limpiadores",
+        "price": 75.00,
+        "comparison-price": 90.00,
+        "description": "Limpiador facial suave formulado para equilibrar el pH de la piel. Elimina suciedad, exceso de grasa e impurezas manteniendo la barrera natural. - 150 ml",
+        "ingredients": [
+            "Ácido hialurónico",
+            "Extracto de té verde",
+            "BHA - ácido salicílico",
+            "Surfactantes suaves"
+        ],
+        "beneficios": [
+            "Limpieza profunda eliminando suciedad e impurezas",
+            "Equilibra el pH de la piel manteniendo barrera natural",
+            "Hidrata y calma la piel dejándola suave y revitalizada",
+            "Adecuado para todo tipo de piel, incluyendo sensible y acneica"
+        ],
+        "textura": [
+            "Textura ligera en gel que se extiende fácilmente",
+            "Se enjuaga sin dejar residuos",
+            "Piel limpia y fresca sin sensación de tirantez"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 49,
+        "title": "MIGUHARA - Ultra Whitening Perfect Ampoule",
+        "category": "Serums",
+        "price": 65.00,
+        "comparison-price": 115.00,
+        "description": "Suero concentrado para abordar hiperpigmentación y promover tono de piel más claro y uniforme. Con niacinamida y arbutina. - 20 ml",
+        "ingredients": [
+            "Niacinamida",
+            "Arbutina",
+            "Extractos botánicos"
+        ],
+        "beneficios": [
+            "Aclara la piel reduciendo manchas oscuras e hiperpigmentación",
+            "Hidratación intensa mantiene piel suave, flexible y radiante",
+            "Mejora la luminosidad con brillo saludable y juvenil"
+        ],
+        "textura": [
+            "Textura ligera y sedosa que se absorbe rápidamente",
+            "Deja la piel suave y radiante"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 50,
+        "title": "COSRX - AHA/BHA Clarifying Treatment Toner",
+        "category": "Tonicos",
+        "price": 70.00,
+        "comparison-price": 115.00,
+        "description": "Tónico formulado con ácidos AHA y BHA para exfoliar suavemente la piel, eliminar células muertas y promover renovación celular. - 150 ml",
+        "ingredients": [
+            "Ácidos AHA (ácido glicólico, ácido láctico)",
+            "Ácido salicílico (BHA)",
+            "Agua, glicerina",
+            "Extractos botánicos calmantes"
+        ],
+        "beneficios": [
+            "Exfoliación suave eliminando células muertas de la piel",
+            "Limpieza profunda despejando poros obstruidos",
+            "Equilibrio de la piel dejándola fresca y revitalizada",
+            "Prepara la piel para mejor absorción de otros productos"
+        ],
+        "textura": [
+            "Textura ligera y refrescante de rápida absorción",
+            "Piel suave y tonificada sin sensación pegajosa"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 51,
+        "title": "JUNISO - Snail Mucin Peptide Serum",
+        "category": "Serums",
+        "price": 65.00,
+        "comparison-price": 110.00,
+        "description": "Suero concentrado con 95% mucina de caracol y péptidos para hidratación profunda y regeneración de la piel. - 50 ml",
+        "ingredients": [
+            "Mucina de caracol al 95%",
+            "Péptidos",
+            "Pantenol",
+            "Alantoina"
+        ],
+        "beneficios": [
+            "Hidratación intensa reteniendo humedad durante todo el día",
+            "Reparación y regeneración de piel dañada",
+            "Fortalecimiento de barrera cutánea contra agresores ambientales",
+            "Mejora de elasticidad reduciendo líneas finas y arrugas"
+        ],
+        "textura": [
+            "Textura ligera y de rápida absorción",
+            "Se desliza suavemente sin sensación grasosa",
+            "Piel suave y tersa"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 52,
+        "title": "TOCOBO - Bio Watery Sun Cream",
+        "category": "Bloqueadores",
+        "price": 85.00,
+        "comparison-price": 110.00,
+        "description": "Protector solar hidratante y ligero como sérum hidratante. Crema solar vegana hipoalergénica con acabado refrescante. - 50ml",
+        "ingredients": [
+            "Extractor de algodón (hidratante, protector)",
+            "Herb AC complex (cuidado problemas piel, efecto calmante)",
+            "Anti Sebum P (equilibrio aceite-humedad, control sebo)"
+        ],
+        "beneficios": [
+            "Piel suave y sedosa sin pegajosidad ni brillos",
+            "Adherencia ligera y transparente incluso con aplicaciones múltiples",
+            "Función de prebase que rellena irregularidades",
+            "Mantiene piel hidratada y protegida de estímulos externos",
+            "Calma piel sensible y trata problemas de piel"
+        ],
+        "textura": [
+            "Textura de suero ligero y fino",
+            "Acabado fresco y húmedo sin pegajosidad"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 53,
+        "title": "I-ZÉZÉ - Zero Blemish Toner",
+        "category": "Tonicos",
+        "price": 70.00,
+        "comparison-price": 90.00,
+        "description": "Tónico para reducir imperfecciones y controlar exceso de grasa. Para cutis más brillante y claro. - 150 ml",
+        "ingredients": [
+            "Centella asiática extracto 79.6%",
+            "Antífect 10% (extracto antiinflamatorio)",
+            "Extracto de hoja de camellia sinensis",
+            "Aceite de oliva, alantoina, Ceramida NP"
+        ],
+        "beneficios": [
+            "Calma y protege la piel con extractos de Centella Asiática",
+            "Reduce problemas de piel con Antífect patentado",
+            "Hidratación profunda para la dermis",
+            "Efecto antioxidante con hialuronato de sodio y extracto de camellia"
+        ],
+        "textura": [
+            "Textura líquida de fácil absorción",
+            "Se absorbe completamente sin dejar residuos"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 54,
+        "title": "TOCOBO - Multi Ceramide Cream",
+        "category": "Hidratantes",
+        "price": 95.00,
+        "comparison-price": 145.00,
+        "description": "Crema con ceramida y ácido hialurónico que fortalece la barrera de humedad de la piel proporcionando hidratación. - 50 ml",
+        "ingredients": [
+            "Multiceramida 1.000ppm (barrera hidratante reforzada)",
+            "Solución Triple de Ácido Hialurónico al 10% (aporte de humedad)"
+        ],
+        "beneficios": [
+            "Calmante de la piel con suministro de humedad",
+            "Retención de humedad efectiva",
+            "Abundante suministro de humedad que se propaga al aplicar",
+            "Crema hidratante diaria apta para todas las estaciones"
+        ],
+        "textura": [
+            "Fórmula de crema de mantequilla de gasa masticable y sedosa",
+            "Se funde sobre la piel y se absorbe rápidamente",
+            "Proporciona acabado húmedo"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 55,
+        "title": "COSRX - Salicylic Acid Daily Gentle Cleanser",
+        "category": "Limpiadores",
+        "price": 75.00,
+        "comparison-price": 95.00,
+        "description": "Limpiador facial con ácido salicílico al 0.5% para combatir imperfecciones y acné. Limpia poros y elimina exceso de grasa. - 150 ml",
+        "ingredients": [
+            "Ácido salicílico al 0.5% (BHA - exfoliante, antinflamatorio)",
+            "Extracto de corteza de sauce",
+            "Extracto de té verde"
+        ],
+        "beneficios": [
+            "Limpieza profunda de poros obstruidos eliminando exceso de grasa y bacterias",
+            "Reducción de imperfecciones y prevención de nuevos brotes",
+            "Control de grasa manteniendo piel equilibrada",
+            "Suavidad y frescura sin sensación de sequedad o tirantez"
+        ],
+        "textura": [
+            "Textura en gel que se extiende fácilmente",
+            "Se enjuaga sin dejar residuos",
+            "Piel limpia y fresca"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    },
+    {
+        "id": 56,
+        "title": "Etude House - Sunprise Mild Airy Finish",
+        "category": "Bloqueadores",
+        "price": 75.00,
+        "comparison-price": 100.00,
+        "description": "Protector solar con filtros de amplio espectro y extractos botánicos. Acabado suave y mate para todo tipo de piel. - 55 ml",
+        "ingredients": [
+            "Filtros solares de amplio espectro",
+            "Extracto de hoja de lavanda",
+            "Extracto de hoja de romero"
+        ],
+        "beneficios": [
+            "Acabado suave y mate no pegajoso ni pesado",
+            "Hidratación adicional manteniendo piel suave y flexible",
+            "Adecuado para todo tipo de piel, incluyendo sensibles y acneicas"
+        ],
+        "textura": [
+            "Textura ligera y no pegajosa",
+            "Se desliza suavemente proporcionando cobertura uniforme",
+            "Sin residuos blancos"
+        ],
+        "image": "/img/products/image1.jpg",
+        "status": "Agotados"
+    }
+]

@@ -5,6 +5,7 @@
         "title": "TOCOBO - Cotton Soft Sun Stick",
         "category": "Bloqueadores",
         "price": 75.00,
+        "discount": 32,
         "comparison-price": 110.00,
         "description": "La barra solar vegana de acabado suave y sedoso calma y protege la piel manteniendo la humedad SPF50+ PA++",
         "ingredients": [
@@ -21,7 +22,8 @@
             "Sensación de Piel suave y sedosa con una barra solar mate de color azul claro.",
             "La aplicación de este bloqueador proporciona una capacidad de extensión sin grumos y adherencia ligera transparente."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/1.1.png",
+        "image2": "/img/products/1.2.png",
         "status": "Best Selers"
     },
     {
@@ -29,6 +31,7 @@
         "title": "TOCOBO - Vita Tone Up Sun Cream",
         "category": "Bloqueadores",
         "price": 75.00,
+        "discount": 32,
         "comparison-price": 110.00,
         "description": "La crema solar vegana Vita Tone Up Sun Cream combina protección y cuidado en una fórmula diseñada para unificar el tono de la piel y potenciar su luminosidad natural - 50 ml",
         "ingredients": [
@@ -45,7 +48,8 @@
         "textura": [
             "Es ligera y de rápida absorción. Su sutil tono rosa se funde perfectamente con la piel, ofreciendo una cobertura uniforme y sin residuos blancos. El acabado es suave y luminoso, sin dejar sensación grasosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/2.1.png",
+        "image2": "/img/products/2.2.png",
         "status": "Best Selers"
     },
     {
@@ -53,6 +57,7 @@
         "title": "TOCOBO - CICA Calming Sun Serum",
         "category": "Bloqueadores",
         "price": 85.00,
+        "discount": 23,
         "comparison-price": 110.00,
         "description": "Protector solar en formato de suero que ofrece una alta protección contra los rayos UV mientras calma y nutre la piel. Con una fórmula ligera y no pegajosa. - 50 ml",
         "ingredients": [
@@ -72,7 +77,8 @@
             "Deja un acabado fresco y sin brillos.",
             "No deja capa blanquecina ni sensación grasosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/3.1.png",
+        "image2": "/img/products/3.2.png",
         "status": "Best Selers"
     },
     {
@@ -80,6 +86,7 @@
         "title": "TOCOBO - CICA Cooling Sun Stick",
         "category": "Bloqueadores",
         "price": 85.00,
+        "discount": 23,
         "comparison-price": 110.00,
         "description": "Barra solar con centella asiática que calma, protege y deja un acabado mate. Formato práctico e higiénico. - 19 gr",
         "ingredients": [
@@ -101,14 +108,16 @@
             "Proporciona un acabado fresco y mate.",
             "No deja capa blanquecina ni sensación grasa."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/4.1.png",
+        "image2": "/img/products/4.2.png",
+        "status": "Mas vendidos"
     },
     {
         "id": 5,
         "title": "SKIN1004 - Hyalu-Cica Water-fit Sun Serum",
         "category": "Bloqueadores",
         "price": 75.00,
+        "discount": 31,
         "comparison-price": 99.00,
         "description": "Uno de los protectores solares más vendidos en Corea. Brinda protección solar SPF50+ PA++++. Combina extracto de Centella Asiática y ácidos hialurónicos. - 50 ml",
         "ingredients": [
@@ -126,14 +135,16 @@
             "Se absorbe en la piel de manera casi instantánea.",
             "Deja la piel hidratada y no pegajosa."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/5.1.png",
+        "image2": "/img/products/5.2.png",
+        "status": "Mas vendidos"
     },
     {
         "id": 6,
         "title": "SKIN1004 - Hyalu-cica Silky-fit Sun Stick",
         "category": "Bloqueadores",
         "price": 75.00,
+        "discount": 35,
         "comparison-price": 115.00,
         "description": "Protector solar en barra con ácido hialurónico y centella asiática que protege dejando un acabado suave y mate. Calma la piel y controla la producción de sebo. - 20 gr",
         "ingredients": [
@@ -148,7 +159,8 @@
             "Se extiende fácilmente sobre la piel.",
             "Tiene un efecto calmante y logra un efecto de piel más tersa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/6.1.png",
+        "image2": "/img/products/6.2.png",
         "status": "Best Selers"
     },
     {
@@ -156,6 +168,7 @@
         "title": "CELIMAX - Oil Control Matifying Sun Stick",
         "category": "Bloqueadores",
         "price": 80.00,
+        "discount": 24,
         "comparison-price": 105.00,
         "description": "Excelente opción para protección solar eficaz, control de sebo y un acabado mate sin esfuerzo. Formato compacto y sin residuos. - 19 gr",
         "ingredients": [
@@ -171,14 +184,16 @@
         "textura": [
             "Textura sólida pero suave que se desliza fácilmente, sin sensación pesada."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/7.1.png",
+        "image2": "/img/products/7.2.png",
+        "status": "Mas vendidos"
     },
     {
         "id": 8,
         "title": "MARY & MAY - Vegan Peptide Bakuchiol Sun Stick",
         "category": "Bloqueadores",
         "price": 90.00,
+        "discount": 25,
         "comparison-price": 120.00,
         "description": "Protector solar formulado con péptidos veganos y bakuchiol. Protege la piel del envejecimiento prematuro, hidrata y nutre. Formato en barra conveniente. - 18 gr",
         "ingredients": [
@@ -195,14 +210,16 @@
             "Textura suave y no grasa que se desliza fácilmente.",
             "Proporciona cobertura uniforme sin dejar residuos pegajosos."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/8.1.jpeg",
+        "image2": "/img/products/8.2.jpeg",
+        "status": "Mas vendidos"
     },
     {
         "id": 9,
         "title": "COSRX - Advanced Snail 96 Mucin Power Essence",
         "category": "Hidratantes",
         "price": 80.00,
+        "discount": 24,
         "comparison-price": 99.00,
         "description": "Esencia con 96% de filtrado de secreción de caracol para regenerar, reparar y proporcionar hidratación intensa y duradera. - 100 ml",
         "ingredients": [
@@ -219,7 +236,8 @@
             "Textura ligera y viscosa que se absorbe rápidamente.",
             "Deja la piel hidratada y flexible sin sensación pegajosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/9.1.jpeg",
+        "image2": "/img/products/9.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -227,6 +245,7 @@
         "title": "COSRX - Advanced Snail 92 All in one Cream",
         "category": "Hidratantes",
         "price": 80.00,
+        "discount": 27,
         "comparison-price": 110.00,
         "description": "Crema multifuncional con 92% de filtrado de secreción de caracol. Ideal para hidratar profundamente, regenerar la piel y mejorar su elasticidad. - 100 ml",
         "ingredients": [
@@ -243,14 +262,16 @@
             "Textura ligera y cremosa que se absorbe rápidamente.",
             "Deja la piel hidratada y nutrida sin residuos grasos."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/10.1.jpeg",
+        "image2": "/img/products/10.2.jpeg",
+        "status": "Mas vendidos"
     },
     {
         "id": 11,
         "title": "MIXSOON - Bean Cream",
         "category": "Hidratantes",
         "price": 90.00,
+        "discount": 31,
         "comparison-price": 130.00,
         "description": "Crema nutritiva que equilibra la piel, hidrata y suaviza la textura. Ideal para todo tipo de piel, incluidas las sensibles. - 50 ml",
         "ingredients": [
@@ -266,14 +287,16 @@
             "Textura cremosa pero no pesada, se absorbe rápidamente.",
             "Deja la piel suave con un brillo saludable."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/11.1.jpeg",
+        "image2": "/img/products/11.2.jpeg",
+        "status": "Mas vendidos"
     },
     {
         "id": 12,
         "title": "PURITO - Mighty Bamboo Panthenol Cream",
         "category": "Hidratantes",
         "price": 90.00,
+        "discount": 33,
         "comparison-price": 135.00,
         "description": "Crema vegana diseñada para hidratar profundamente, fortalecer la barrera cutánea y calmar la piel sensible. - 100 ml",
         "ingredients": [
@@ -291,7 +314,8 @@
             "Textura cremosa pero ligera, que se extiende suavemente sin dejar residuos grasos.",
             "Se absorbe rápidamente, proporcionando una sensación de frescura e hidratación instantánea."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/12.1.jpeg",
+        "image2": "/img/products/12.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -299,6 +323,7 @@
         "title": "Beauty of Joseon - Ginseng + Retinal Eye Serum",
         "category": "Hidratantes",
         "price": 85.00,
+        "discount": 26,
         "comparison-price": 115.00,
         "description": "Crema de contorno de ojos que ayuda a mejorar las arrugas y manchas oscuras al combinar extracto de ginseng y retinal. - 30 ml",
         "ingredients": [
@@ -313,15 +338,17 @@
         "textura": [
             "Textura similar a un gel o suero, permite aplicación suave y uniforme sin residuos pesados."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/13.1.jpeg",
+        "image2": "/img/products/13.2.jpeg",
         "status": "Best Selers"
     },
     {
         "id": 14,
         "title": "SKIN1004 - Madagascar Centella Poremizing Light Gel Cream",
         "category": "Hidratantes",
-        "price": 140.00,
-        "comparison-price": 180.00,
+        "price": 80.00,
+        "discount": 42,
+        "comparison-price": 140.00,
         "description": "Crema ligera en gel que hidrata, calma y ayuda a reducir visiblemente los poros. Ideal para pieles mixtas a grasas. - 75 ml",
         "ingredients": [
             "Extracto de Centella Asiática de Madagascar para calmar y regenerar.",
@@ -336,14 +363,16 @@
             "Textura gel acuosa, ultraligera y de rápida absorción.",
             "Se funde en la piel dejando sensación fresca, suave y sin residuos pegajosos."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/14.1.jpeg",
+        "image2": "/img/products/14.2.jpeg",
+        "status": "Mas vendidos"
     },
     {
         "id": 15,
         "title": "DR. ALTHEA - 345 Relief Cream",
         "category": "Hidratantes",
         "price": 110.00,
+        "discount": 19,
         "comparison-price": 135.00,
         "description": "Crema calmante de textura gel-crema ligera, formulada con niacinamida, pantenol y extractos botánicos para fortalecer la barrera cutánea. - 50 ml",
         "ingredients": [
@@ -359,14 +388,16 @@
             "Textura gel-crema suave, no comedogénica y de fácil absorción.",
             "Se recomienda usar como última capa, de día o de noche."
         ],
-        "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "image": "/img/products/15.1.jpeg",
+        "image2": "/img/products/15.2.jpeg",
+        "status": "Mas vendidos"
     },
     {
         "id": 16,
         "title": "TOCOBO - Vita Glazed Lip Mask",
         "category": "Hidratantes",
         "price": 80.00,
+        "discount": 20,
         "comparison-price": 100.00,
         "description": "Mascarilla hidratante de labios infundida con vitaminas nutritivas. Ayuda a calmar e hidratar labios secos y agrietados. - 20 ml",
         "ingredients": [
@@ -383,7 +414,8 @@
             "Textura ultra-ligera que no irrita la piel.",
             "Proporciona un brillo saludable en los labios."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/16.1.jpeg",
+        "image2": "/img/products/16.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -391,6 +423,7 @@
         "title": "SKIN1004 - Madagascar Centella Light Cleansing Oil",
         "category": "Limpiadores",
         "price": 95.00,
+        "discount": 24,
         "comparison-price": 125.00,
         "description": "Aceite de limpieza ligero con extracto de Centella Asiática que remueve suavemente el maquillaje y proporciona un efecto calmante. - 200 ml",
         "ingredients": [
@@ -407,7 +440,8 @@
             "Textura ultra-ligera que no irrita la piel ni los ojos.",
             "No congestiona los poros ni deja sensación grasosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/17.1.jpeg",
+        "image2": "/img/products/17.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -415,6 +449,7 @@
         "title": "MIXSOON - Bean Cleansing Oil",
         "category": "Limpiadores",
         "price": 90.00,
+        "discount": 31,
         "comparison-price": 130.00,
         "description": "Aceite limpiador nutritivo que elimina eficazmente el maquillaje e impurezas, mientras hidrata y respeta la barrera natural de la piel. - 195 ml",
         "ingredients": [
@@ -431,7 +466,8 @@
             "Textura aceitosa ligera que se emulsiona al contacto con el agua.",
             "Se transforma en una leche suave que se enjuaga fácilmente sin dejar película grasa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/18.1.jpeg",
+        "image2": "/img/products/18.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -439,6 +475,7 @@
         "title": "MIXSOON - Centella Cleansing Foam",
         "category": "Limpiadores",
         "price": 75.00,
+        "discount": 17,
         "comparison-price": 90.00,
         "description": "Espuma limpiadora calmante, ideal para pieles sensibles, mixtas o propensas al acné. Mantiene el equilibrio natural de la piel. - 150 ml",
         "ingredients": [
@@ -454,7 +491,8 @@
             "Genera una espuma ligera, cremosa y suave al contacto con agua.",
             "Limpia eficazmente sin dejar película ni sensación grasosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/19.1.jpeg",
+        "image2": "/img/products/19.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -462,6 +500,7 @@
         "title": "SKIN1004 - Madagascar Centella Ampoule Foam",
         "category": "Limpiadores",
         "price": 75.00,
+        "discount": 21,
         "comparison-price": 95.00,
         "description": "Limpiador facial suave y eficaz que combina las propiedades calmantes de la centella asiática con una fórmula espumosa que limpia profundamente. - 125 ml",
         "ingredients": [
@@ -478,7 +517,8 @@
             "Textura cremosa que se transforma en una espuma densa y suave.",
             "Se distribuye fácilmente y se enjuaga sin esfuerzo, dejando frescura y acabado mate."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/20.1.jpeg",
+        "image2": "/img/products/20.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -486,6 +526,7 @@
         "title": "SKIN1004 - Poremizing Deep Cleansing Foam",
         "category": "Limpiadores",
         "price": 75.00,
+        "discount": 21,
         "comparison-price": 95.00,
         "description": "Espuma limpiadora diseñada para limpiar profundamente los poros, controlar el exceso de grasa y equilibrar la piel sin resecarla. - 125 ml",
         "ingredients": [
@@ -502,7 +543,8 @@
             "Textura cremosa que genera una espuma densa y suave.",
             "Se distribuye uniformemente y deja sensación de frescura y limpieza sin residuos."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/21.1.jpeg",
+        "image2": "/img/products/21.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -510,6 +552,7 @@
         "title": "SKIN1004 - Madagascar Centella Tone Brightening Capsule Ampoule",
         "category": "Serums",
         "price": 100.00,
+        "discount": 28,
         "comparison-price": 140.00,
         "description": "Suero iluminador formulado con extractos de Centella Asiática, Vitamina C y Niacinamida para mejorar el tono de la piel. - 100 ml",
         "ingredients": [
@@ -528,7 +571,8 @@
             "Deja la piel fresca y sin sensación pegajosa.",
             "Las cápsulas de vitamina C se disuelven al contacto, dando luminosidad instantánea."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/22.1.jpeg",
+        "image2": "/img/products/22.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -536,6 +580,7 @@
         "title": "CELIMAX - Noni Energy Ampoule",
         "category": "Serums",
         "price": 90.00,
+        "discount": 28,
         "comparison-price": 125.00,
         "description": "Sérum concentrado con extracto de Noni, ideal para revitalizar, hidratar y fortalecer la piel. Rico en antioxidantes. - 30 ml",
         "ingredients": [
@@ -552,7 +597,8 @@
             "Textura ligera y de rápida absorción con acabado sedoso y refrescante.",
             "No deja residuos grasos."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/23.1.jpeg",
+        "image2": "/img/products/23.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -576,7 +622,8 @@
             "Textura ligera y acuosa, se absorbe rápidamente sin sensación pegajosa.",
             "Se puede aplicar en capas para una hidratación más intensa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/24.1.jpeg",
+        "image2": "/img/products/24.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -601,7 +648,8 @@
             "Color amarillo pálido característico del retinal.",
             "Sin fragancia perceptible."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/25.1.jpeg",
+        "image2": "/img/products/25.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -625,7 +673,8 @@
             "Color amarillo pálido característico del retinal.",
             "Sin fragancia perceptible."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/26.1.jpeg",
+        "image2": "/img/products/26.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -649,7 +698,8 @@
             "Textura gel-booster rica, de rápida absorción.",
             "Se recomienda aplicar 2-3 veces por semana por la noche."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/27.1.jpeg",
+        "image2": "/img/products/27.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -674,7 +724,8 @@
             "Textura acuosa y ligera que se absorbe rápidamente.",
             "Sin residuo ni pegajosidad. Ideal para aplicar bajo maquillaje."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/28.1.jpeg",
+        "image2": "/img/products/28.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -700,7 +751,8 @@
             "Textura ligera, acuosa y de rápida absorción.",
             "Deja sensación fresca, sin grasa ni pegajosidad."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/29.2.jpeg",
+        "image2": "/img/products/29.1.jpeg",
         "status": "Best Selers"
     },
     {
@@ -725,7 +777,8 @@
             "Textura ligera y acuosa que se absorbe rápidamente.",
             "Deja la piel fresca y libre de brillo. Acabado mate y suave."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/30.1.jpeg",
+        "image2": "/img/products/30.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -750,7 +803,8 @@
             "Se desliza cómodamente, dejando una fina capa purificadora.",
             "Después del enjuague, la piel queda limpia, suave y libre de residuos."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/31.1.jpeg",
+        "image2": "/img/products/31.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -774,7 +828,8 @@
             "Textura ligera y de rápida absorción.",
             "Se extiende fácilmente sin sensación grasosa o pegajosa."
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/32.1.jpeg",
+        "image2": "/img/products/32.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -799,7 +854,8 @@
             "Formulación tipo agua líquida transparente",
             "Sensación de frescor inmediato y acabado refrescante"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/33.1.jpeg",
+        "image2": "/img/products/33.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -825,7 +881,8 @@
             "Tónico tipo agua transparente e hidratante",
             "Rápida absorción, deja sólo humedad sin pegajosidad"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/34.1.jpeg",
+        "image2": "/img/products/34.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -848,7 +905,8 @@
             "Textura ligera y de rápida absorción",
             "No deja sensación grasosa o pegajosa"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/35.1.jpeg",
+        "image2": "/img/products/35.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -874,7 +932,8 @@
             "Se deslizan fácilmente sin irritar",
             "Acabado fresco sin sensación pegajosa"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/36.1.png",
+        "image2": "/img/products/36.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -901,7 +960,8 @@
             "Deja piel fresca sin sensación pegajosa",
             "Prepara la piel para los siguientes pasos de la rutina"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/37.1.jpeg",
+        "image2": "/img/products/37.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -925,7 +985,8 @@
             "Líquido de rápida evaporación",
             "No deja residuos grasos"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/38.1.jpeg",
+        "image2": "/img/products/38.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -949,7 +1010,8 @@
             "Líquido ligero de rápida absorción",
             "No mancha ni daña superficies"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/39.1.jpeg",
+        "image2": "/img/products/39.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -973,7 +1035,8 @@
             "Líquido de consistencia media",
             "Evaporación gradual"
         ],
-        "image": "/img/products/image1.jpg",
+        "image": "/img/products/40.1.jpeg",
+        "image2": "/img/products/40.2.jpeg",
         "status": "Best Selers"
     },
     {
@@ -999,7 +1062,7 @@
             "Excelente base para maquillaje"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 42,
@@ -1025,7 +1088,7 @@
             "Aplicación suave y uniforme"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 43,
@@ -1053,7 +1116,7 @@
             "No deja capa blanquecina ni sensación grasa"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 44,
@@ -1078,7 +1141,7 @@
             "Piel hidratada y no pegajosa"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 45,
@@ -1101,7 +1164,7 @@
             "No congestiona poros ni deja sensación grasosa"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 46,
@@ -1127,7 +1190,7 @@
             "Adecuado para usar antes del maquillaje"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 47,
@@ -1154,7 +1217,7 @@
             "Se enjuaga sin dejar residuos, piel limpia y confortable"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 48,
@@ -1181,7 +1244,7 @@
             "Piel limpia y fresca sin sensación de tirantez"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 49,
@@ -1205,7 +1268,7 @@
             "Deja la piel suave y radiante"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 50,
@@ -1231,7 +1294,7 @@
             "Piel suave y tonificada sin sensación pegajosa"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 51,
@@ -1258,7 +1321,7 @@
             "Piel suave y tersa"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 52,
@@ -1284,7 +1347,7 @@
             "Acabado fresco y húmedo sin pegajosidad"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 53,
@@ -1310,7 +1373,7 @@
             "Se absorbe completamente sin dejar residuos"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 54,
@@ -1335,7 +1398,7 @@
             "Proporciona acabado húmedo"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 55,
@@ -1361,7 +1424,7 @@
             "Piel limpia y fresca"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     },
     {
         "id": 56,
@@ -1386,6 +1449,6 @@
             "Sin residuos blancos"
         ],
         "image": "/img/products/image1.jpg",
-        "status": "Best Selers"
+        "status": "Agotados"
     }
 ]

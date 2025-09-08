@@ -79,29 +79,29 @@ const Footer = () => {
                     <div>
                         <h4 className="font-semibold text-gray-900 mb-4 text-lg">Productos</h4>
                         <div className="space-y-3">
-                            <Link to="/hidratantes" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop?category=Hidratantes" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Hidratantes & Cremas
+                                Hidratantes
                             </Link>
-                            <Link to="/bloqueadores" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop?category=Bloqueadores" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Bloqueadores Solares
+                                Bloqueadores
                             </Link>
-                            <Link to="/limpiadores" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop?category=Limpiadores" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Limpiadores & Espumas
+                                Limpiadores
                             </Link>
-                            <Link to="/serums" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop?category=Serums" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Serums & Esencias
+                                Serums
                             </Link>
-                            <Link to="/tonicos" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop?category=Tonicos" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Tónicos & Mists
+                                Tónicos
                             </Link>
-                            <Link to="/mascarillas" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/shop" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
-                                Mascarillas
+                                Todos los Productos
                             </Link>
                         </div>
                     </div>
@@ -152,23 +152,23 @@ const Footer = () => {
                             <div className="flex items-center gap-3">
                                 <FaPhone className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a href="tel:+51999999999" className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <a href="tel:+51982498372" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
-                                    +51 999 999 999
+                                    +51 982 498 372
                                 </a>
                             </div>
                             <div className="flex items-center gap-3">
                                 <FaEnvelope className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a href="mailto:info@hyaluro.pe" className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <a href="#" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
-                                    info@hyaluro.pe
+                                    hyaluro.pe@gmail.com
                                 </a>
                             </div>
                             <div className="flex items-center gap-3">
                                 <FaWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
                                 <a 
-                                    href="https://wa.me/51999999999" 
+                                    href="https://wa.me/51982498372" 
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-sm text-gray-600 hover:text-green-500 transition-colors duration-300"

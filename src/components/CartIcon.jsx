@@ -11,7 +11,7 @@ const CartIcon = () => {
       className="relative p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
       aria-label="Abrir carrito de compras"
     >
-      <FaShoppingCart 
+      <FaShoppingCart  
         size={24} 
         className="text-gray-700 hover:text-gray-900" 
         style={{ color: '#4A90A4' }}
