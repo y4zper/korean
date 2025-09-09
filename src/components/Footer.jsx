@@ -60,18 +60,15 @@ const Footer = () => {
                         
                         {/* Social Media */}
                         <div className="flex items-center gap-4 mb-6">
-                            <a href="#" className="bg-[#F5E6E8] p-2 rounded-full hover:bg-[#F5E6E8]/80 transition-colors duration-300">
+                            <a href="https://www.instagram.com/hyaluro.pe/" className="bg-[#F5E6E8] p-2 rounded-full hover:bg-[#F5E6E8]/80 transition-colors duration-300">
   <FaInstagram className="w-4 h-4 text-[#7FB069]" />
 </a>
                             <a href="#" className="bg-[#B8E6E6]/50 p-2 rounded-full hover:bg-[#B8E6E6]/70 transition-colors duration-300">
   <FaFacebookF className="w-4 h-4 text-[#4A90A4]" />
 </a>
-                            <a href="#" className="bg-gray-900 p-2 rounded-full hover:bg-gray-800 transition-colors duration-300">
+                            <a href="https://www.tiktok.com/@hyaluro.pe" className="bg-gray-900 p-2 rounded-full hover:bg-gray-800 transition-colors duration-300">
                                 <FaTiktok className="w-4 h-4 text-white" />
                             </a>
-                            <a href="#" className="bg-[#F5E6E8] p-2 rounded-full hover:bg-[#F5E6E8]/80 transition-colors duration-300">
-  <FaYoutube className="w-4 h-4 text-[#7FB069]" />
-</a>
                         </div>
                     </div>
 
@@ -110,29 +107,21 @@ const Footer = () => {
                     <div>
                         <h4 className="font-semibold text-gray-900 mb-4 text-lg">Ayuda & Soporte</h4>
                         <div className="space-y-3">
-                            <Link to="/skin-test" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/TipoPiel" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 ¿Qué tipo de piel tengo?
                             </Link>
-                            <Link to="/rutina-skincare" className="text-sm text-gray-600 hover:text-[#7FB069]
- transition-colors duration-300 block">
-                                Guía de rutina K-Beauty
-                            </Link>
-                            <Link to="/faq" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/FAQ" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 Preguntas Frecuentes
                             </Link>
-                            <Link to="/shipping" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="#" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 Envíos y Devoluciones
                             </Link>
-                            <Link to="/contact" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="#" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 Contacto
-                            </Link>
-                            <Link to="/blog" className="text-sm text-gray-600 hover:text-[#7FB069]
- transition-colors duration-300 block">
-                                Blog K-Beauty
                             </Link>
                         </div>
                     </div>
@@ -201,13 +190,13 @@ const Footer = () => {
                             </p>
                         </div>
                         <div className="flex flex-wrap justify-center gap-6 text-xs text-white">
-                            <Link to="/" className="hover:text-white transition-colors duration-300">
+                            <Link to="#" className="hover:text-white transition-colors duration-300">
                                 Política de Privacidad
                             </Link>
-                            <Link to="/" className="hover:text-white transition-colors duration-300">
+                            <Link to="#" className="hover:text-white transition-colors duration-300">
                                 Términos y Condiciones
                             </Link>
-                            <Link to="/" className="hover:text-white transition-colors duration-300">
+                            <Link to="#" className="hover:text-white transition-colors duration-300">
                                 Política de Cookies
                             </Link>
                         </div>

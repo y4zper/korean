@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
 import { FaHeart, FaMinus, FaPlus, FaTrash, FaChevronDown, FaPaypal, FaCreditCard, FaWhatsapp } from 'react-icons/fa';
 
@@ -26,6 +27,88 @@ const Checkout = () => {
   const impuestos = 0;
   const descuentoPromo = 0; // Aquí puedes agregar lógica de descuentos
   const totalGeneral = totalPrice + envio + impuestos - descuentoPromo;
+
+  // Variantes de animación
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        duration: 0.6
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12
+      }
+    },
+    exit: {
+      opacity: 0,
+      x: -100,
+      scale: 0.8,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
+  const progressVariants = {
+    initial: { width: 0 },
+    animate: { 
+      width: `${Math.min((totalPrice / ENVIO_MINIMO) * 100, 100)}%`,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        duration: 1
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hover: { 
+      scale: 1.02,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: { 
+      scale: 0.98,
+      transition: {
+        duration: 0.1
+      }
+    }
+  };
+
+  const summaryVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        delay: 0.2
+      }
+    }
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -131,11 +214,26 @@ const Checkout = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <motion.div 
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       {/* Header con envío gratuito */}
-      <div className="mb-8 p-4 rounded-lg" style={{ backgroundColor: '#F9F7F4' }}>
+      <motion.div 
+        className="mb-8 p-4 rounded-lg" 
+        style={{ backgroundColor: '#F9F7F4' }}
+        variants={itemVariants}
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
         <div className="flex items-center justify-between">
-          <div>
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
             <h3 className="font-semibold" style={{ color: '#7FB069' }}>
               {envioGratuito ? '¡Felicidades! Tienes envío gratuito' : 'Envío gratuito disponible'}
             </h3>
@@ -145,215 +243,407 @@ const Checkout = () => {
                 : `Agrega $${(ENVIO_MINIMO - totalPrice).toFixed(2)} más para obtener envío gratuito`
               }
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Barra de progreso para envío gratuito */}
-      {!envioGratuito && totalPrice > 0 && (
-        <div className="mb-6 p-4 rounded-lg border" style={{ borderColor: '#A8D5BA', backgroundColor: '#F9F7F4' }}>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium" style={{ color: '#7FB069' }}>
-              Progreso hacia envío gratuito
-            </span>
-            <span className="text-sm font-medium" style={{ color: '#7FB069' }}>
-              ${totalPrice.toFixed(2)} / $${ENVIO_MINIMO.toFixed(2)}
-            </span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="h-2 rounded-full transition-all duration-300"
-              style={{ 
-                backgroundColor: '#A8D5BA',
-                width: `${Math.min((totalPrice / ENVIO_MINIMO) * 100, 100)}%`
-              }}
-            />
-          </div>
-          <p className="text-xs text-gray-600 mt-2">
-            {totalPrice < ENVIO_MINIMO 
-              ? `Te faltan $${(ENVIO_MINIMO - totalPrice).toFixed(2)} para envío gratuito`
-              : '¡Ya tienes envío gratuito!'
-            }
-          </p>
-        </div>
-      )}
+      <AnimatePresence>
+        {!envioGratuito && totalPrice > 0 && (
+          <motion.div 
+            className="mb-6 p-4 rounded-lg border" 
+            style={{ borderColor: '#A8D5BA', backgroundColor: '#F9F7F4' }}
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium" style={{ color: '#7FB069' }}>
+                Progreso hacia envío gratuito
+              </span>
+              <motion.span 
+                className="text-sm font-medium" 
+                style={{ color: '#7FB069' }}
+                key={totalPrice}
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                ${totalPrice.toFixed(2)} / $${ENVIO_MINIMO.toFixed(2)}
+              </motion.span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+              <motion.div 
+                className="h-2 rounded-full"
+                style={{ backgroundColor: '#A8D5BA' }}
+                variants={progressVariants}
+                initial="initial"
+                animate="animate"
+              />
+            </div>
+            <motion.p 
+              className="text-xs text-gray-600 mt-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              {totalPrice < ENVIO_MINIMO 
+                ? `Te faltan $${(ENVIO_MINIMO - totalPrice).toFixed(2)} para envío gratuito`
+                : '¡Ya tienes envío gratuito!'
+              }
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Columna izquierda - Productos (Cesta) */}
-        <div className="lg:col-span-2">
-          <h1 className="text-2xl font-bold mb-6 text-gray-900">Cesta</h1>
+        <motion.div 
+          className="lg:col-span-2"
+          variants={itemVariants}
+        >
+          <motion.h1 
+            className="text-2xl font-bold mb-6 text-gray-900"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Cesta
+          </motion.h1>
 
           {items.length === 0 ? (
-            <div className="text-center py-12">
+            <motion.div 
+              className="text-center py-12"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+            >
               <p className="text-gray-500 text-lg">Tu carrito está vacío</p>
-              <button 
+              <motion.button 
                 onClick={() => window.location.href = '/shop'}
                 className="mt-4 px-6 py-3 text-white rounded-lg font-medium hover:opacity-90 transition-colors"
                 style={{ backgroundColor: '#7FB069' }}
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
               >
                 Ir a comprar
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
           ) : (
-            <div className="space-y-6">
-              {items.map((item) => (
-                <div key={item.id} className="flex gap-4 pb-6 border-b border-gray-200">
-                  {/* Imagen del producto */}
-                  <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0" style={{ backgroundColor: '#F9F7F4' }}>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
+            <motion.div className="space-y-6">
+              <AnimatePresence mode="popLayout">
+                {items.map((item, index) => (
+                  <motion.div 
+                    key={item.id} 
+                    className="flex gap-4 pb-6 border-b border-gray-200"
+                    variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    layout
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {/* Imagen del producto */}
+                    <motion.div 
+                      className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0" 
+                      style={{ backgroundColor: '#F9F7F4' }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-contain"
+                      />
+                    </motion.div>
 
-                  {/* Detalles del producto */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex justify-between items-start mb-2">
-                      <div>
-                        <h3 className="font-semibold text-gray-900 text-lg leading-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm mt-1">{item.category}</p>
-                        <p className="text-gray-600 text-sm mt-1">{item.description || 'Disponible'}</p>
+                    {/* Detalles del producto */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex justify-between items-start mb-2">
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <h3 className="font-semibold text-gray-900 text-lg leading-tight">
+                            {item.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm mt-1">{item.category}</p>
+                          <p className="text-gray-600 text-sm mt-1">{item.description || 'Disponible'}</p>
+                        </motion.div>
+                        <motion.div 
+                          className="text-right"
+                          key={item.quantity}
+                          initial={{ scale: 1.1 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <p className="font-semibold text-lg text-gray-900">
+                            ${(item.price * item.quantity).toFixed(2)}
+                          </p>
+                        </motion.div>
                       </div>
-                      <div className="text-right">
-                        <p className="font-semibold text-lg text-gray-900">
-                          ${(item.price * item.quantity).toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
 
-                    {/* Controles inferiores */}
-                    <div className="flex items-center justify-between">
-                      {/* Controles de cantidad */}
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center border rounded-lg" style={{ borderColor: '#E8EAED' }}>
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            className="p-2 hover:bg-gray-50 rounded-l-lg transition-colors"
-                            disabled={item.quantity <= 1}
+                      {/* Controles inferiores */}
+                      <div className="flex items-center justify-between">
+                        {/* Controles de cantidad */}
+                        <div className="flex items-center gap-4">
+                          <motion.div 
+                            className="flex items-center border rounded-lg" 
+                            style={{ borderColor: '#E8EAED' }}
+                            whileHover={{ scale: 1.02 }}
+                            transition={{ type: "spring", stiffness: 400 }}
                           >
-                            <FaMinus size={12} className={item.quantity <= 1 ? 'text-gray-300' : 'text-gray-600'} />
-                          </button>
-                          <span className="px-4 py-2 font-medium min-w-[50px] text-center">
-                            {item.quantity}
-                          </span>
-                          <button
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            className="p-2 hover:bg-gray-50 rounded-r-lg transition-colors"
+                            <motion.button
+                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              className="p-2 hover:bg-gray-50 rounded-l-lg transition-colors"
+                              disabled={item.quantity <= 1}
+                              whileHover={{ backgroundColor: '#f9fafb' }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <FaMinus size={12} className={item.quantity <= 1 ? 'text-gray-300' : 'text-gray-600'} />
+                            </motion.button>
+                            <motion.span 
+                              className="px-4 py-2 font-medium min-w-[50px] text-center"
+                              key={item.quantity}
+                              initial={{ scale: 1.2, color: '#7FB069' }}
+                              animate={{ scale: 1, color: '#000' }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {item.quantity}
+                            </motion.span>
+                            <motion.button
+                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              className="p-2 hover:bg-gray-50 rounded-r-lg transition-colors"
+                              whileHover={{ backgroundColor: '#f9fafb' }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <FaPlus size={12} className="text-gray-600" />
+                            </motion.button>
+                          </motion.div>
+                        </div>
+
+                        {/* Botones de acción */}
+                        <div className="flex items-center gap-3">
+                          <motion.button 
+                            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                            title="Agregar a favoritos"
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            whileTap={{ scale: 0.95 }}
                           >
-                            <FaPlus size={12} className="text-gray-600" />
-                          </button>
+                            <FaHeart size={16} className="text-gray-400 hover:text-red-500" />
+                          </motion.button>
+                          <motion.button
+                            onClick={() => removeFromCart(item.id)}
+                            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                            title="Eliminar producto"
+                            whileHover={{ scale: 1.1, rotate: -5 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <FaTrash size={16} className="text-gray-400 hover:text-red-500" />
+                          </motion.button>
                         </div>
                       </div>
-
-                      {/* Botones de acción */}
-                      <div className="flex items-center gap-3">
-                        <button 
-                          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                          title="Agregar a favoritos"
-                        >
-                          <FaHeart size={16} className="text-gray-400 hover:text-red-500" />
-                        </button>
-                        <button
-                          onClick={() => removeFromCart(item.id)}
-                          className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                          title="Eliminar producto"
-                        >
-                          <FaTrash size={16} className="text-gray-400 hover:text-red-500" />
-                        </button>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           )}
-        </div>
+        </motion.div>
 
         {/* Columna derecha - Resumen */}
-        <div className="lg:col-span-1">
+        <motion.div 
+          className="lg:col-span-1"
+          variants={summaryVariants}
+        >
           <div className="bg-white sticky top-8">
-            <h2 className="text-xl font-bold mb-6 text-gray-900">Resumen</h2>
+            <motion.h2 
+              className="text-xl font-bold mb-6 text-gray-900"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              Resumen
+            </motion.h2>
 
             {/* Código promocional */}
-            <div className="mb-6">
-              <button
+            <motion.div 
+              className="mb-6"
+              variants={itemVariants}
+            >
+              <motion.button
                 onClick={() => setShowPromoCode(!showPromoCode)}
                 className="flex items-center justify-between w-full py-3 text-left border-b border-gray-200"
+                whileHover={{ backgroundColor: '#f9fafb' }}
+                whileTap={{ scale: 0.99 }}
               >
                 <span className="font-medium text-gray-900">¿Tienes un código promocional?</span>
-                <FaChevronDown 
-                  className={`transform transition-transform ${showPromoCode ? 'rotate-180' : ''}`}
-                  size={14}
-                />
-              </button>
+                <motion.div
+                  animate={{ rotate: showPromoCode ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <FaChevronDown size={14} />
+                </motion.div>
+              </motion.button>
               
-              {showPromoCode && (
-                <div className="mt-4 space-y-3">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      placeholder="Código promocional"
-                      value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
-                      className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    />
-                    <button
-                      onClick={handlePromoCode}
-                      className="px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                    >
-                      Aplicar
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+              <AnimatePresence>
+                {showPromoCode && (
+                  <motion.div 
+                    className="mt-4 space-y-3"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="flex gap-2">
+                      <motion.input
+                        type="text"
+                        placeholder="Código promocional"
+                        value={promoCode}
+                        onChange={(e) => setPromoCode(e.target.value)}
+                        className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        whileFocus={{ scale: 1.02 }}
+                      />
+                      <motion.button
+                        onClick={handlePromoCode}
+                        className="px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+                        variants={buttonVariants}
+                        whileHover="hover"
+                        whileTap="tap"
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        Aplicar
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
 
             {/* Desglose de precios */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center justify-between">
+            <motion.div 
+              className="space-y-3 mb-6"
+              variants={itemVariants}
+            >
+              <motion.div 
+                className="flex items-center justify-between"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+              >
                 <span className="text-gray-700">Subtotal</span>
                 <div className="flex items-center gap-2">
-                  <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                  <motion.span 
+                    className="font-medium"
+                    key={totalPrice}
+                    initial={{ scale: 1.1, color: '#7FB069' }}
+                    animate={{ scale: 1, color: '#000' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    ${totalPrice.toFixed(2)}
+                  </motion.span>
                 </div>
-              </div>
+              </motion.div>
               
-              <div className="flex items-center justify-between">
+              <motion.div 
+                className="flex items-center justify-between"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6 }}
+              >
                 <div className="flex flex-col">
                   <span className="text-gray-700">Gastos de envío y gestión</span>
-                  {envioGratuito && (
-                    <span className="text-xs" style={{ color: '#7FB069' }}>
-                      ¡Envío gratuito aplicado!
-                    </span>
-                  )}
+                  <AnimatePresence>
+                    {envioGratuito && (
+                      <motion.span 
+                        className="text-xs" 
+                        style={{ color: '#7FB069' }}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        ¡Envío gratuito aplicado!
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <span className={`font-medium ${envioGratuito ? 'text-green-600' : ''}`}>
+                <motion.span 
+                  className={`font-medium ${envioGratuito ? 'text-green-600' : ''}`}
+                  key={envio}
+                  initial={{ scale: envioGratuito ? 1.2 : 1, color: envioGratuito ? '#16a34a' : '#000' }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
                   {envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}
-                </span>
-              </div>
+                </motion.span>
+              </motion.div>
 
-              {descuentoPromo > 0 && (
-                <div className="flex items-center justify-between text-green-600">
-                  <span>Descuento promocional</span>
-                  <span className="font-medium">-${descuentoPromo.toFixed(2)}</span>
-                </div>
-              )}
+              <AnimatePresence>
+                {descuentoPromo > 0 && (
+                  <motion.div 
+                    className="flex items-center justify-between text-green-600"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    <span>Descuento promocional</span>
+                    <span className="font-medium">-${descuentoPromo.toFixed(2)}</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-              <div className="border-t pt-3">
+              <motion.div 
+                className="border-t pt-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-gray-900">Total</span>
-                  <span className="text-lg font-bold text-gray-900">${totalGeneral.toFixed(2)}</span>
+                  <motion.span 
+                    className="text-lg font-bold text-gray-900"
+                    key={totalGeneral}
+                    initial={{ scale: 1.2, color: '#7FB069' }}
+                    animate={{ scale: 1, color: '#000' }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                  >
+                    ${totalGeneral.toFixed(2)}
+                  </motion.span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Formulario de envío */}
-            <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-              <div className="grid grid-cols-1 gap-4">
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="space-y-4 mb-6"
+              variants={itemVariants}
+            >
+              <motion.div 
+                className="grid grid-cols-1 gap-4"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+              >
                 {/* Nombre completo */}
-                <input
+                <motion.input
                   type="text"
                   name="nombre"
                   placeholder="Nombre completo *"
@@ -361,10 +651,12 @@ const Checkout = () => {
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
+                  variants={itemVariants}
+                  whileFocus={{ scale: 1.02 }}
                 />
                 
                 {/* Teléfono */}
-                <input
+                <motion.input
                   type="tel"
                   name="telefono"
                   placeholder="Número de teléfono *"
@@ -372,60 +664,84 @@ const Checkout = () => {
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
+                  variants={itemVariants}
+                  whileFocus={{ scale: 1.02 }}
                 />
                 
                 {/* Tipo de entrega */}
-                <select
+                <motion.select
                   name="tipoEntrega"
                   value={form.tipoEntrega}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   required
+                  variants={itemVariants}
+                  whileFocus={{ scale: 1.02 }}
                 >
                   <option value="">Selecciona tipo de entrega *</option>
                   <option value="delivery">Delivery</option>
                   <option value="shalom">Recojo en Shalom</option>
-                </select>
+                </motion.select>
 
                 {/* Campos condicionales para Delivery */}
-                {form.tipoEntrega === 'delivery' && (
-                  <>
-                    <input
-                      type="text"
-                      name="direccion"
-                      placeholder="Dirección *"
-                      value={form.direccion}
-                      onChange={handleChange}
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      required
-                    />
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <input
+                <AnimatePresence>
+                  {form.tipoEntrega === 'delivery' && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <motion.input
                         type="text"
-                        name="distrito"
-                        placeholder="Distrito *"
-                        value={form.distrito}
+                        name="direccion"
+                        placeholder="Dirección *"
+                        value={form.direccion}
                         onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
                         required
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                        whileFocus={{ scale: 1.02 }}
                       />
-                      <input
-                        type="text"
-                        name="provincia"
-                        placeholder="Provincia *"
-                        value={form.provincia}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        required
-                      />
-                    </div>
-                  </>
-                )}
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        <motion.input
+                          type="text"
+                          name="distrito"
+                          placeholder="Distrito *"
+                          value={form.distrito}
+                          onChange={handleChange}
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          required
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                          whileFocus={{ scale: 1.02 }}
+                        />
+                        <motion.input
+                          type="text"
+                          name="provincia"
+                          placeholder="Provincia *"
+                          value={form.provincia}
+                          onChange={handleChange}
+                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                          required
+                          initial={{ opacity: 0, x: 10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 }}
+                          whileFocus={{ scale: 1.02 }}
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {/* Campo condicional para Shalom */}
-                {form.tipoEntrega === 'shalom' && (
-                  <input
+                <AnimatePresence>
+                  {form.tipoEntrega === 'shalom' && (
+                    <motion.input
                       type="text"
                       name="direccionShalom"
                       placeholder="Dirección Exacta - Shalom*"
@@ -433,32 +749,84 @@ const Checkout = () => {
                       onChange={handleChange}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                       required
+                      initial={{ opacity: 0, height: 0, y: 10 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      whileFocus={{ scale: 1.02 }}
                     />
-                )}
-              </div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
 
               {/* Botón principal con WhatsApp */}
-              <button
+              <motion.button
                 type="submit"
                 className="w-full text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all transform hover:scale-[1.02] mb-4 flex items-center justify-center gap-3"
                 style={{ backgroundColor: '#25D366' }}
                 disabled={items.length === 0}
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: 1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}
               >
-                <FaWhatsapp size={24} />
+                <motion.div
+                  animate={{ 
+                    rotate: [0, 10, -10, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                >
+                  <FaWhatsapp size={24} />
+                </motion.div>
                 <span>Enviar pedido por WhatsApp</span>
-              </button>
-            </form>
+              </motion.button>
+            </motion.form>
 
             {/* Información adicional */}
-            <div className="text-xs text-gray-500 space-y-2 border-t pt-4">
-              <p>📱 Al hacer clic en "Enviar pedido por WhatsApp", se abrirá tu aplicación de WhatsApp con todos los detalles del pedido</p>
-              <p>✅ Confirma tu pedido directamente con nuestro equipo de ventas</p>
-              <p>🚚 Envío gratuito en pedidos de $160 o más</p>
-            </div>
+            <motion.div 
+              className="text-xs text-gray-500 space-y-2 border-t pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              <motion.p
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.3 }}
+              >
+                📱 Al hacer clic en "Enviar pedido por WhatsApp", se abrirá tu aplicación de WhatsApp con todos los detalles del pedido
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.4 }}
+              >
+                ✅ Confirma tu pedido directamente con nuestro equipo de ventas
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.5 }}
+              >
+                🚚 Envío gratuito en pedidos de $160 o más
+              </motion.p>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -84,7 +84,7 @@ const NavBar = () => {
 
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href="https://wa.me/51999999999"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300"

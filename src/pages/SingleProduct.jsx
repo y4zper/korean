@@ -306,7 +306,7 @@ const SingleProduct = () => {
         {ingredients.length > 0 && (
           <motion.div variants={fadeInUp}>
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Ingredientes Principales</h2>
-            <div className="space-y-3">
+            <div className="space-y-3 mb-5">
               {ingredients.map((ingredient, index) => (
                 <motion.div key={index} className="flex items-start gap-3" variants={fadeInUp}>
                   <span className="font-bold text-sm" style={{ color: '#7FB069' }}>•</span>
@@ -322,3 +322,7 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+
+
+
+

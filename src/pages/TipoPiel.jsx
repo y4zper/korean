@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaShoppingBag } from 'react-icons/fa';
 
 const TipoPiel = () => {
@@ -153,6 +154,158 @@ const TipoPiel = () => {
         }
     };
 
+    // Variantes de animación
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                duration: 0.8
+            }
+        }
+    };
+
+    const textVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 30 
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 12,
+                duration: 0.8
+            }
+        }
+    };
+
+    const imageVariants = {
+        hidden: { 
+            opacity: 0, 
+            scale: 1.1 
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 80,
+                damping: 15,
+                duration: 1.2
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { 
+            opacity: 0, 
+            y: 50,
+            scale: 0.95
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+                duration: 0.6
+            }
+        },
+        exit: {
+            opacity: 0,
+            y: -50,
+            scale: 0.95,
+            transition: {
+                duration: 0.4
+            }
+        }
+    };
+
+    const optionVariants = {
+        hidden: { 
+            opacity: 0, 
+            x: -20 
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 150,
+                damping: 12
+            }
+        },
+        hover: {
+            scale: 1.02,
+            x: 8,
+            transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 10
+            }
+        },
+        tap: {
+            scale: 0.98,
+            transition: {
+                duration: 0.1
+            }
+        }
+    };
+
+    const resultVariants = {
+        hidden: { 
+            opacity: 0, 
+            scale: 0.8,
+            y: 50
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 80,
+                damping: 12,
+                duration: 0.8
+            }
+        }
+    };
+
+    const progressVariants = {
+        initial: { width: "0%" },
+        animate: { 
+            width: `${(currentStep / questions.length) * 100}%`,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+                duration: 0.8
+            }
+        }
+    };
+
+    const listItemVariants = {
+        hidden: { 
+            opacity: 0, 
+            x: -10 
+        },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                type: "spring",
+                stiffness: 150,
+                damping: 15
+            }
+        }
+    };
+
     const handleAnswer = (questionId, answer) => {
         setAnswers({ ...answers, [questionId]: answer });
         if (questionId < questions.length) {
@@ -184,205 +337,477 @@ const TipoPiel = () => {
     };
 
     return (
-        <section style={{ 
-            background: `linear-gradient(to bottom, #F9F7F4 0%, #FFFFFF 100%)`,
-            minHeight: '100vh',
-            paddingTop: '2rem',
-            paddingBottom: '2rem'
-        }}>
+        <motion.section 
+            style={{ 
+                background: `linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 100%)`,
+                minHeight: '100vh',
+                paddingTop: '2rem',
+                paddingBottom: '2rem'
+            }}
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                     
                     {/* Test - lado izquierdo */}
-                    <div className="order-2 lg:order-1 space-y-6">
-                        <div className="space-y-4">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight"
-                                style={{ color: '#4A90A4' }}>
+                    <motion.div 
+                        className="order-2 lg:order-1 space-y-6"
+                        variants={textVariants}
+                    >
+                        <motion.div 
+                            className="space-y-4"
+                            variants={textVariants}
+                        >
+                            <motion.h2 
+                                className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight text-gray-900"
+                                style={{ 
+                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                    fontWeight: '300',
+                                    letterSpacing: '-0.02em'
+                                }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2, duration: 0.8 }}
+                            >
                                 Test de Tipo de Piel
-                            </h2>
-                            <h3 className="text-xl md:text-2xl font-light   "
-                                style={{ color: '#7FB069' }}>
+                            </motion.h2>
+                            <motion.h3 
+                                className="text-xl md:text-xl font-bold"
+                                style={{ 
+                                    color: '#7FB069',
+                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                    fontWeight: '300',
+                                    letterSpacing: '0.02em'
+                                }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.4, duration: 0.8 }}
+                            >
                                 피부 타입 테스트
-                            </h3>
-                            <p className="text-sm md:text-base leading-relaxed"
-                               style={{ color: '#666666' }}>
-                                Descubre tu tipo de piel con nuestro análisis inspirado en la filosofía coreana del cuidado facial 🌸
-                            </p>
-                        </div>
+                            </motion.h3>
+                            <motion.p 
+                                className="text-sm md:text-sm leading-relaxed text-gray-900"
+                                style={{ 
+                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                    fontWeight: '400'
+                                }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6, duration: 0.8 }}
+                            >
+                                Descubre tu tipo de piel con nuestro análisis inspirado en la filosofía coreana del cuidado facial 
+                            </motion.p>
+                        </motion.div>
 
-                        {showResult && result ? (
-                            <div className="space-y-8">
-                                {/* Resultado */}
-                                <div className="rounded-3xl p-6 md:p-8 shadow-sm"
-                                     style={{ 
-                                         backgroundColor: '#FFFFFF',
-                                         border: `1px solid ${skinTypeInfo[result].bgColor}`
-                                     }}>
-                                    <div className="text-center space-y-4">
-                                        <div className="text-4xl">{skinTypeInfo[result].emoji}</div>
-                                        <h3 className="text-2xl md:text-3xl font-light"
-                                            style={{ color: skinTypeInfo[result].color }}>
-                                            {skinTypeInfo[result].title}
-                                        </h3>
-                                        <p className="leading-relaxed max-w-md mx-auto"
-                                           style={{ color: '#666666' }}>
-                                            {skinTypeInfo[result].description}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {/* Características */}
-                                <div className="rounded-3xl p-6 md:p-8 shadow-sm"
-                                     style={{ 
-                                         backgroundColor: '#FFFFFF',
-                                         border: `1px solid ${skinTypeInfo[result].bgColor}`
-                                     }}>
-                                    <h4 className="text-lg font-medium mb-4 flex items-center gap-3"
-                                        style={{ color: skinTypeInfo[result].color }}>
-                                        {skinTypeInfo[result].icon}
-                                        특징 / Características
-                                    </h4>
-                                    <div className="space-y-2">
-                                        {skinTypeInfo[result].characteristics.map((char, index) => (
-                                            <div key={index} className="flex items-start gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                                                     style={{ backgroundColor: skinTypeInfo[result].bgColor }}></div>
-                                                <span className="text-sm leading-relaxed"
-                                                      style={{ color: '#666666' }}>{char}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Recomendaciones */}
-                                <div className="rounded-3xl p-6 md:p-8 shadow-sm"
-                                     style={{ 
-                                         backgroundColor: '#FFFFFF',
-                                         border: `1px solid ${skinTypeInfo[result].bgColor}`
-                                     }}>
-                                    <h4 className="text-lg font-medium mb-4"
-                                        style={{ color: skinTypeInfo[result].color }}>
-                                        추천 사항 / Recomendaciones
-                                    </h4>
-                                    <div className="space-y-3">
-                                        {skinTypeInfo[result].recommendations.map((rec, index) => (
-                                            <div key={index} className="flex items-start gap-3">
-                                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
-                                                     style={{ backgroundColor: '#A8D5BA' }}></div>
-                                                <span className="text-sm leading-relaxed"
-                                                      style={{ color: '#666666' }}>{rec}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                {/* Botón para repetir */}
-                                <div className="text-center">
-                                    <button
-                                        onClick={resetTest}
-                                        className="px-8 py-3 rounded-full font-medium transition-colors text-sm tracking-wide"
+                        <AnimatePresence mode="wait">
+                            {showResult && result ? (
+                                <motion.div 
+                                    className="space-y-8"
+                                    key="results"
+                                    variants={resultVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="hidden"
+                                >
+                                    {/* Resultado */}
+                                    <motion.div 
+                                        className="rounded-3xl p-6 md:p-8 shadow-sm"
                                         style={{ 
-                                            backgroundColor: '#7FB069',
-                                            color: '#FFFFFF'
+                                            backgroundColor: '#FFFFFF',
+                                            border: `1px solid ${skinTypeInfo[result].bgColor}`
                                         }}
-                                        onMouseEnter={(e) => e.target.style.backgroundColor = '#6a9657'}
-                                        onMouseLeave={(e) => e.target.style.backgroundColor = '#7FB069'}
+                                        whileHover={{ 
+                                            scale: 1.02,
+                                            transition: { duration: 0.2 }
+                                        }}
                                     >
-                                        다시 하기 / Repetir Test
-                                    </button>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="rounded-3xl p-6 md:p-8 shadow-sm"
-                                 style={{ 
-                                     backgroundColor: '#FFFFFF',
-                                     border: '1px solid #E8EAED'
-                                 }}>
-                                <div className="space-y-6">
-                                    <div className="text-center">
-                                        <h3 className="text-lg md:text-xl font-medium leading-relaxed"
-                                            style={{ color: '#4A90A4' }}>
-                                            {questions[currentStep - 1].question}
-                                        </h3>
-                                    </div>
-                                    
-                                    <div className="space-y-3">
-                                        {questions[currentStep - 1].options.map((option, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => handleAnswer(questions[currentStep - 1].id, option.value)}
-                                                className="w-full p-4 text-left rounded-2xl transition-all duration-300 text-sm md:text-base leading-relaxed group"
-                                                style={{ 
-                                                    border: '1px solid #E8EAED',
-                                                    backgroundColor: '#FFFFFF'
+                                        <div className="text-center space-y-4">
+                                            <motion.div 
+                                                className="text-4xl"
+                                                animate={{ 
+                                                    scale: [1, 1.2, 1],
+                                                    rotate: [0, 5, -5, 0]
                                                 }}
-                                                onMouseEnter={(e) => {
-                                                    e.target.style.borderColor = '#A8D5BA';
-                                                    e.target.style.backgroundColor = '#F9F7F4';
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.target.style.borderColor = '#E8EAED';
-                                                    e.target.style.backgroundColor = '#FFFFFF';
+                                                transition={{ 
+                                                    duration: 2,
+                                                    repeat: Infinity,
+                                                    repeatDelay: 3
                                                 }}
                                             >
-                                                <div className="flex items-start gap-4">
-                                                    <div className="w-3 h-3 rounded-full mt-1 flex-shrink-0 transition-colors"
-                                                         style={{ border: '1px solid #E8EAED' }}></div>
-                                                    <span style={{ color: '#666666' }}>
-                                                        {option.text}
-                                                    </span>
-                                                </div>
-                                            </button>
-                                        ))}
-                                    </div>
-                                    
-                                    {/* Progress bar minimalista */}
-                                    <div className="space-y-2">
-                                        <div className="w-full rounded-full h-1"
-                                             style={{ backgroundColor: '#E8EAED' }}>
-                                            <div
-                                                className="h-1 rounded-full transition-all duration-700"
+                                                {skinTypeInfo[result].emoji}
+                                            </motion.div>
+                                            <motion.h3 
+                                                className="text-2xl md:text-3xl font-light"
                                                 style={{ 
-                                                    background: `linear-gradient(to right, #A8D5BA 0%, #B8E6E6 100%)`,
-                                                    width: `${(currentStep / questions.length) * 100}%`
+                                                    color: skinTypeInfo[result].color,
+                                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                                    fontWeight: '300',
+                                                    letterSpacing: '-0.01em'
                                                 }}
-                                            ></div>
+                                                initial={{ opacity: 0, scale: 0.9 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: 0.3, duration: 0.6 }}
+                                            >
+                                                {skinTypeInfo[result].title}
+                                            </motion.h3>
+                                            <motion.p 
+                                                className="leading-relaxed max-w-md mx-auto"
+                                                style={{ 
+                                                    color: '#666666',
+                                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+                                                }}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.5, duration: 0.6 }}
+                                            >
+                                                {skinTypeInfo[result].description}
+                                            </motion.p>
                                         </div>
-                                        <div className="flex justify-between text-xs"
-                                             style={{ color: '#999999' }}>
-                                            <span>{currentStep} / {questions.length}</span>
-                                            <span>{Math.round((currentStep / questions.length) * 100)}%</span>
-                                        </div>
+                                    </motion.div>
+
+                                    {/* Características */}
+                                    <motion.div 
+                                        className="rounded-3xl p-6 md:p-8 shadow-sm"
+                                        style={{ 
+                                            backgroundColor: '#FFFFFF',
+                                            border: `1px solid ${skinTypeInfo[result].bgColor}`
+                                        }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.7, duration: 0.6 }}
+                                        whileHover={{ 
+                                            scale: 1.01,
+                                            transition: { duration: 0.2 }
+                                        }}
+                                    >
+                                        <motion.h4 
+                                            className="text-lg font-medium mb-4 flex items-center gap-3"
+                                            style={{ 
+                                                color: skinTypeInfo[result].color,
+                                                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                                fontWeight: '500'
+                                            }}
+                                        >
+                                            <motion.div
+                                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                                transition={{ type: "spring", stiffness: 400 }}
+                                            >
+                                                {skinTypeInfo[result].icon}
+                                            </motion.div>
+                                            특징 / Características
+                                        </motion.h4>
+                                        <motion.div 
+                                            className="space-y-2"
+                                            variants={containerVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            {skinTypeInfo[result].characteristics.map((char, index) => (
+                                                <motion.div 
+                                                    key={index} 
+                                                    className="flex items-start gap-3"
+                                                    variants={listItemVariants}
+                                                    custom={index}
+                                                    whileHover={{ x: 5 }}
+                                                    transition={{ type: "spring", stiffness: 300 }}
+                                                >
+                                                    <motion.div 
+                                                        className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                                        style={{ backgroundColor: skinTypeInfo[result].bgColor }}
+                                                        animate={{ scale: [1, 1.2, 1] }}
+                                                        transition={{ 
+                                                            duration: 1.5,
+                                                            repeat: Infinity,
+                                                            delay: index * 0.2
+                                                        }}
+                                                    />
+                                                    <span 
+                                                        className="text-sm leading-relaxed"
+                                                        style={{ 
+                                                            color: '#666666',
+                                                            fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+                                                        }}
+                                                    >
+                                                        {char}
+                                                    </span>
+                                                </motion.div>
+                                            ))}
+                                        </motion.div>
+                                    </motion.div>
+
+                                    {/* Recomendaciones */}
+                                    <motion.div 
+                                        className="rounded-3xl p-6 md:p-8 shadow-sm"
+                                        style={{ 
+                                            backgroundColor: '#FFFFFF',
+                                            border: `1px solid ${skinTypeInfo[result].bgColor}`
+                                        }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.9, duration: 0.6 }}
+                                        whileHover={{ 
+                                            scale: 1.01,
+                                            transition: { duration: 0.2 }
+                                        }}
+                                    >
+                                        <motion.h4 
+                                            className="text-lg font-medium mb-4"
+                                            style={{ 
+                                                color: skinTypeInfo[result].color,
+                                                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                                fontWeight: '500'
+                                            }}
+                                        >
+                                            추천 사항 / Recomendaciones
+                                        </motion.h4>
+                                        <motion.div 
+                                            className="space-y-3"
+                                            variants={containerVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            {skinTypeInfo[result].recommendations.map((rec, index) => (
+                                                <motion.div 
+                                                    key={index} 
+                                                    className="flex items-start gap-3"
+                                                    variants={listItemVariants}
+                                                    custom={index}
+                                                    whileHover={{ x: 5 }}
+                                                    transition={{ type: "spring", stiffness: 300 }}
+                                                >
+                                                    <motion.div 
+                                                        className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                                        style={{ backgroundColor: '#A8D5BA' }}
+                                                        animate={{ scale: [1, 1.3, 1] }}
+                                                        transition={{ 
+                                                            duration: 1.8,
+                                                            repeat: Infinity,
+                                                            delay: index * 0.3
+                                                        }}
+                                                    />
+                                                    <span 
+                                                        className="text-sm leading-relaxed"
+                                                        style={{ 
+                                                            color: '#666666',
+                                                            fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+                                                        }}
+                                                    >
+                                                        {rec}
+                                                    </span>
+                                                </motion.div>
+                                            ))}
+                                        </motion.div>
+                                    </motion.div>
+
+                                    {/* Botón para repetir */}
+                                    <motion.div 
+                                        className="text-center"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 1.1, duration: 0.6 }}
+                                    >
+                                        <motion.button
+                                            onClick={resetTest}
+                                            className="px-8 py-3 rounded-full font-medium transition-colors text-sm tracking-wide"
+                                            style={{ 
+                                                backgroundColor: '#7FB069',
+                                                color: '#FFFFFF',
+                                                fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                                fontWeight: '500'
+                                            }}
+                                            whileHover={{ 
+                                                scale: 1.05,
+                                                backgroundColor: '#6a9657',
+                                                transition: { duration: 0.2 }
+                                            }}
+                                            whileTap={{ scale: 0.95 }}
+                                        >
+                                            다시 하기 / Repetir Test
+                                        </motion.button>
+                                    </motion.div>
+                                </motion.div>
+                            ) : (
+                                <motion.div 
+                                    key="question"
+                                    className="rounded-3xl p-6 md:p-8 shadow-sm"
+                                    style={{ 
+                                        backgroundColor: '#FFFFFF',
+                                        border: '1px solid #E8EAED'
+                                    }}
+                                    variants={cardVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                >
+                                    <div className="space-y-6">
+                                        <motion.div 
+                                            className="text-center"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2, duration: 0.6 }}
+                                        >
+                                            <h3 
+                                                className="text-lg md:text-xl font-medium leading-relaxed"
+                                                style={{ 
+                                                    color: '#4A90A4',
+                                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+                                                    fontWeight: '500'
+                                                }}
+                                            >
+                                                {questions[currentStep - 1].question}
+                                            </h3>
+                                        </motion.div>
+                                        
+                                        <motion.div 
+                                            className="space-y-3"
+                                            variants={containerVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            {questions[currentStep - 1].options.map((option, index) => (
+                                                <motion.button
+                                                    key={index}
+                                                    onClick={() => handleAnswer(questions[currentStep - 1].id, option.value)}
+                                                    className="w-full p-4 text-left rounded-2xl transition-all duration-300 text-sm md:text-base leading-relaxed group"
+                                                    style={{ 
+                                                        border: '1px solid #E8EAED',
+                                                        backgroundColor: '#FFFFFF',
+                                                        fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+                                                    }}
+                                                    variants={optionVariants}
+                                                    custom={index}
+                                                    whileHover="hover"
+                                                    whileTap="tap"
+                                                >
+                                                    <div className="flex items-start gap-4">
+                                                        <motion.div 
+                                                            className="w-3 h-3 rounded-full mt-1 flex-shrink-0 transition-colors"
+                                                            style={{ border: '1px solid #E8EAED' }}
+                                                            whileHover={{ 
+                                                                borderColor: '#A8D5BA',
+                                                                backgroundColor: '#A8D5BA'
+                                                            }}
+                                                        />
+                                                        <span style={{ color: '#666666' }}>
+                                                            {option.text}
+                                                        </span>
+                                                    </div>
+                                                </motion.button>
+                                            ))}
+                                        </motion.div>
+                                        
+                                        {/* Progress bar minimalista */}
+                                        <motion.div 
+                                            className="space-y-2"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.8, duration: 0.6 }}
+                                        >
+                                            <div className="w-full rounded-full h-1"
+                                                 style={{ backgroundColor: '#E8EAED' }}>
+                                                <motion.div
+                                                    className="h-1 rounded-full"
+                                                    style={{ 
+                                                        background: `linear-gradient(to right, #A8D5BA 0%, #B8E6E6 100%)`
+                                                    }}
+                                                    variants={progressVariants}
+                                                    initial="initial"
+                                                    animate="animate"
+                                                />
+                                            </div>
+                                            <div className="flex justify-between text-xs"
+                                                 style={{ 
+                                                    color: '#999999',
+                                                    fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+                                                }}>
+                                                <motion.span
+                                                    key={currentStep}
+                                                    initial={{ scale: 1.2, color: '#7FB069' }}
+                                                    animate={{ scale: 1, color: '#999999' }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    {currentStep} / {questions.length}
+                                                </motion.span>
+                                                <motion.span
+                                                    key={`${currentStep}-percent`}
+                                                    initial={{ scale: 1.2, color: '#7FB069' }}
+                                                    animate={{ scale: 1, color: '#999999' }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    {Math.round((currentStep / questions.length) * 100)}%
+                                                </motion.span>
+                                            </div>
+                                        </motion.div>
                                     </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
 
                     {/* Imagen - lado derecho */}
-                    <div className="relative order-1 lg:order-2">
-                        <div className="aspect-[4/5] lg:aspect-[3/4] relative overflow-hidden rounded-2xl">
-                            <img
+                    <motion.div 
+                        className="relative order-1 lg:order-2"
+                        variants={imageVariants}
+                    >
+                        <motion.div 
+                            className="aspect-[4/5] lg:aspect-[3/4] relative overflow-hidden rounded-2xl"
+                            whileHover={{ 
+                                scale: 1.02,
+                                transition: { duration: 0.4 }
+                            }}
+                        >
+                            <motion.img
                                 src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=1200&q=80"
                                 alt="Skincare coreano minimalista"
                                 className="w-full h-full object-cover"
+                                initial={{ scale: 1.1 }}
+                                animate={{ scale: 1 }}
+                                transition={{ 
+                                    duration: 1.5,
+                                    type: "spring",
+                                    stiffness: 50
+                                }}
                             />
-                            <div className="absolute inset-0"
-                                 style={{ 
-                                     background: 'linear-gradient(to top, rgba(74, 144, 164, 0.2) 0%, transparent 100%)'
-                                 }}></div>
-                            <div className="absolute bottom-6 left-6 text-white">
-                                <p className="text-sm md:text-base font-light tracking-wide">
+                            <motion.div 
+                                className="absolute inset-0"
+                                style={{ 
+                                    background: 'linear-gradient(to top, rgba(74, 144, 164, 0.2) 0%, transparent 100%)'
+                                }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 0.8 }}
+                            />
+                            <motion.div 
+                                className="absolute bottom-6 left-6 text-white"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1, duration: 0.8 }}
+                            >
+                                <motion.p 
+                                    className="text-sm md:text-base font-light tracking-wide"
+                                    style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
                                     한국 스킨케어
-                                </p>
-                                <p className="text-xs md:text-sm opacity-80">
+                                </motion.p>
+                                <motion.p 
+                                    className="text-xs md:text-sm opacity-80"
+                                    style={{ fontFamily: 'Inter, system-ui, -apple-system, sans-serif' }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 0.8 }}
+                                    transition={{ delay: 1.2, duration: 0.6 }}
+                                >
                                     Korean Skincare
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                                </motion.p>
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
 

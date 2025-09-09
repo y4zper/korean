@@ -56,7 +56,11 @@ const router = createBrowserRouter([
       },
     ]
   },
-]);
+],
+  // {
+  //   basename: "/korean",
+  // }
+);
 
 createRoot(document.getElementById('root')).render(
   <CartProvider>

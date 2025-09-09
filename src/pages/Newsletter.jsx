@@ -10,42 +10,42 @@ const Newsletter = () => {
     const instagramPosts = [
         {
             id: 1,
-            image: "/img/ig.png", // Reemplaza con URLs reales
+            image: "/img/ig/ig.png", // Reemplaza con URLs reales
             alt: "Rutina de skincare matutina K-Beauty",
             likes: 245,
             caption: "Morning glow routine ✨ #KBeauty #GlowUp"
         },
         {
             id: 2,
-            image: "/img/ig.png ",
+            image: "/img/ig/ig2.png",
             alt: "Serum de vitamina C coreano",
             likes: 189,
             caption: "Vitamin C magic 🍊 #SkincareRoutine"
         },
         {
             id: 3,
-            image: "/img/ig.png ",
+            image: "/img/ig/ig3.png ",
             alt: "Sheet mask coreana hidratante",
             likes: 312,
             caption: "Self-care Sunday 💆‍♀️ #SelfCare"
         },
         {
             id: 4,
-            image: "/img/ig.png ",
+            image: "/img/ig/ig4.png ",
             alt: "Limpiador facial coreano",
             likes: 156,
             caption: "Double cleanse method 🧴 #CleanBeauty"
         },
         {
             id: 5,
-            image: "/img/ig.png ",
+            image: "/img/ig/ig5.png ",
             alt: "Crema hidratante night routine",
             likes: 278,
             caption: "Night routine essentials 🌙 #NightSkincare"
         },
         {
             id: 6,
-            image: "/img/ig.png ",
+            image: "/img/ig/ig6.png ",
             alt: "Bloqueador solar coreano",
             likes: 203,
             caption: "SPF is life ☀️ #SunProtection"
@@ -53,7 +53,7 @@ const Newsletter = () => {
     ];
   
   return (
-<section className="bg-gradient-to-br from-[#F5E6E8] via-white to-[#F9F7F4] py-10">            <div className="max-w-screen-2xl container mx-auto xl:px-28 px-4">
+<section className="bg-gradient-to-br from-[#ffffff] via-white to-[#ffffff] py-10">            <div className="max-w-screen-2xl container mx-auto xl:px-28 px-4">
                 {/* Header Section */}
                 <div className="text-center mb-5">
                     <h2 className="text-4xl md:text-5xl font-light text-gray-900 tracking-wide mb-6">
@@ -122,7 +122,7 @@ const Newsletter = () => {
                             {/* CTA Button */}
                             <div className="text-center">
                                 <a 
-  href="https://instagram.com/hyaluro_peru" 
+  href="https://www.instagram.com/hyaluro.pe/" 
   target="_blank"
   rel="noopener noreferrer"
   className="inline-flex items-center gap-3 bg-gradient-to-r from-[#A8D5BA] to-[#B8E6E6] text-gray-800 px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"

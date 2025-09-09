@@ -264,7 +264,7 @@
         ],
         "image": "/img/products/10.1.jpeg",
         "image2": "/img/products/10.2.jpeg",
-        "status": "Mas vendidos"
+        "status": "SADSAD"
     },
     {
         "id": 11,
@@ -606,6 +606,7 @@
         "title": "MIXSOON - Bean Essence",
         "category": "Serums",
         "price": 100.00,
+        "discount": 28,
         "comparison-price": 140.00,
         "description": "Esencia multifuncional que exfolia suavemente, hidrata y revitaliza la piel, proporcionando un rostro más suave y equilibrado. - 150 ml",
         "ingredients": [
@@ -631,6 +632,7 @@
         "title": "SEOUL 1988 - Serum Retinal Liposome 2%",
         "category": "Serums",
         "price": 100.00,
+        "discount": 28,
         "comparison-price": 140.00,
         "description": "Sérum antienvejecimiento ligero que combina 2% de retinal liposome con 58% de extracto de ginseng negro. Combate arrugas y mejora la textura de la piel. - 30ml",
         "ingredients": [
@@ -657,6 +659,7 @@
         "title": "SEOUL 1988 - Eye Cream Retinal Liposome 4%",
         "category": "Serums",
         "price": 90.00,
+        "discount": 35,
         "comparison-price": 140.00,
         "description": "Crema de ojos ligera, formulada con retinal liposome al 4% y extractos fermentados de frijol. Diseñada para suavizar arrugas tempranas y mejorar la textura. - 30ml",
         "ingredients": [
@@ -682,6 +685,7 @@
         "title": "CELIMAX - The Vita Retinal Shot Tightening Booster",
         "category": "Serums",
         "price": 90.00,
+        "discount": 28,
         "comparison-price": 140.00,
         "description": "Booster ultra-concentrado para tratar arrugas finas, piel flácida y poros visibles con retinal, péptidos y tecnología de micro-espículas. - 15ml",
         "ingredients": [
@@ -707,6 +711,7 @@
         "title": "DR. ALTHEA - Gentle Vitamin C Serum",
         "category": "Serums",
         "price": 100.00,
+        "discount": 20,
         "comparison-price": 125.00,
         "description": "Sérum iluminador y suave, ideal para piel sensible o propensa a acné. Formulado con vitamina C estable y niacinamida. - 30ml",
         "ingredients": [
@@ -733,6 +738,7 @@
         "title": "PURITO - Wonder Releaf Centella Serum Unscented",
         "category": "Serums",
         "price": 90.00,
+        "discount": 33,
         "comparison-price": 135.00,
         "description": "Sérum calmante y regenerador sin fragancia, ideal para pieles sensibles o reactivas. Fortalece la barrera cutánea. - 60ml",
         "ingredients": [
@@ -760,6 +766,7 @@
         "title": "SKIN1004 - Centella Poremizing Ampoule",
         "category": "Serums",
         "price": 90.00,
+        "discount": 36,
         "comparison-price": 140.00,
         "description": "Suero diseñado para minimizar la apariencia de los poros y mejorar la textura de la piel. Equilibra la producción de sebo. - 100 ml",
         "ingredients": [
@@ -786,6 +793,7 @@
         "title": "SKIN1004 - Centella Poremizing Quick Clay Stick Mask",
         "category": "Serums",
         "price": 80.00,
+        "discount": 27,
         "comparison-price": 110.00,
         "description": "Mascarilla en barra diseñada para limpiar profundamente los poros, controlar el exceso de grasa y calmar la piel. Formato práctico. - 27 gr",
         "ingredients": [
@@ -812,6 +820,7 @@
         "title": "AXIS-Y - Dark Spot Correcting Glow Serum",
         "category": "Serums",
         "price": 85.00,
+        "discount": 26,
         "comparison-price": 115.00,
         "description": "Suero que combate las manchas oscuras y la hiperpigmentación. Mejora la luminosidad de la piel con niacinamida y centella asiática. - 50 ml",
         "ingredients": [
@@ -837,6 +846,7 @@
         "title": "TOCOBO - Vita Berry Pore Toner",
         "category": "Tonicos",
         "price": 70.00,
+        "discount": 22,
         "comparison-price": 90.00,
         "description": "Tónico vitamínico que fortalece la elasticidad de los poros caídos con sensación refrescante, reduce los poros y proporciona textura suave. - 150ml",
         "ingredients": [
@@ -864,6 +874,7 @@
         "category": "Tonicos",
         "price": 70.00,
         "comparison-price": 90.00,
+        "discount": 26,
         "description": "Tónico exfoliante especial ligeramente ácido que limpia y mejora la textura y el cutis para darle apariencia clara y transparente. - 150ml",
         "ingredients": [
             "Extractor de limón 38% (rica en vitamina C y ácido cítrico)",
@@ -891,6 +902,7 @@
         "category": "Tonicos",
         "price": 90.00,
         "comparison-price": 115.00,
+        "discount": 21,
         "description": "Tratamiento que combate puntos blancos e imperfecciones con ácido glicólico al 7%. Exfolia y suaviza la textura de la piel. - 100 ml",
         "ingredients": [
             "Ácido glicólico al 7% (exfoliación, renovación celular)",
@@ -914,6 +926,7 @@
         "title": "ROUND LAB - Birch Juice Moisturizing Pad",
         "category": "Tonicos",
         "price": 80.00,
+        "discount": 30,
         "comparison-price": 115.00,
         "description": "Discos hidratantes diarios que calman, refrescan y nutren la piel en un solo paso. Impregnados con savia de abedul. - 80 Unidades",
         "ingredients": [
@@ -941,6 +954,7 @@
         "title": "SKIN1004 - Madagascar Centella Toning Toner",
         "category": "Tonicos",
         "price": 80.00,
+        "discount": 30,
         "comparison-price": 115.00,
         "description": "Tónico facial suave que equilibra y tonifica la piel mientras calma y reduce la irritación. Ideal para pieles sensibles. - 210 ml",
         "ingredients": [
@@ -969,6 +983,7 @@
         "title": "W. DRESSROOM - Perfume Peach Blossom",
         "category": "Perfumes",
         "price": 45.00,
+        "discount": 47,
         "comparison-price": 85.00,
         "description": "Perfume claro con fragancia dulce y frutal de durazno, ideal para uso personal y ambientador. - 70ml",
         "ingredients": [
@@ -994,6 +1009,7 @@
         "title": "W. DRESSROOM - Perfume Morning Rain",
         "category": "Perfumes",
         "price": 45.00,
+        "discount": 47,
         "comparison-price": 85.00,
         "description": "Perfume claro con fragancia fresca y acuática, evocando la sensación de lluvia matutina. - 70ml",
         "ingredients": [
@@ -1019,6 +1035,7 @@
         "title": "W. DRESSROOM - Perfume April Edition",
         "category": "Perfumes",
         "price": 45.00,
+        "discount": 47,
         "comparison-price": 85.00,
         "description": "Perfume claro con fragancia floral y especiada, perfecta para primavera. - 70ml",
         "ingredients": [

@@ -98,8 +98,8 @@ const Banner = () => {
           <div className="h-4 w-px bg-white/40 hidden sm:block"></div>
           <div className="flex items-center gap-2">
             <FaShoppingBag className="text-base animate-pulse" />
-            <span className="text-xs">Mascarilla + Limpiador</span>
-            <span className="text-xs opacity-80">con Compras +$120</span>
+            <span className="text-xs">Regalo Sorpresa</span>
+            <span className="text-xs opacity-80">con Compras + S/250</span>
           </div>
         </div>
       </div>
