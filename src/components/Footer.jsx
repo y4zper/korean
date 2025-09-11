@@ -141,7 +141,7 @@ const Footer = () => {
                             <div className="flex items-center gap-3">
                                 <FaPhone className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a href="tel:+51982498372" className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <a  className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
                                     +51 982 498 372
                                 </a>
@@ -149,7 +149,7 @@ const Footer = () => {
                             <div className="flex items-center gap-3">
                                 <FaEnvelope className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a href="#" className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <a  className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
                                     hyaluro.pe@gmail.com
                                 </a>
@@ -157,8 +157,7 @@ const Footer = () => {
                             <div className="flex items-center gap-3">
                                 <FaWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
                                 <a 
-                                    href="https://wa.me/51982498372" 
-                                    target="_blank"
+                                     
                                     rel="noopener noreferrer"
                                     className="text-sm text-gray-600 hover:text-green-500 transition-colors duration-300"
                                 >
@@ -190,13 +189,13 @@ const Footer = () => {
                             </p>
                         </div>
                         <div className="flex flex-wrap justify-center gap-6 text-xs text-white">
-                            <Link to="#" className="hover:text-white transition-colors duration-300">
+                            <Link to="" className="hover:text-white transition-colors duration-300">
                                 Política de Privacidad
                             </Link>
-                            <Link to="#" className="hover:text-white transition-colors duration-300">
+                            <Link to="" className="hover:text-white transition-colors duration-300">
                                 Términos y Condiciones
                             </Link>
-                            <Link to="#" className="hover:text-white transition-colors duration-300">
+                            <Link to="" className="hover:text-white transition-colors duration-300">
                                 Política de Cookies
                             </Link>
                         </div>

@@ -27,3 +27,13 @@ header, nav{
 }
 
 [x-cloak] { display: none; }
+
+/* Agrega esto a tu archivo CSS global */
+.modal-overlay {
+  backdrop-filter: blur(4px);
+}
+
+/* Asegúrate de que el modal esté por encima de todo */
+.fixed.z-50 {
+  z-index: 99999;
+}

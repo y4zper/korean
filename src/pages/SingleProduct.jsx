@@ -214,11 +214,11 @@ const SingleProduct = () => {
 
               <motion.div className="flex items-center gap-3" variants={fadeInUp}>
                 <span className="text-2xl font-bold" style={{ color: '#7FB069' }}>
-                  ${price?.toFixed(2)}
+                  S/{price?.toFixed(2)}
                 </span>
                 {comparisonPrice && (
                   <span className="text-lg text-gray-500 line-through">
-                    ${comparisonPrice.toFixed(2)}
+                    S/{comparisonPrice.toFixed(2)}
                   </span>
                 )}
               </motion.div>

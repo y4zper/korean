@@ -20,6 +20,7 @@ import TipoPiel from "./pages/TipoPiel.jsx";
 import FAQ from "./pages/FAQ.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import NosotrosSection from "./pages/NosotrosSection.jsx";
+import Brands from "./pages/Brands.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",  
         element: <Shop/>
+      },
+      {
+        path: "/marca",  
+        element: <Brands/>
       },
       {
         path: "/TipoPiel",

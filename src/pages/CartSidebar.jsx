@@ -138,7 +138,7 @@ const CartSidebar = () => {
                       {/* Precio */}
                       <div className="flex items-center justify-between mb-3">
                         <span className="font-bold" style={{ color: '#7FB069' }}>
-                          ${item.price?.toFixed(2)}
+                          S/{item.price?.toFixed(2)}
                         </span>
                         <button
                           onClick={() => removeFromCart(item.id)}
@@ -170,7 +170,7 @@ const CartSidebar = () => {
                         </div>
                           
                         <span className="text-sm font-semibold text-gray-900">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          S/{(item.price * item.quantity).toFixed(2)}
                         </span>
                       </div>
                     </div>
@@ -191,7 +191,7 @@ const CartSidebar = () => {
                     className="text-2xl font-bold transition-all duration-300"
                     style={{ color: '#7FB069' }}
                   >
-                    ${totalPrice.toFixed(2)}
+                    S/{totalPrice.toFixed(2)}
                   </span>
                 </div>
 

@@ -4,6 +4,11 @@ import { useCart } from "../context/CartContext";
 import { FaHeart, FaMinus, FaPlus, FaTrash, FaChevronDown, FaPaypal, FaCreditCard, FaWhatsapp } from 'react-icons/fa';
 
 const Checkout = () => {
+
+  
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState("");
+
   const { items, totalPrice, updateQuantity, removeFromCart } = useCart();
   const [showPromoCode, setShowPromoCode] = useState(false);
   const [promoCode, setPromoCode] = useState("");
@@ -13,10 +18,21 @@ const Checkout = () => {
     telefono: "",
     tipoEntrega: "", // "delivery" o "shalom"
     direccion: "",
+    departamento: "",
     distrito: "",
     provincia: "",
     direccionShalom: ""
   });
+
+  const peruData = {
+  departamentos: [
+    "Amazonas","Áncash","Apurímac","Arequipa","Ayacucho",
+    "Cajamarca","Cusco","Huancavelica","Huánuco","Ica",
+    "Junín","La Libertad","Lambayeque","Lima","Loreto",
+    "Madre de Dios","Moquegua","Pasco","Piura","Puno",
+    "San Martín","Tacna","Tumbes","Ucayali","Callao"
+  ],
+};
 
   // Lógica de envío: gratuito si el subtotal es mayor a $160
   const ENVIO_MINIMO = 160;
@@ -110,29 +126,46 @@ const Checkout = () => {
     }
   };
 
+
+  const validatePhone = (phone) => {
+  const phoneRegex = /^[0-9]{9}$/;
+  return phoneRegex.test(phone);
+};
+
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const { name, value } = e.target;
+  
+  // Validación especial para teléfono
+  if (name === 'telefono') {
+    // Solo permitir números y máximo 9 dígitos
+    const numericValue = value.replace(/\D/g, '').slice(0, 9);
+    setForm({ ...form, [name]: numericValue });
+  } else {
+    setForm({ ...form, [name]: value });
+  }
+};
 
   const crearMensajeWhatsApp = () => {
     let mensaje = '🛒 *NUEVO PEDIDO* 🛒\n\n';
-    
-    // Información del cliente
-    mensaje += '👤 *DATOS DEL CLIENTE*\n';
-    mensaje += `• Nombre: ${form.nombre}\n`;
-    mensaje += `• Teléfono: ${form.telefono}\n\n`;
-    
-    // Información de entrega
-    mensaje += '🚚 *TIPO DE ENTREGA*\n';
-    if (form.tipoEntrega === 'delivery') {
-      mensaje += '• Delivery\n';
-      mensaje += `• Dirección: ${form.direccion}\n`;
-      mensaje += `• Distrito: ${form.distrito}\n`;
-      mensaje += `• Provincia: ${form.provincia}\n\n`;
-    } else if (form.tipoEntrega === 'shalom') {
-      mensaje += '• Recojo en Shalom\n';
-      mensaje += `• Dirección Shalom: ${form.direccionShalom}\n\n`;
-    }
+  
+  // Información del cliente
+  mensaje += '👤 *DATOS DEL CLIENTE*\n';
+  mensaje += `• Nombre: ${form.nombre}\n`;
+  mensaje += `• Teléfono: ${form.telefono}\n\n`;
+  
+  // Información de entrega
+  mensaje += '🚚 *TIPO DE ENTREGA*\n';
+  if (form.tipoEntrega === 'delivery') {
+    mensaje += '• Delivery\n';
+    mensaje += `• Dirección: ${form.direccion}\n`;
+    mensaje += `• Departamento: ${form.departamento}\n`;
+    mensaje += `• Provincia: ${form.provincia}\n`;
+    mensaje += `• Distrito: ${form.distrito}\n\n`;
+  } else if (form.tipoEntrega === 'shalom') {
+    mensaje += '• Recojo en Shalom\n';
+    mensaje += `• Dirección Shalom: ${form.direccionShalom}\n\n`;
+  }
     
     // Productos del pedido
     mensaje += '📦 *PRODUCTOS SOLICITADOS*\n';
@@ -141,20 +174,20 @@ const Checkout = () => {
       mensaje += `   • Categoría: ${item.category}\n`;
       mensaje += `   • Cantidad: ${item.quantity}\n`;
       mensaje += `   • Precio unitario: $${item.price?.toFixed(2)}\n`;
-      mensaje += `   • Subtotal: $${(item.price * item.quantity).toFixed(2)}\n\n`;
+      mensaje += `   • Subtotal: S/${(item.price * item.quantity).toFixed(2)}\n\n`;
     });
     
     // Resumen de costos
     mensaje += '💰 *RESUMEN DEL PEDIDO*\n';
-    mensaje += `• Subtotal: $${totalPrice.toFixed(2)}\n`;
-    mensaje += `• Envío: ${envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}\n`;
+    mensaje += `• Subtotal: S/${totalPrice.toFixed(2)}\n`;
+    mensaje += `• Envío: ${envio === 0 ? 'Gratuito' : `S/${envio.toFixed(2)}`}\n`;
     if (envioGratuito) {
       mensaje += '  ✅ Envío gratuito por compra mayor a $160\n';
     }
     if (descuentoPromo > 0) {
       mensaje += `• Descuento: -$${descuentoPromo.toFixed(2)}\n`;
     }
-    mensaje += `• *TOTAL: $${totalGeneral.toFixed(2)}*\n\n`;
+    mensaje += `• *TOTAL: S/${totalGeneral.toFixed(2)}*\n\n`;
     
     // Información adicional
     mensaje += '⏰ Fecha del pedido: ' + new Date().toLocaleString('es-ES') + '\n';
@@ -165,44 +198,58 @@ const Checkout = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Validar campos básicos
-    if (!form.nombre.trim() || !form.telefono.trim() || !form.tipoEntrega) {
-      alert('Por favor, completa todos los campos requeridos');
+  e.preventDefault();
+
+  // Validar teléfono (9 dígitos)
+  if (!validatePhone(form.telefono)) {
+    alert('Por favor, ingresa un número de teléfono válido de 9 dígitos');
+    return;
+  }
+  
+  // Validar campos básicos
+  if (!form.nombre.trim() || !form.telefono.trim() || !form.tipoEntrega) {
+    alert('Por favor, completa todos los campos requeridos');
+    return;
+  }
+
+   // Validar campos específicos según tipo de entrega
+  if (form.tipoEntrega === 'delivery') {
+    if (!form.direccion.trim() || !form.departamento.trim() || 
+        !form.provincia.trim() || !form.distrito.trim()) {
+      alert('Por favor, completa todos los campos de delivery');
       return;
     }
-
-    // Validar campos específicos según tipo de entrega
-    if (form.tipoEntrega === 'delivery') {
-      if (!form.direccion.trim() || !form.distrito.trim() || !form.provincia.trim()) {
-        alert('Por favor, completa todos los campos de delivery');
-        return;
-      }
-    } else if (form.tipoEntrega === 'shalom') {
-      if (!form.direccionShalom.trim()) {
-        alert('Por favor, selecciona la dirección del Shalom');
-        return;
-      }
-    }
-
-    if (items.length === 0) {
-      alert('Tu carrito está vacío');
+  } else if (form.tipoEntrega === 'shalom') {
+    if (!form.direccionShalom.trim()) {
+      alert('Por favor, selecciona la dirección del Shalom');
       return;
     }
-    
-    // Crear mensaje para WhatsApp
-    const mensaje = crearMensajeWhatsApp();
-    
-    // Número de WhatsApp (CAMBIAR POR TU NÚMERO)
-    const numeroWhatsApp = '51982498372'; // Formato: código país + número sin signos
-    
-    // Crear URL de WhatsApp
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-    
-    // Abrir WhatsApp
-    window.open(urlWhatsApp, '_blank');
-  };
+  }
+
+   if (items.length === 0) {
+    alert('Tu carrito está vacío');
+    return;
+  }
+  
+  // Crear mensaje para WhatsApp
+  const mensaje = crearMensajeWhatsApp();
+  
+  // Número de WhatsApp
+  const numeroWhatsApp = '51982498372';
+  
+  // Crear URL de WhatsApp
+  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+  
+  // Guardar la URL y mostrar el modal de confirmación
+  setWhatsappUrl(url);
+  setShowConfirmationModal(true);
+};
+
+// Nueva función para confirmar y redirigir
+const confirmWhatsAppRedirect = () => {
+  window.open(whatsappUrl, '_blank');
+  setShowConfirmationModal(false);
+};
 
   const handlePromoCode = () => {
     // Aquí puedes agregar la lógica para validar códigos promocionales
@@ -239,8 +286,8 @@ const Checkout = () => {
             </h3>
             <p className="text-sm text-gray-600 mt-1">
               {envioGratuito 
-                ? 'Tu pedido califica para envío gratuito por ser mayor a $160' 
-                : `Agrega $${(ENVIO_MINIMO - totalPrice).toFixed(2)} más para obtener envío gratuito`
+                ? 'Tu pedido califica para envío gratuito por ser mayor a S/160' 
+                : `Agrega S/${(ENVIO_MINIMO - totalPrice).toFixed(2)} más para obtener envío gratuito`
               }
             </p>
           </motion.div>
@@ -270,7 +317,7 @@ const Checkout = () => {
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                ${totalPrice.toFixed(2)} / $${ENVIO_MINIMO.toFixed(2)}
+                S/{totalPrice.toFixed(2)} / S/{ENVIO_MINIMO.toFixed(2)}
               </motion.span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
@@ -289,7 +336,7 @@ const Checkout = () => {
               transition={{ delay: 0.5 }}
             >
               {totalPrice < ENVIO_MINIMO 
-                ? `Te faltan $${(ENVIO_MINIMO - totalPrice).toFixed(2)} para envío gratuito`
+                ? `Te faltan S/${(ENVIO_MINIMO - totalPrice).toFixed(2)} para envío gratuito`
                 : '¡Ya tienes envío gratuito!'
               }
             </motion.p>
@@ -381,7 +428,7 @@ const Checkout = () => {
                           transition={{ type: "spring", stiffness: 300 }}
                         >
                           <p className="font-semibold text-lg text-gray-900">
-                            ${(item.price * item.quantity).toFixed(2)}
+                            S/{(item.price * item.quantity).toFixed(2)}
                           </p>
                         </motion.div>
                       </div>
@@ -548,7 +595,7 @@ const Checkout = () => {
                     animate={{ scale: 1, color: '#000' }}
                     transition={{ duration: 0.3 }}
                   >
-                    ${totalPrice.toFixed(2)}
+                    S/{totalPrice.toFixed(2)}
                   </motion.span>
                 </div>
               </motion.div>
@@ -583,7 +630,7 @@ const Checkout = () => {
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 200 }}
                 >
-                  {envio === 0 ? 'Gratuito' : `$${envio.toFixed(2)}`}
+                  {envio === 0 ? 'Gratuito' : `S/${envio.toFixed(2)}`}
                 </motion.span>
               </motion.div>
 
@@ -597,7 +644,7 @@ const Checkout = () => {
                     transition={{ delay: 0.7 }}
                   >
                     <span>Descuento promocional</span>
-                    <span className="font-medium">-${descuentoPromo.toFixed(2)}</span>
+                    <span className="font-medium">-S/{descuentoPromo.toFixed(2)}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -617,7 +664,7 @@ const Checkout = () => {
                     animate={{ scale: 1, color: '#000' }}
                     transition={{ type: "spring", stiffness: 200 }}
                   >
-                    ${totalGeneral.toFixed(2)}
+                    S/{totalGeneral.toFixed(2)}
                   </motion.span>
                 </div>
               </motion.div>
@@ -655,18 +702,30 @@ const Checkout = () => {
                   whileFocus={{ scale: 1.02 }}
                 />
                 
-                {/* Teléfono */}
-                <motion.input
-                  type="tel"
-                  name="telefono"
-                  placeholder="Número de teléfono *"
-                  value={form.telefono}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                  variants={itemVariants}
-                  whileFocus={{ scale: 1.02 }}
-                />
+                {/* Teléfono con mensaje de validación */}
+<motion.div variants={itemVariants}>
+  <motion.input
+    type="tel"
+    name="telefono"
+    placeholder="Número de teléfono * (9 dígitos)"
+    value={form.telefono}
+    onChange={handleChange}
+    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+    required
+    maxLength={9}
+    pattern="[0-9]{9}"
+    whileFocus={{ scale: 1.02 }}
+  />
+  {form.telefono && !validatePhone(form.telefono) && (
+    <motion.p 
+      className="text-red-500 text-xs mt-1"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+    >
+      El teléfono debe tener exactamente 9 dígitos
+    </motion.p>
+  )}
+</motion.div>
                 
                 {/* Tipo de entrega */}
                 <motion.select
@@ -683,60 +742,80 @@ const Checkout = () => {
                   <option value="shalom">Recojo en Shalom</option>
                 </motion.select>
 
-                {/* Campos condicionales para Delivery */}
-                <AnimatePresence>
-                  {form.tipoEntrega === 'delivery' && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <motion.input
-                        type="text"
-                        name="direccion"
-                        placeholder="Dirección *"
-                        value={form.direccion}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
-                        required
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        whileFocus={{ scale: 1.02 }}
-                      />
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <motion.input
-                          type="text"
-                          name="distrito"
-                          placeholder="Distrito *"
-                          value={form.distrito}
-                          onChange={handleChange}
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                          required
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 }}
-                          whileFocus={{ scale: 1.02 }}
-                        />
-                        <motion.input
-                          type="text"
-                          name="provincia"
-                          placeholder="Provincia *"
-                          value={form.provincia}
-                          onChange={handleChange}
-                          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                          required
-                          initial={{ opacity: 0, x: 10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 }}
-                          whileFocus={{ scale: 1.02 }}
-                        />
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+               {/* Campos condicionales para Delivery */}
+<AnimatePresence>
+  {form.tipoEntrega === 'delivery' && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: 'auto' }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.input
+        type="text"
+        name="direccion"
+        placeholder="Dirección *"
+        value={form.direccion}
+        onChange={handleChange}
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
+        required
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        whileFocus={{ scale: 1.02 }}
+      />
+      
+      {/* Departamento */}
+      <motion.select
+        name="departamento"
+        value={form.departamento}
+        onChange={handleChange}
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
+        required
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        whileFocus={{ scale: 1.02 }}
+      >
+        <option value="">Selecciona Departamento *</option>
+        {peruData.departamentos.map((depto) => (
+          <option key={depto} value={depto}>{depto}</option>
+        ))}
+      </motion.select>
+
+      {/* Provincia */}
+      <motion.input
+  type="text"
+  name="provincia"
+  placeholder="Provincia *"
+  value={form.provincia}
+  onChange={handleChange}
+  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
+  required
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.2 }}
+  whileFocus={{ scale: 1.02 }}
+/>
+
+
+      {/* Distrito (ahora es texto libre) */}
+      <motion.input
+        type="text"
+        name="distrito"
+        placeholder="Distrito *"
+        value={form.distrito}
+        onChange={handleChange}
+        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
+        required
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25 }}
+        whileFocus={{ scale: 1.02 }}
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
 
                 {/* Campo condicional para Shalom */}
                 <AnimatePresence>
@@ -759,39 +838,40 @@ const Checkout = () => {
                 </AnimatePresence>
               </motion.div>
 
-              {/* Botón principal con WhatsApp */}
-              <motion.button
-                type="submit"
-                className="w-full text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all transform hover:scale-[1.02] mb-4 flex items-center justify-center gap-3"
-                style={{ backgroundColor: '#25D366' }}
-                disabled={items.length === 0}
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  delay: 1,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
-                }}
-              >
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 10, -10, 0],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 3
-                  }}
-                >
-                  <FaWhatsapp size={24} />
-                </motion.div>
-                <span>Enviar pedido por WhatsApp</span>
-              </motion.button>
+              {/* Botón principal con WhatsApp - Modificado para mostrar modal */}
+<motion.button
+  type="button" // Cambiado de "submit" a "button"
+  onClick={handleSubmit} // Ahora muestra el modal
+  className="w-full text-white py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all transform hover:scale-[1.02] mb-4 flex items-center justify-center gap-3"
+  style={{ backgroundColor: '#25D366' }}
+  disabled={items.length === 0}
+  variants={buttonVariants}
+  whileHover="hover"
+  whileTap="tap"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ 
+    delay: 1,
+    type: "spring",
+    stiffness: 100,
+    damping: 15
+  }}
+>
+  <motion.div
+    animate={{ 
+      rotate: [0, 10, -10, 0],
+      scale: [1, 1.1, 1]
+    }}
+    transition={{ 
+      duration: 2,
+      repeat: Infinity,
+      repeatDelay: 3
+    }}
+  >
+    <FaWhatsapp size={24} />
+  </motion.div>
+  <span>Enviar pedido por WhatsApp</span>
+</motion.button>
             </motion.form>
 
             {/* Información adicional */}
@@ -826,7 +906,81 @@ const Checkout = () => {
           </div>
         </motion.div>
       </div>
+      {/* Modal de confirmación */}
+    <AnimatePresence>
+      {showConfirmationModal && (
+        <motion.div 
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setShowConfirmationModal(false)}
+        >
+          <motion.div 
+            className="bg-white rounded-xl p-6 max-w-md w-full mx-4"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", damping: 15 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-center mb-6">
+              <motion.div 
+                className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.1, type: "spring" }}
+              >
+                <FaWhatsapp className="text-green-600 text-2xl" />
+              </motion.div>
+              
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                ¡Pedido Listo!
+              </h3>
+              
+              <p className="text-gray-600 mb-4">
+                ¿Deseas continuar a WhatsApp para confirmar tu pedido con nuestro equipo?
+              </p>
+              
+              <div className="text-xs text-gray-500 mb-4 p-3 bg-gray-50 rounded-lg">
+                📱 Se abrirá WhatsApp con todos los detalles de tu pedido
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <motion.button
+                onClick={() => setShowConfirmationModal(false)}
+                className="flex-1 py-3 px-4 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Revisar Pedido
+              </motion.button>
+              
+              <motion.button
+                onClick={confirmWhatsAppRedirect}
+                className="flex-1 py-3 px-4 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <FaWhatsapp />
+                Ir a WhatsApp
+              </motion.button>
+            </div>
+            
+            <p className="text-xs text-gray-500 text-center mt-4">
+              Tu pedido será procesado una vez confirmado por nuestro equipo
+            </p>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+
+
+
     </motion.div>
+
+    
   );
 };
 
