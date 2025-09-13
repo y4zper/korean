@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
-import { FaHeart, FaMinus, FaPlus, FaTrash, FaChevronDown, FaPaypal, FaCreditCard, FaWhatsapp } from 'react-icons/fa';
+import { FaHeart, FaMinus, FaPlus, FaTrash, FaChevronDown, FaPaypal, FaCreditCard, FaWhatsapp , FaTimesCircle } from 'react-icons/fa';
 
 const Checkout = () => {
 
@@ -9,13 +9,17 @@ const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
 
-  const { items, totalPrice, updateQuantity, removeFromCart , clearCart } = useCart();
+  const { items, totalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
   const [showPromoCode, setShowPromoCode] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  const [showInvalidCodeModal, setShowInvalidCodeModal] = useState(false);
+
 
   const [form, setForm] = useState({
     nombre: "",
     telefono: "",
+    tipoDocumento: "dni", // "dni" o "ce"
+    numeroDocumento: "",
     tipoEntrega: "", // "delivery" o "shalom"
     direccion: "",
     departamento: "",
@@ -25,14 +29,14 @@ const Checkout = () => {
   });
 
   const peruData = {
-  departamentos: [
-    "Amazonas","Áncash","Apurímac","Arequipa","Ayacucho",
-    "Cajamarca","Cusco","Huancavelica","Huánuco","Ica",
-    "Junín","La Libertad","Lambayeque","Lima","Loreto",
-    "Madre de Dios","Moquegua","Pasco","Piura","Puno",
-    "San Martín","Tacna","Tumbes","Ucayali","Callao"
-  ],
-};
+    departamentos: [
+      "Amazonas","Áncash","Apurímac","Arequipa","Ayacucho",
+      "Cajamarca","Cusco","Huancavelica","Huánuco","Ica",
+      "Junín","La Libertad","Lambayeque","Lima","Loreto",
+      "Madre de Dios","Moquegua","Pasco","Piura","Puno",
+      "San Martín","Tacna","Tumbes","Ucayali","Callao"
+    ],
+  };
 
   // Lógica de envío: gratuito si el subtotal es mayor a $160
   const ENVIO_MINIMO = 160;
@@ -128,45 +132,73 @@ const Checkout = () => {
 
 
   const validatePhone = (phone) => {
-  const phoneRegex = /^[0-9]{9}$/;
-  return phoneRegex.test(phone);
-};
+    const phoneRegex = /^[0-9]{9}$/;
+    return phoneRegex.test(phone);
+  };
+
+  // Validación para DNI (8 dígitos)
+  const validateDNI = (dni) => {
+    const dniRegex = /^[0-9]{8}$/;
+    return dniRegex.test(dni);
+  };
+
+  // Validación para CE (carné de extranjería, formato peruano)
+  const validateCE = (ce) => {
+    const ceRegex = /^[A-Za-z0-9]{9,12}$/;
+    return ceRegex.test(ce);
+  };
 
 
-  const handleChange = (e) => {
-  const { name, value } = e.target;
-  
-  // Validación especial para teléfono
-  if (name === 'telefono') {
-    // Solo permitir números y máximo 9 dígitos
-    const numericValue = value.replace(/\D/g, '').slice(0, 9);
-    setForm({ ...form, [name]: numericValue });
-  } else {
-    setForm({ ...form, [name]: value });
-  }
-};
 
-  const crearMensajeWhatsApp = () => {
+   const handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    // Validación especial para teléfono
+    if (name === 'telefono') {
+      // Solo permitir números y máximo 9 dígitos
+      const numericValue = value.replace(/\D/g, '').slice(0, 9);
+      setForm({ ...form, [name]: numericValue });
+    } 
+    // Validación especial para número de documento según el tipo
+    else if (name === 'numeroDocumento') {
+      if (form.tipoDocumento === 'dni') {
+        // Solo números y máximo 8 dígitos para DNI
+        const numericValue = value.replace(/\D/g, '').slice(0, 8);
+        setForm({ ...form, [name]: numericValue });
+      } else {
+        // Para CE, permitir letras y números
+        const alphanumericValue = value.replace(/[^A-Za-z0-9]/g, '');
+        setForm({ ...form, [name]: alphanumericValue });
+      }
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+
+
+   const crearMensajeWhatsApp = () => {
     let mensaje = '🛒 *NUEVO PEDIDO* 🛒\n\n';
   
-  // Información del cliente
-  mensaje += '👤 *DATOS DEL CLIENTE*\n';
-  mensaje += `• Nombre: ${form.nombre}\n`;
-  mensaje += `• Teléfono: ${form.telefono}\n\n`;
-  
-  // Información de entrega
-  mensaje += '🚚 *TIPO DE ENTREGA*\n';
-  if (form.tipoEntrega === 'delivery') {
-    mensaje += '• Delivery\n';
-    mensaje += `• Dirección: ${form.direccion}\n`;
-    mensaje += `• Departamento: ${form.departamento}\n`;
-    mensaje += `• Provincia: ${form.provincia}\n`;
-    mensaje += `• Distrito: ${form.distrito}\n\n`;
-  } else if (form.tipoEntrega === 'shalom') {
-    mensaje += '• Recojo en Shalom\n';
-    mensaje += `• Dirección Shalom: ${form.direccionShalom}\n\n`;
-  }
+    // Información del cliente
+    mensaje += '👤 *DATOS DEL CLIENTE*\n';
+    mensaje += `• Nombre: ${form.nombre}\n`;
+    mensaje += `• Teléfono: ${form.telefono}\n`;
+    mensaje += `• Documento: ${form.tipoDocumento.toUpperCase()} ${form.numeroDocumento}\n\n`;
     
+    // Información de entrega
+    mensaje += '🚚 *TIPO DE ENTREGA*\n';
+    if (form.tipoEntrega === 'delivery') {
+      mensaje += '• Delivery\n';
+      mensaje += `• Dirección: ${form.direccion}\n`;
+      mensaje += `• Departamento: ${form.departamento}\n`;
+      mensaje += `• Provincia: ${form.provincia}\n`;
+      mensaje += `• Distrito: ${form.distrito}\n\n`;
+    } else if (form.tipoEntrega === 'shalom') {
+      mensaje += '• Recojo en Shalom\n';
+      mensaje += `• Dirección Shalom: ${form.direccionShalom}\n\n`;
+    }
+      
     // Productos del pedido
     mensaje += '📦 *PRODUCTOS SOLICITADOS*\n';
     items.forEach((item, index) => {
@@ -198,85 +230,99 @@ const Checkout = () => {
   };
 
 
-  const limpiarFormulario = () => {
-  setForm({
-    nombre: "",
-    telefono: "",
-    tipoEntrega: "",
-    direccion: "",
-    departamento: "",
-    distrito: "",
-    provincia: "",
-    direccionShalom: ""
-  });
-};
-
-  const handleSubmit = (e) => {
-  e.preventDefault();
-
-  // Validar teléfono (9 dígitos)
-  if (!validatePhone(form.telefono)) {
-    alert('Por favor, ingresa un número de teléfono válido de 9 dígitos');
-    return;
-  }
-  
-  // Validar campos básicos
-  if (!form.nombre.trim() || !form.telefono.trim() || !form.tipoEntrega) {
-    alert('Por favor, completa todos los campos requeridos');
-    return;
-  }
-
-   // Validar campos específicos según tipo de entrega
-  if (form.tipoEntrega === 'delivery') {
-    if (!form.direccion.trim() || !form.departamento.trim() || 
-        !form.provincia.trim() || !form.distrito.trim()) {
-      alert('Por favor, completa todos los campos de delivery');
-      return;
-    }
-  } else if (form.tipoEntrega === 'shalom') {
-    if (!form.direccionShalom.trim()) {
-      alert('Por favor, selecciona la dirección del Shalom');
-      return;
-    }
-  }
-
-   if (items.length === 0) {
-    alert('Tu carrito está vacío');
-    return;
-  }
-  
-  // Crear mensaje para WhatsApp
-  const mensaje = crearMensajeWhatsApp();
-  
-  // Número de WhatsApp
-  const numeroWhatsApp = '51982498372';
-  
-  // Crear URL de WhatsApp
-  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-  
-  // Guardar la URL y mostrar el modal de confirmación
-  setWhatsappUrl(url);
-  setShowConfirmationModal(true);
-};
-
-// Nueva función para confirmar y redirigir
-const confirmWhatsAppRedirect = () => {
-  window.open(whatsappUrl, '_blank');
-  setShowConfirmationModal(false);
-
-  clearCart();
-  limpiarFormulario();
-};
-
-  const handlePromoCode = () => {
-    // Aquí puedes agregar la lógica para validar códigos promocionales
-    if (promoCode.trim()) {
-      alert(`Código "${promoCode}" aplicado (funcionalidad de ejemplo)`);
-    } else {
-      alert('Por favor, ingresa un código promocional');
-    }
+   const limpiarFormulario = () => {
+    setForm({
+      nombre: "",
+      telefono: "",
+      tipoDocumento: "dni",
+      numeroDocumento: "",
+      tipoEntrega: "",
+      direccion: "",
+      departamento: "",
+      distrito: "",
+      provincia: "",
+      direccionShalom: ""
+    });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Validar teléfono (9 dígitos)
+    if (!validatePhone(form.telefono)) {
+      alert('Por favor, ingresa un número de teléfono válido de 9 dígitos');
+      return;
+    }
+    
+    // Validar documento de identidad
+    if (form.tipoDocumento === 'dni' && !validateDNI(form.numeroDocumento)) {
+      alert('Por favor, ingresa un DNI válido de 8 dígitos');
+      return;
+    }
+    
+    if (form.tipoDocumento === 'ce' && !validateCE(form.numeroDocumento)) {
+      alert('Por favor, ingresa un Carné de Extranjería válido');
+      return;
+    }
+    
+    // Validar campos básicos
+    if (!form.nombre.trim() || !form.telefono.trim() || !form.tipoEntrega || !form.numeroDocumento.trim()) {
+      alert('Por favor, completa todos los campos requeridos');
+      return;
+    }
+
+    // Validar campos específicos según tipo de entrega
+    if (form.tipoEntrega === 'delivery') {
+      if (!form.direccion.trim() || !form.departamento.trim() || 
+          !form.provincia.trim() || !form.distrito.trim()) {
+        alert('Por favor, completa todos los campos de delivery');
+        return;
+      }
+    } else if (form.tipoEntrega === 'shalom') {
+      if (!form.direccionShalom.trim()) {
+        alert('Por favor, selecciona la dirección del Shalom');
+        return;
+      }
+    }
+
+    if (items.length === 0) {
+      alert('Tu carrito está vacío');
+      return;
+    }
+  
+   // Crear mensaje para WhatsApp
+    const mensaje = crearMensajeWhatsApp();
+    
+    // Número de WhatsApp
+    const numeroWhatsApp = '51982498372';
+    
+    // Crear URL de WhatsApp
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    
+    // Guardar la URL y mostrar el modal de confirmación
+    setWhatsappUrl(url);
+    setShowConfirmationModal(true);
+  };
+
+// Nueva función para confirmar y redirigir
+  const confirmWhatsAppRedirect = () => {
+    window.open(whatsappUrl, '_blank');
+    setShowConfirmationModal(false);
+    clearCart();
+    limpiarFormulario();
+  };
+
+  const handlePromoCode = () => {
+  // Aquí puedes agregar la lógica para validar códigos promocionales
+  if (promoCode.trim()) {
+    // Simulación: cualquier código ingresado se considera inválido
+    // En una implementación real, aquí verificarías contra una base de datos
+    setShowInvalidCodeModal(true);
+  } else {
+    setShowInvalidCodeModal(true);
+    setPromoCode(""); // Limpiar el campo si está vacío
+  }
+};
   return (
     <motion.div 
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
@@ -534,63 +580,120 @@ const confirmWhatsAppRedirect = () => {
             </motion.h2>
 
             {/* Código promocional */}
-            <motion.div 
-              className="mb-6"
-              variants={itemVariants}
-            >
-              <motion.button
-                onClick={() => setShowPromoCode(!showPromoCode)}
-                className="flex items-center justify-between w-full py-3 text-left border-b border-gray-200"
-                whileHover={{ backgroundColor: '#f9fafb' }}
-                whileTap={{ scale: 0.99 }}
-              >
-                <span className="font-medium text-gray-900">¿Tienes un código promocional?</span>
-                <motion.div
-                  animate={{ rotate: showPromoCode ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaChevronDown size={14} />
-                </motion.div>
-              </motion.button>
-              
-              <AnimatePresence>
-                {showPromoCode && (
-                  <motion.div 
-                    className="mt-4 space-y-3"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="flex gap-2">
-                      <motion.input
-                        type="text"
-                        placeholder="Código promocional"
-                        value={promoCode}
-                        onChange={(e) => setPromoCode(e.target.value)}
-                        className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
-                        whileFocus={{ scale: 1.02 }}
-                      />
-                      <motion.button
-                        onClick={handlePromoCode}
-                        className="px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                        variants={buttonVariants}
-                        whileHover="hover"
-                        whileTap="tap"
-                        initial={{ opacity: 0, x: 10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        Aplicar
-                      </motion.button>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+<motion.div 
+  className="mb-6"
+  variants={itemVariants}
+>
+  <motion.button
+    onClick={() => setShowPromoCode(!showPromoCode)}
+    className="flex items-center justify-between w-full py-3 text-left border-b border-gray-200"
+    whileHover={{ backgroundColor: '#f9fafb' }}
+    whileTap={{ scale: 0.99 }}
+  >
+    <span className="font-medium text-gray-900">¿Tienes un código promocional?</span>
+    <motion.div
+      animate={{ rotate: showPromoCode ? 180 : 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <FaChevronDown size={14} />
+    </motion.div>
+  </motion.button>
+  
+  <AnimatePresence>
+    {showPromoCode && (
+      <motion.div 
+        className="mt-4 space-y-3"
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: 'auto' }}
+        exit={{ opacity: 0, height: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <div className="flex gap-2">
+          <motion.input
+            type="text"
+            placeholder="Código promocional"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+            className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            whileFocus={{ scale: 1.02 }}
+          />
+          <motion.button
+            onClick={handlePromoCode}
+            className="px-4 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Aplicar
+          </motion.button>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.div>
+
+{/* Modal para código inválido */}
+<AnimatePresence>
+  {showInvalidCodeModal && (
+    <motion.div 
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setShowInvalidCodeModal(false)}
+    >
+      <motion.div 
+        className="bg-white rounded-xl p-6 max-w-md w-full mx-4"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ type: "spring", damping: 15 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="text-center mb-6">
+          <motion.div 
+            className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.1, type: "spring" }}
+          >
+            <FaTimesCircle className="text-red-600 text-2xl" />
+          </motion.div>
+          
+          <h3 className="text-xl font-bold text-gray-900 mb-2">
+            Código Inválido
+          </h3>
+          
+          <p className="text-gray-600 mb-4">
+            El código "<span className="font-semibold">{promoCode}</span>" no es válido.
+            Por favor, verifica el código e inténtalo nuevamente.
+          </p>
+        </div>
+
+        <div className="flex justify-center">
+          <motion.button
+            onClick={() => setShowInvalidCodeModal(false)}
+            className="px-6 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Entendido
+          </motion.button>
+        </div>
+        
+        <p className="text-xs text-gray-500 text-center mt-4">
+          ¿Necesitas ayuda? Contáctanos a través de WhatsApp
+        </p>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
 
             {/* Desglose de precios */}
             <motion.div 
@@ -688,76 +791,120 @@ const confirmWhatsAppRedirect = () => {
             </motion.div>
 
             {/* Formulario de envío */}
-            <motion.form 
-              onSubmit={handleSubmit} 
-              className="space-y-4 mb-6"
-              variants={itemVariants}
-            >
-              <motion.div 
-                className="grid grid-cols-1 gap-4"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1
-                    }
-                  }
-                }}
-              >
+      <motion.form 
+        onSubmit={handleSubmit} 
+        className="space-y-4 mb-6"
+        variants={itemVariants}
+      >
+        <motion.div 
+          className="grid grid-cols-1 gap-4"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.1
+              }
+            }
+          }}
+        >
                 {/* Nombre completo */}
-                <motion.input
-                  type="text"
-                  name="nombre"
-                  placeholder="Nombre completo *"
-                  value={form.nombre}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                  variants={itemVariants}
-                  whileFocus={{ scale: 1.02 }}
-                />
-                
-                {/* Teléfono con mensaje de validación */}
-<motion.div variants={itemVariants}>
-  <motion.input
-    type="tel"
-    name="telefono"
-    placeholder="Número de teléfono * (9 dígitos)"
-    value={form.telefono}
-    onChange={handleChange}
-    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-    required
-    maxLength={9}
-    pattern="[0-9]{9}"
-    whileFocus={{ scale: 1.02 }}
-  />
-  {form.telefono && !validatePhone(form.telefono) && (
-    <motion.p 
-      className="text-red-500 text-xs mt-1"
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-    >
-      El teléfono debe tener exactamente 9 dígitos
-    </motion.p>
-  )}
-</motion.div>
-                
-                {/* Tipo de entrega */}
-                <motion.select
-                  name="tipoEntrega"
-                  value={form.tipoEntrega}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                  variants={itemVariants}
-                  whileFocus={{ scale: 1.02 }}
+          <motion.input
+            type="text"
+            name="nombre"
+            placeholder="Nombre completo *"
+            value={form.nombre}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            required
+            variants={itemVariants}
+            whileFocus={{ scale: 1.02 }}
+          />
+          
+          {/* Teléfono con mensaje de validación */}
+          <motion.div variants={itemVariants}>
+            <motion.input
+              type="tel"
+              name="telefono"
+              placeholder="Número de teléfono * (9 dígitos)"
+              value={form.telefono}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              required
+              maxLength={9}
+              pattern="[0-9]{9}"
+              whileFocus={{ scale: 1.02 }}
+            />
+            {form.telefono && !validatePhone(form.telefono) && (
+              <motion.p 
+                className="text-red-500 text-xs mt-1"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                El teléfono debe tener exactamente 9 dígitos
+              </motion.p>
+            )}
+          </motion.div>
+          
+          {/* Tipo de documento y número */}
+          <motion.div className="grid grid-cols-12 gap-3" variants={itemVariants}>
+            <div className="col-span-4">
+              <motion.select
+                name="tipoDocumento"
+                value={form.tipoDocumento}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                required
+                whileFocus={{ scale: 1.02 }}
+              >
+                <option value="dni">DNI</option>
+                <option value="ce">CE</option>
+              </motion.select>
+            </div>
+            <div className="col-span-8">
+              <motion.input
+                type="text"
+                name="numeroDocumento"
+                placeholder={form.tipoDocumento === 'dni' ? "Número de DNI * (8 dígitos)" : "Número de CE *"}
+                value={form.numeroDocumento}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                required
+                maxLength={form.tipoDocumento === 'dni' ? 8 : 12}
+                pattern={form.tipoDocumento === 'dni' ? "[0-9]{8}" : "[A-Za-z0-9]{9,12}"}
+                whileFocus={{ scale: 1.02 }}
+              />
+              {form.numeroDocumento && (
+                <motion.p 
+                  className="text-red-500 text-xs mt-1"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
                 >
-                  <option value="">Selecciona tipo de entrega *</option>
-                  <option value="delivery">Delivery</option>
-                  <option value="shalom">Recojo en Shalom</option>
-                </motion.select>
+                  {form.tipoDocumento === 'dni' && !validateDNI(form.numeroDocumento) 
+                    ? 'El DNI debe tener exactamente 8 dígitos' 
+                    : form.tipoDocumento === 'ce' && !validateCE(form.numeroDocumento) 
+                    ? 'Ingrese un Carné de Extranjería válido' 
+                    : ''}
+                </motion.p>
+              )}
+            </div>
+          </motion.div>
+          
+          {/* Tipo de entrega */}
+          <motion.select
+            name="tipoEntrega"
+            value={form.tipoEntrega}
+            onChange={handleChange}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            required
+            variants={itemVariants}
+            whileFocus={{ scale: 1.02 }}
+          >
+            <option value="">Selecciona tipo de entrega *</option>
+            <option value="delivery">Delivery</option>
+            <option value="shalom">Recojo en Shalom</option>
+          </motion.select>
 
                {/* Campos condicionales para Delivery */}
 <AnimatePresence>
@@ -917,7 +1064,7 @@ const confirmWhatsAppRedirect = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.5 }}
               >
-                🚚 Envío gratuito en pedidos de $160 o más
+                🚚 Envío gratuito en pedidos de S/160 o más
               </motion.p>
             </motion.div>
           </div>

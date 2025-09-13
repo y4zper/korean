@@ -17,7 +17,7 @@ const Footer = () => {
   <FaTruck className="w-6 h-6 text-[#7FB069]" />
 </div>  
                             <h4 className="font-semibold text-gray-900 mb-1">Envío Gratis</h4>
-                            <p className="text-sm text-gray-600">En compras mayores a S/150</p>
+                            <p className="text-sm text-gray-600">En compras mayores a S/160</p>
                         </div>
                         <div className="flex flex-col items-center text-center">
                             <div className="bg-[#A8D5BA]/30 p-3 rounded-full mb-3">

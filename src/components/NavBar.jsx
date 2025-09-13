@@ -4,7 +4,7 @@ import {
   FaSearch,
   FaShoppingBag,
   FaTimes,
-  FaUser,
+  FaBookReader,
   FaShoppingCart,
   FaChevronDown,
   FaChevronLeft
@@ -198,7 +198,7 @@ const NavBar = () => {
   className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300"
 >
   <Link to="/contacto">
-    <FaUser className="w-6 h-6" />
+    <FaBookReader className="w-6 h-6" />
   </Link>
 </motion.div>
             </div>
@@ -216,7 +216,7 @@ const NavBar = () => {
 
               <motion.div whileHover={{ scale: 1.2 }}>
   <Link to="/contacto">
-    <FaUser className="text-green-600 w-5 h-5 cursor-pointer" />
+    <FaBookReader className="text-green-600 w-5 h-5 cursor-pointer" />
   </Link>
 </motion.div>
 

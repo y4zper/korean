@@ -54,7 +54,7 @@ const Banner2 = () => {
                     alt={`Slide ${slide.id}`}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/20"></div>
+                  <div className="absolute inset-0 bg-black/10"></div>
                 </motion.div>
               )
           )}
@@ -135,7 +135,7 @@ const Banner2 = () => {
           >
             <FaGift className="text-base animate-pulse" />
             <span className="text-xs">Producto Sorpresa</span>
-            <span className="text-xs opacity-100">con Compras + S/250</span>
+            <span className="text-xs opacity-100">Por Compras + S/250</span>
           </motion.div>
         </div>
       </motion.div>
