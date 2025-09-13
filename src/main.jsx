@@ -21,6 +21,7 @@ import FAQ from "./pages/FAQ.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import NosotrosSection from "./pages/NosotrosSection.jsx";
 import Brands from "./pages/Brands.jsx";
+import Contacto from "./pages/Contacto.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/FAQ",
         element: <FAQ/>
+      },
+      {
+        path: "/contacto",
+        element: <Contacto/>
       },
       {
         path: "/checkout",   // 👈 nueva ruta

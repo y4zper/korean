@@ -115,11 +115,11 @@ const Footer = () => {
  transition-colors duration-300 block">
                                 Preguntas Frecuentes
                             </Link>
-                            <Link to="#" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/contacto" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 Envíos y Devoluciones
                             </Link>
-                            <Link to="#" className="text-sm text-gray-600 hover:text-[#7FB069]
+                            <Link to="/contacto" className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300 block">
                                 Contacto
                             </Link>

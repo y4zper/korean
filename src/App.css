@@ -37,3 +37,7 @@ header, nav{
 .fixed.z-50 {
   z-index: 99999;
 }
+
+html {
+  scroll-behavior: smooth;
+}

@@ -9,7 +9,7 @@ const Checkout = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [whatsappUrl, setWhatsappUrl] = useState("");
 
-  const { items, totalPrice, updateQuantity, removeFromCart } = useCart();
+  const { items, totalPrice, updateQuantity, removeFromCart , clearCart } = useCart();
   const [showPromoCode, setShowPromoCode] = useState(false);
   const [promoCode, setPromoCode] = useState("");
 
@@ -197,6 +197,20 @@ const Checkout = () => {
     return mensaje;
   };
 
+
+  const limpiarFormulario = () => {
+  setForm({
+    nombre: "",
+    telefono: "",
+    tipoEntrega: "",
+    direccion: "",
+    departamento: "",
+    distrito: "",
+    provincia: "",
+    direccionShalom: ""
+  });
+};
+
   const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -249,6 +263,9 @@ const Checkout = () => {
 const confirmWhatsAppRedirect = () => {
   window.open(whatsappUrl, '_blank');
   setShowConfirmationModal(false);
+
+  clearCart();
+  limpiarFormulario();
 };
 
   const handlePromoCode = () => {

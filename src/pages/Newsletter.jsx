@@ -64,7 +64,7 @@ const Newsletter = () => {
                     </p>
                     <div className="flex items-center justify-center gap-2 mt-4">
 <FaInstagram className="text-[#7FB069] text-2xl" />
-                        <span className="text-gray-700 font-medium">@hyaluro_peru</span>
+                        <span className="text-gray-700 font-medium">@hyaluro.pe</span>
                     </div>
                 </div>
 
@@ -181,15 +181,15 @@ const Newsletter = () => {
                         <div className="bg-white rounded-2xl p-6 shadow-lg border border-[#F5E6E8]">
   <div className="grid grid-cols-3 gap-4 text-center">
     <div>
-      <div className="text-2xl font-bold text-[#7FB069] mb-1">850+</div>
+      <div className="text-2xl font-bold text-[#7FB069] mb-1">56+</div>
       <div className="text-sm text-gray-600">Posts</div>
     </div>
     <div>
-      <div className="text-2xl font-bold text-[#4A90A4] mb-1">12.5K</div>
+      <div className="text-2xl font-bold text-[#4A90A4] mb-1">3.1K</div>
       <div className="text-sm text-gray-600">Seguidores</div>
     </div>
     <div>
-      <div className="text-2xl font-bold text-[#7FB069] mb-1">95%</div>
+      <div className="text-2xl font-bold text-[#7FB069] mb-1">92%</div>
       <div className="text-sm text-gray-600">Engagement</div>
     </div>
   </div>
