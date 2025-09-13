@@ -192,14 +192,15 @@ const NavBar = () => {
                 </div>
               </motion.button>
 
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="/contacto"
-                className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300"
-              >
-                <FaUser className="w-6 h-6" />
-              </motion.a>
+              <motion.div
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="flex items-center gap-2 text-gray-900 hover:text-[#7FB069] transition-colors duration-300"
+>
+  <Link to="/contacto">
+    <FaUser className="w-6 h-6" />
+  </Link>
+</motion.div>
             </div>
 
             {/* Mobile icons */}
@@ -214,8 +215,10 @@ const NavBar = () => {
               </motion.button>
 
               <motion.div whileHover={{ scale: 1.2 }}>
-                <FaUser className="text-green-600 w-5 h-5 cursor-pointer" />
-              </motion.div>
+  <Link to="/contacto">
+    <FaUser className="text-green-600 w-5 h-5 cursor-pointer" />
+  </Link>
+</motion.div>
 
               {/* HAMBURGER */}
               <motion.button

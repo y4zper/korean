@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         path: "/FAQ",
         element: <FAQ/>
       },
-      {
+      { 
         path: "/contacto",
         element: <Contacto/>
       },
