@@ -141,28 +141,28 @@ const Footer = () => {
                             <div className="flex items-center gap-3">
                                 <FaPhone className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a  className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <p  className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
                                     +51 982 498 372
-                                </a>
+                                </p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <FaEnvelope className="w-4 h-4 text-[#7FB069]
  flex-shrink-0" />
-                                <a  className="text-sm text-gray-600 hover:text-[#7FB069]
+                                <p  className="text-sm text-gray-600 hover:text-[#7FB069]
  transition-colors duration-300">
                                     hyaluro.pe@gmail.com
-                                </a>
+                                </p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <FaWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
-                                <a 
+                                <p 
                                      
                                     rel="noopener noreferrer"
                                     className="text-sm text-gray-600 hover:text-green-500 transition-colors duration-300"
                                 >
                                     WhatsApp Business
-                                </a>
+                                </p>
                             </div>
                         </div>
 
