@@ -1,8 +1,0 @@
-User-agent: *
-
-Allow: /shop
-Allow: /contacto
-Allow: /checkout
-Allow: /
-
-Sitemap: https://hyalurope.com/sitemap.xml`

@@ -1,0 +1,14 @@
+User-agent: *
+
+# Allow important pages (optional, as they're allowed by default)
+Allow: /
+Allow: /shop
+Allow: /shop/*
+Allow: /marca
+Allow: /TipoPiel
+Allow: /FAQ
+Allow: /contacto
+Allow: /checkout
+Allow: /nosotros
+
+Sitemap: https://hyalurope.com/sitemap.xml
