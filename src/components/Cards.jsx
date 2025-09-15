@@ -26,7 +26,7 @@ className={`text-sm ${index < rating ? 'text-[#fc7600]' : 'text-gray-300'}`}    
       >
         {/* Contenedor de imagen con badges */}
         <div className="relative overflow-hidden">
-          <Link to={`/shop/${item.id}`}>
+          <Link to={`/shop/${item.slug}`}>
             <img
               src={item.image}
               alt={item.title}
@@ -66,7 +66,7 @@ className={`text-sm ${index < rating ? 'text-[#fc7600]' : 'text-gray-300'}`}    
           )}
 
           {/* Título del producto */}
-          <Link to={`/shop/${item.id}`}>
+          <Link to={`/shop/${item.slug}`}>
 <h4 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 hover:text-[#7FB069] transition-colors duration-200">
               {item.title}
             </h4>

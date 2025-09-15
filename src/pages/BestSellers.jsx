@@ -83,7 +83,7 @@ const BestSellers = () => {
               <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 group h-full flex flex-col">
                 {/* Imagen con badges */}
 <div className="relative overflow-hidden flex justify-center items-center bg-gray-50 h-60 sm:h-64 md:h-56">
-  <Link to={`/shop/${item.id}`} className="w-full h-full">
+  <Link to={`/shop/${item.slug}`} className="w-full h-full">
     <img
       src={item.image}
       alt={item.title}
@@ -121,7 +121,7 @@ const BestSellers = () => {
                   )}
 
                   {/* Título */}
-                  <Link to={`/shop/${item.id}`}>
+                  <Link to={`/shop/${item.slug}`}>
                     <h4 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 hover:text-[#7FB069] transition-colors duration-200">
                       {item.title}
                     </h4>

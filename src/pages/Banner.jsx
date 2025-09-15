@@ -364,7 +364,7 @@ const ProductCard = ({ product, index }) => {
   const navigate = useNavigate();
 
   const handleProductClick = () => {
-    navigate(`/shop/${product.id}`);
+    navigate(`/shop/${product.slug}`);
   };
   
   return (

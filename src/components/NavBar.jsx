@@ -90,8 +90,8 @@ const NavBar = () => {
     }
   }, [searchTerm, products]);
 
-  const handleProductClick = (productId) => {
-    navigate(`/shop/${productId}`);
+  const handleProductClick = (productSlug) => {
+    navigate(`/shop/${productSlug}`);
     setSearchTerm('');
     setIsDropdownOpen(false);
     setIsSearchOpen(false);
@@ -441,7 +441,7 @@ const NavBar = () => {
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.05 }}
-                        onClick={() => handleProductClick(product.id)}
+                        onClick={() => handleProductClick(product.slug)}
                         className="flex items-center p-3 hover:bg-gray-50 cursor-pointer border-b"
                       >
                         <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">

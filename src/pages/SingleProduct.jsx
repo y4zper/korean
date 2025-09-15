@@ -5,7 +5,7 @@ import { useCart } from '../context/CartContext';
 import { motion } from 'framer-motion';
 
 const SingleProduct = () => {
-  const { id } = useParams();
+  const { slug  } = useParams();
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -24,7 +24,7 @@ const SingleProduct = () => {
         setLoading(true);
         const response = await fetch("/products1.json");
         const data = await response.json();
-        const foundProduct = data.find((p) => p.id == id);
+        const foundProduct = data.find((p) => p.slug === slug);
         setProduct(foundProduct || {});
         setLoading(false);
       } catch (error) {
@@ -34,7 +34,7 @@ const SingleProduct = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [slug]);
 
   const handleQuantityChange = (type) => {
     if (type === 'increment') {
@@ -45,7 +45,7 @@ const SingleProduct = () => {
   };
 
   const handleAddToCart = () => {
-    if (product.id) {
+    if (product.slug) {
       addToCart(product, quantity);
       setShowAddedMessage(true);
 
@@ -71,7 +71,7 @@ const SingleProduct = () => {
     );
   }
 
-  if (!product.id) {
+  if (!product.slug) {
     return (
       <div className="max-w-screen-2xl mx-auto xl:px-28 px-4">
         <div className="flex justify-center items-center h-64">

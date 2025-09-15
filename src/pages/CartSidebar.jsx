@@ -3,7 +3,7 @@ import {
   FaTimes, FaPlus, FaMinus, FaTrash, FaShoppingBag, FaCreditCard 
 } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const CartSidebar = () => {
@@ -119,16 +119,18 @@ const CartSidebar = () => {
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                       >
                         {/* Imagen */}
-                        <div
-                          className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"
-                          style={{ backgroundColor: "#F0F0F0" }}
-                        >
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
+<Link to={`/shop/${item.slug}`} onClick={toggleCart}>
+  <div
+    className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0"
+    style={{ backgroundColor: "#F0F0F0" }}
+  >
+    <img
+      src={item.image}
+      alt={`Producto skincare: ${item.title}`}
+      className="w-full h-full object-cover"
+    />
+  </div>
+</Link>
 
                         {/* Detalles */}
                         <div className="flex-1 min-w-0">
@@ -146,7 +148,7 @@ const CartSidebar = () => {
                               S/{item.price?.toFixed(2)}
                             </span>
                             <button
-                              onClick={() => removeFromCart(item.id)}
+                              onClick={() => removeFromCart(item.slug)}
                               className="p-1 text-red-500 hover:text-red-700 transition-all duration-200 hover:scale-110 active:scale-90"
                             >
                               <FaTrash size={12} />
@@ -161,7 +163,7 @@ const CartSidebar = () => {
                             >
                               <button
                                 onClick={() =>
-                                  updateQuantity(item.id, item.quantity - 1)
+                                  updateQuantity(item.slug, item.quantity - 1)
                                 }
                                 className="p-2 hover:bg-gray-50 transition-all duration-150 active:scale-90"
                                 disabled={item.quantity <= 1}
@@ -180,7 +182,7 @@ const CartSidebar = () => {
                               </span>
                               <button
                                 onClick={() =>
-                                  updateQuantity(item.id, item.quantity + 1)
+                                  updateQuantity(item.slug, item.quantity + 1)
                                 }
                                 className="p-2 hover:bg-gray-50 transition-all duration-150 active:scale-90"
                               >

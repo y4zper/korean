@@ -1,12 +1,14 @@
 User-agent: *
+Disallow: /admin/
+Disallow: /api/
 
 # Allow important pages (optional, as they're allowed by default)
 Allow: /
 Allow: /shop
 Allow: /shop/*
 Allow: /marca
-Allow: /TipoPiel
-Allow: /FAQ
+Allow: /tipopiel
+Allow: /faq
 Allow: /contacto
 Allow: /checkout
 Allow: /nosotros

@@ -3,6 +3,7 @@
     {
         "id": 1,
         "title": "TOCOBO - Cotton Soft Sun Stick",
+        "slug": "tocobo-cotton-soft-sun-stick",
         "category": "Bloqueadores",
         "marca": "TOCOBO",
         "price": 75.00,
@@ -31,6 +32,7 @@
     {
         "id": 2,
         "title": "TOCOBO - Vita Tone Up Sun Cream",
+        "slug": "tocobo-vita-tone-up-sun-cream",
         "category": "Bloqueadores",
         "marca": "TOCOBO",
         "price": 75.00,
@@ -59,6 +61,7 @@
     {
         "id": 3,
         "title": "TOCOBO - CICA Calming Sun Serum",
+        "slug": "tocobo-cica-calming-sun-serum",
         "category": "Bloqueadores",
         "marca": "TOCOBO",
         "price": 85.00,
@@ -90,6 +93,7 @@
     {
         "id": 4,
         "title": "TOCOBO - CICA Cooling Sun Stick",
+        "slug": "tocobo-cica-cooling-sun-stick",
         "category": "Bloqueadores",
         "marca": "TOCOBO",
         "price": 85.00,
@@ -123,6 +127,7 @@
     {
         "id": 5,
         "title": "SKIN1004 - Hyalu-Cica Water-fit Sun Serum",
+        "slug": "skin1004-hyalu-cica-water-fit-sun-serum",
         "category": "Bloqueadores",
         "marca": "SKIN1004",
         "price": 75.00,
@@ -152,6 +157,7 @@
     {
         "id": 6,
         "title": "SKIN1004 - Hyalu-cica Silky-fit Sun Stick",
+        "slug": "skin1004-hyalu-cica-silky-fit-sun-stick",
         "category": "Bloqueadores",
         "marca": "SKIN1004",
         "price": 75.00,
@@ -178,6 +184,7 @@
     {
         "id": 7,
         "title": "CELIMAX - Oil Control Matifying Sun Stick",
+        "slug": "celimax-oil-control-matifying-sun-stick",
         "category": "Bloqueadores",
         "marca": "CELIMAX",
         "price": 80.00,
@@ -205,6 +212,7 @@
     {
         "id": 8,
         "title": "MARY & MAY - Vegan Peptide Bakuchiol Sun Stick",
+        "slug": "mary-may-vegan-peptide-bakuchiol-sun-stick",
         "category": "Bloqueadores",
         "marca": "MARY & MAY",
         "price": 90.00,
@@ -233,6 +241,7 @@
     {
         "id": 9,
         "title": "COSRX - Advanced Snail 96 Mucin Power Essence",
+        "slug": "cosrx-advanced-snail-96-mucin-power-essence",
         "category": "Hidratantes",
         "marca": "COSRX",
         "price": 80.00,
@@ -261,6 +270,7 @@
     {
         "id": 10,
         "title": "COSRX - Advanced Snail 92 All in one Cream",
+        "slug": "cosrx-advanced-snail-92-all-in-one-cream",
         "category": "Hidratantes",
         "marca": "COSRX",
         "price": 80.00,
@@ -289,6 +299,7 @@
     {
         "id": 11,
         "title": "MIXSOON - Bean Cream",
+        "slug": "mixsoon-bean-cream",
         "category": "Hidratantes",
         "marca": "MIXSOON",
         "price": 90.00,
@@ -316,6 +327,7 @@
     {
         "id": 12,
         "title": "PURITO - Mighty Bamboo Panthenol Cream",
+        "slug": "purito-mighty-bamboo-panthenol-cream",
         "category": "Hidratantes",
         "marca": "PURITO",
         "price": 90.00,
@@ -345,6 +357,7 @@
     {
         "id": 13,
         "title": "Beauty of Joseon - Ginseng + Retinal Eye Serum",
+        "slug": "beauty-of-joseon-ginseng-retinal-eye-serum",
         "category": "Hidratantes",
         "marca": "Beauty of Joseon",
         "price": 85.00,
@@ -371,6 +384,7 @@
     {
         "id": 14,
         "title": "SKIN1004 - Madagascar Centella Poremizing Light Gel Cream",
+        "slug": "skin1004-madagascar-centella-poremizing-light-gel-cream",
         "category": "Hidratantes",
         "marca": "SKIN1004",
         "price": 80.00,
@@ -398,6 +412,7 @@
     {
         "id": 15,
         "title": "DR. ALTHEA - 345 Relief Cream",
+        "slug": "dr-althea-345-relief-cream",
         "category": "Hidratantes",
         "marca": "DR. ALTHEA",
         "price": 110.00,
@@ -425,6 +440,7 @@
     {
         "id": 16,
         "title": "TOCOBO - Vita Glazed Lip Mask",
+        "slug": "tocobo-vita-glazed-lip-mask",
         "category": "Hidratantes",
         "marca": "TOCOBO",
         "price": 80.00,
@@ -453,6 +469,7 @@
     {
         "id": 17,
         "title": "SKIN1004 - Madagascar Centella Light Cleansing Oil",
+        "slug": "skin1004-madagascar-centella-light-cleansing-oil",
         "category": "Limpiadores",
         "marca": "SKIN1004",
         "price": 95.00,
@@ -481,6 +498,7 @@
     {
         "id": 18,
         "title": "MIXSOON - Bean Cleansing Oil",
+        "slug": "mixsoon-bean-cleansing-oil",
         "category": "Limpiadores",
         "marca":"MIXSOON",
         "price": 90.00,
@@ -509,6 +527,7 @@
     {
         "id": 19,
         "title": "MIXSOON - Centella Cleansing Foam",
+        "slug": "mixsoon-centella-cleansing-foam",
         "category": "Limpiadores",
         "marca": "MIXSOON",
         "price": 75.00,
@@ -536,6 +555,7 @@
     {
         "id": 20,
         "title": "SKIN1004 - Madagascar Centella Ampoule Foam",
+        "slug": "skin1004-madagascar-centella-ampoule-foam",
         "category": "Limpiadores",
         "marca": "SKIN1004",
         "price": 75.00,
@@ -564,6 +584,7 @@
     {
         "id": 21,
         "title": "SKIN1004 - Poremizing Deep Cleansing Foam",
+        "slug": "skin1004-poremizing-deep-cleansing-foam",
         "category": "Limpiadores",
         "marca": "SKIN1004",
         "price": 75.00,
@@ -592,6 +613,7 @@
     {
         "id": 22,
         "title": "SKIN1004 - Madagascar Centella Tone Brightening Capsule Ampoule",
+        "slug": "skin1004-madagascar-centella-tone-brightening-capsule-ampoule",
         "category": "Serums",
         "marca" : "SKIN1004",
         "price": 100.00,
@@ -622,6 +644,7 @@
     {
         "id": 23,
         "title": "CELIMAX - Noni Energy Ampoule",
+        "slug": "celimax-noni-energy-ampoule",
         "category": "Serums",
         "marca": "CELIMAX",
         "price": 90.00,
@@ -650,6 +673,7 @@
     {
         "id": 24,
         "title": "MIXSOON - Bean Essence",
+        "slug": "mixsoon-bean-essence",
         "category": "Serums",
         "marca": "MIXSOON",
         "price": 100.00,
@@ -678,6 +702,7 @@
     {
         "id": 25,
         "title": "SEOUL 1988 - Serum Retinal Liposome 2%",
+        "slug": "seoul-1988-serum-retinal-liposome-2",
         "category": "Serums",
         "price": 100.00,
         "marca": "SEOUL 1988",
@@ -707,6 +732,7 @@
     {
         "id": 26,
         "title": "SEOUL 1988 - Eye Cream Retinal Liposome 4%",
+        "slug": "seoul-1988-eye-cream-retinal-liposome-4",
         "category": "Serums",
         "marca":"SEOUL 1988",
         "price": 90.00,
@@ -735,6 +761,7 @@
     {
         "id": 27,
         "title": "CELIMAX - The Vita Retinal Shot Tightening Booster",
+        "slug": "celimax-the-vita-retinal-shot-tightening-booster",
         "category": "Serums",
         "marca": "CELIMAX",
         "price": 90.00,
@@ -763,6 +790,7 @@
     {
         "id": 28,
         "title": "DR. ALTHEA - Gentle Vitamin C Serum",
+        "slug": "dr-althea-gentle-vitamin-c-serum",
         "category": "Serums",
         "marca": "DR. ALTHEA",
         "price": 100.00,
@@ -792,6 +820,7 @@
     {
         "id": 29,
         "title": "PURITO - Wonder Releaf Centella Serum Unscented",
+        "slug": "purito-wonder-releaf-centella-serum-unscented",
         "category": "Serums",
         "marca": "PURITO",
         "price": 90.00,
@@ -822,6 +851,7 @@
     {
         "id": 30,
         "title": "SKIN1004 - Centella Poremizing Ampoule",
+        "slug": "skin1004-centella-poremizing-ampoule",
         "category": "Serums",
         "marca": "SKIN1004",
         "price": 90.00,
@@ -851,6 +881,7 @@
     {
         "id": 31,
         "title": "SKIN1004 - Centella Poremizing Quick Clay Stick Mask",
+        "slug": "skin1004-centella-poremizing-quick-clay-stick-mask",
         "category": "Serums",
         "marca": "SKIN1004",
         "price": 80.00,
@@ -880,6 +911,7 @@
     {
         "id": 32,
         "title": "AXIS-Y - Dark Spot Correcting Glow Serum",
+        "slug": "axis-y-dark-spot-correcting-glow-serum",
         "category": "Serums",
         "marca": "AXIS-Y",
         "price": 85.00,
@@ -908,6 +940,7 @@
     {
         "id": 33,
         "title": "TOCOBO - Vita Berry Pore Toner",
+        "slug": "tocobo-vita-berry-pore-toner",
         "category": "Tonicos",
         "marca": "TOCOBO",
         "price": 70.00,
@@ -937,6 +970,7 @@
     {
         "id": 34,
         "title": "TOCOBO - AHA BHA Limón Toner",
+        "slug": "tocobo-aha-bha-limon-toner",
         "category": "Tonicos",
         "marca": "TOCOBO",
         "price": 70.00,
@@ -967,6 +1001,7 @@
     {
         "id": 35,
         "title": "COSRX - AHA 7 Whitehead Power Liquid",
+        "slug": "cosrx-aha-7-whitehead-power-liquid",
         "category": "Tonicos",
         "marca": "COSRX",
         "price": 90.00,
@@ -994,6 +1029,7 @@
     {
         "id": 36,
         "title": "ROUND LAB - Birch Juice Moisturizing Pad",
+        "slug": "round-lab-birch-juice-moisturizing-pad",
         "category": "Tonicos",
         "marca": "ROUND LAB",
         "price": 80.00,
@@ -1024,6 +1060,7 @@
     {
         "id": 37,
         "title": "SKIN1004 - Madagascar Centella Toning Toner",
+        "slug": "skin1004-madagascar-centella-toning-toner",
         "category": "Tonicos",
         "marca": "SKIN1004",
         "price": 80.00,
@@ -1055,6 +1092,7 @@
     {
         "id": 38,
         "title": "W. DRESSROOM - Perfume Peach Blossom",
+        "slug": "w-dressroom-perfume-peach-blossom",
         "category": "Perfumes",
         "marca": "W. DRESSROOM",
         "price": 45.00,
@@ -1083,6 +1121,7 @@
     {
         "id": 39,
         "title": "W. DRESSROOM - Perfume Morning Rain",
+        "slug": "w-dressroom-perfume-morning-rain",
         "category": "Perfumes",
         "marca": "W. DRESSROOM",
         "price": 45.00,
@@ -1111,6 +1150,7 @@
     {
         "id": 40,
         "title": "W. DRESSROOM - Perfume April Edition",
+        "slug": "w-dressroom-perfume-april-edition",
         "category": "Perfumes",
         "marca": "W. DRESSROOM",
         "price": 45.00,
