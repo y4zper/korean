@@ -148,7 +148,7 @@ const CartSidebar = () => {
                               S/{item.price?.toFixed(2)}
                             </span>
                             <button
-                              onClick={() => removeFromCart(item.slug)}
+                              onClick={() => removeFromCart(item.id)}
                               className="p-1 text-red-500 hover:text-red-700 transition-all duration-200 hover:scale-110 active:scale-90"
                             >
                               <FaTrash size={12} />
@@ -163,7 +163,7 @@ const CartSidebar = () => {
                             >
                               <button
                                 onClick={() =>
-                                  updateQuantity(item.slug, item.quantity - 1)
+                                  updateQuantity(item.id, item.quantity - 1)
                                 }
                                 className="p-2 hover:bg-gray-50 transition-all duration-150 active:scale-90"
                                 disabled={item.quantity <= 1}
@@ -182,7 +182,7 @@ const CartSidebar = () => {
                               </span>
                               <button
                                 onClick={() =>
-                                  updateQuantity(item.slug, item.quantity + 1)
+                                  updateQuantity(item.id, item.quantity + 1)
                                 }
                                 className="p-2 hover:bg-gray-50 transition-all duration-150 active:scale-90"
                               >
