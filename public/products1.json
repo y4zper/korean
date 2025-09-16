@@ -27,7 +27,7 @@
         "image": "/img/products/1.1.png",
         "image2": "/img/products/1.2.png",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 2,
@@ -56,7 +56,7 @@
         "image": "/img/products/2.1.png",
         "image2": "/img/products/2.2.png",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 3,
@@ -88,7 +88,7 @@
         "image": "/img/products/3.1.png",
         "image2": "/img/products/3.2.png",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 4,
@@ -179,7 +179,7 @@
         "image": "/img/products/6.1.png",
         "image2": "/img/products/6.2.png",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 7,
@@ -265,7 +265,7 @@
         "image": "/img/products/9.1.jpeg",
         "image2": "/img/products/9.2.jpeg",
         "marcaimage": "/img/marcas/COSRX.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 10,
@@ -352,7 +352,7 @@
         "image": "/img/products/12.1.jpeg",
         "image2": "/img/products/12.2.jpeg",
         "marcaimage": "/img/marcas/purito.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 13,
@@ -379,7 +379,7 @@
         "image": "/img/products/13.1.jpeg",
         "image2": "/img/products/13.2.jpeg",
         "marcaimage": "/img/marcas/beauty.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 14,
@@ -464,7 +464,7 @@
         "image": "/img/products/16.1.jpeg",
         "image2": "/img/products/16.2.jpeg",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 17,
@@ -493,7 +493,7 @@
         "image": "/img/products/17.1.jpeg",
         "image2": "/img/products/17.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 18,
@@ -522,7 +522,7 @@
         "image": "/img/products/18.1.jpeg",
         "image2": "/img/products/18.2.jpeg",
         "marcaimage": "/img/marcas/mixsoon.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 19,
@@ -550,7 +550,7 @@
         "image": "/img/products/19.1.jpeg",
         "image2": "/img/products/19.2.jpeg",
         "marcaimage": "/img/marcas/mixsoon.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 20,
@@ -579,7 +579,7 @@
         "image": "/img/products/20.1.jpeg",
         "image2": "/img/products/20.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 21,
@@ -608,7 +608,7 @@
         "image": "/img/products/21.1.jpeg",
         "image2": "/img/products/21.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 22,
@@ -639,7 +639,7 @@
         "image": "/img/products/22.1.jpeg",
         "image2": "/img/products/22.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 23,
@@ -668,7 +668,7 @@
         "image": "/img/products/23.1.jpeg",
         "image2": "/img/products/23.2.jpeg",
         "marcaimage": "/img/marcas/celimax.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 24,
@@ -697,7 +697,7 @@
         "image": "/img/products/24.1.jpeg",
         "image2": "/img/products/24.2.jpeg",
         "marcaimage": "/img/marcas/mixsoon.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 25,
@@ -727,7 +727,7 @@
         "image": "/img/products/25.1.jpeg",
         "image2": "/img/products/25.2.jpeg",
         "marcaimage": "/img/marcas/seoul.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 26,
@@ -756,7 +756,7 @@
         "image": "/img/products/26.1.jpeg",
         "image2": "/img/products/26.2.jpeg",
         "marcaimage": "/img/marcas/seoul.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 27,
@@ -785,7 +785,7 @@
         "image": "/img/products/27.1.jpeg",
         "image2": "/img/products/27.2.jpeg",
         "marcaimage": "/img/marcas/celimax.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 28,
@@ -815,7 +815,7 @@
         "image": "/img/products/28.1.jpeg",
         "image2": "/img/products/28.2.jpeg",
         "marcaimage": "/img/marcas/althea.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 29,
@@ -846,7 +846,7 @@
         "image": "/img/products/29.2.jpeg",
         "image2": "/img/products/29.1.jpeg",
         "marcaimage": "/img/marcas/purito.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 30,
@@ -876,7 +876,7 @@
         "image": "/img/products/30.1.jpeg",
         "image2": "/img/products/30.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 31,
@@ -906,7 +906,7 @@
         "image": "/img/products/31.1.jpeg",
         "image2": "/img/products/31.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 32,
@@ -935,7 +935,7 @@
         "image": "/img/products/32.1.jpeg",
         "image2": "/img/products/32.2.jpeg",
         "marcaimage": "/img/marcas/axis.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 33,
@@ -965,7 +965,7 @@
         "image": "/img/products/33.1.jpeg",
         "image2": "/img/products/33.2.jpeg",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 34,
@@ -996,7 +996,7 @@
         "image": "/img/products/34.1.jpeg",
         "image2": "/img/products/34.2.jpeg",
         "marcaimage": "/img/marcas/tocobo.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 35,
@@ -1024,7 +1024,7 @@
         "image": "/img/products/35.1.jpeg",
         "image2": "/img/products/35.2.jpeg",
         "marcaimage": "/img/marcas/COSRX.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 36,
@@ -1055,7 +1055,7 @@
         "image": "/img/products/36.1.png",
         "image2": "/img/products/36.2.jpeg",
         "marcaimage": "/img/marcas/roundlab.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 37,
@@ -1087,7 +1087,7 @@
         "image": "/img/products/37.1.jpeg",
         "image2": "/img/products/37.2.jpeg",
         "marcaimage": "/img/marcas/SKIN1004.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 38,
@@ -1116,7 +1116,7 @@
         "image": "/img/products/38.1.jpeg",
         "image2": "/img/products/38.2.jpeg",
         "marcaimage": "/img/marcas/dressroom.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 39,
@@ -1145,7 +1145,7 @@
         "image": "/img/products/39.1.jpeg",
         "image2": "/img/products/39.2.jpeg",
         "marcaimage": "/img/marcas/dressroom.png",
-        "status": "Best Selers"
+        "status": "En stock"
     },
     {
         "id": 40,
@@ -1174,6 +1174,6 @@
         "image": "/img/products/40.1.jpeg",
         "image2": "/img/products/40.2.jpeg",
         "marcaimage": "/img/marcas/dressroom.png",
-        "status": "Best Selers"
+        "status": "En stock"
     }
 ]

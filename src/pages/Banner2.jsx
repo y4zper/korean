@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Banner2 = () => {
   const promoSlides = [
     { id: 1, image: "./img/banner1.jpeg" },
-    { id: 2, image: "./img/banner2.jpeg" },
+    { id: 2, image: "./img/banner2.jpg" },
     { id: 3, image: "./img/banner3.jpeg" }
   ];
 

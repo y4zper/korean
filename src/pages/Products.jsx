@@ -3,6 +3,7 @@ import { FaFilter } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import Cards from "../components/Cards";
+import Banner from "./Banner";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -154,7 +155,8 @@ const Products = () => {
     { name: "Limpiadores", value: "Limpiadores" },
     { name: "Serums", value: "Serums" },
     { name: "Tónicos", value: "Tonicos" },
-    { name: "Perfumes", value: "Perfumes" }
+    { name: "Perfumes", value: "Perfumes" },
+
   ];
 
   return (
@@ -298,8 +300,11 @@ const Products = () => {
       >
         <Cards filteredItems={filteredItems} />
       </motion.div>
+      
     </motion.div>
   );
+  
+  
 };
 
 export default Products;
