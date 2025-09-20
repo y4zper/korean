@@ -1300,5 +1300,107 @@
     "image2": "/img/products/44.2.jpeg",
     "marcaimage": "/img/marcas/skin1004.png",
     "status": "En stock"
+},
+{
+    "id": 45,
+    "title": "SKIN1004 - Doble Limpieza - 2 Unidades",
+    "slug": "skin1004-doble-limpieza-2-unidades",
+    "category": "Packs",
+    "marca": "SKIN1004",
+    "price": 150.00,
+    "discount": 17,
+    "comparison-price": 180.00,
+    "description": "Pack de doble limpieza de Skin1004 que incluye el limpiador en aceite y el limpiador espumoso. Diseñado para remover maquillaje, impurezas y residuos, dejando la piel fresca, calmada y profundamente limpia.",
+    "ingredients": [
+        "Aceite de semilla de girasol (limpieza profunda y nutritiva)",
+        "Extracto de centella asiática de Madagascar (calmante y regenerador)",
+        "Tensioactivos suaves de origen vegetal (espuma ligera y no irritante)"
+    ],
+    "beneficios": [
+        "Elimina maquillaje e impurezas de forma eficaz.",
+        "Mantiene la piel hidratada tras la limpieza.",
+        "Calma y protege la barrera cutánea.",
+        "Ideal para rutinas de skincare coreano."
+    ],
+    "textura": [
+        "Aceite ligero que emulsiona fácilmente con agua.",
+        "Espuma suave y cremosa que no reseca la piel."
+    ],
+    "contenido": [
+        "Madagascar Centella Light Cleansing Oil 200ml",
+        "Madagascar Centella Ampoule Foam 125ml"
+    ],
+    "image": "/img/products/45.1.jpeg",
+    "image2": "/img/products/45.1.jpeg",
+    "marcaimage": "/img/marcas/skin1004.png",
+    "status": "Nuevo"
+},
+{
+    "id": 46,
+    "title": "MIXSOON - Doble Limpieza - 2 Unidades",
+    "slug": "mixsoon-doble-limpieza-2-unidades",
+    "category": "Packs",
+    "marca": "Mixsoon",
+    "price": 160.00,
+    "discount": 18,
+    "comparison-price": 195.00,
+    "description": "Pack de doble limpieza Mixsoon que combina el limpiador en aceite y el limpiador espumoso. Diseñado para remover maquillaje, suciedad e impurezas, dejando la piel fresca, suave y balanceada.",
+    "ingredients": [
+        "Aceite de semilla de soja (nutritivo y antioxidante)",
+        "Extracto de arroz fermentado (hidratante e iluminador)",
+        "Tensioactivos suaves de origen vegetal (limpieza sin resecar)"
+    ],
+    "beneficios": [
+        "Elimina maquillaje e impurezas en dos pasos.",
+        "Refuerza la barrera cutánea mientras limpia.",
+        "Proporciona hidratación y luminosidad.",
+        "Ideal para todo tipo de piel, incluso sensible."
+    ],
+    "textura": [
+        "Aceite ligero que emulsiona al contacto con agua.",
+        "Espuma cremosa de fácil enjuague que deja sensación fresca."
+    ],
+    "contenido": [
+        "Mixsoon Bean Cleansing Oil 195ml",
+        "Mixsoon Bean Cleansing Foam 150ml"
+    ],
+    "image": "/img/products/46.1.jpeg",
+    "image2": "/img/products/46.1.jpeg",
+    "marcaimage": "/img/marcas/mixsoon.png",
+    "status": "Nuevo"
+},
+{
+    "id": 47,
+    "title": "CELIMAX - The Real Noni Starter Kit",
+    "slug": "celimax-the-real-noni-starter-kit",
+    "category": "Packs",
+    "marca": "Celimax",
+    "price": 85.00,
+    "discount": 19,
+    "comparison-price": 105.00,
+    "description": "Kit de inicio de la línea Noni de Celimax, formulado con extracto de fruta de noni para revitalizar, hidratar y fortalecer la piel. Ideal para quienes desean probar la gama completa en formato de viaje.",
+    "ingredients": [
+        "Extracto de fruta de Noni (rico en antioxidantes)",
+        "Ácido hialurónico (hidratación profunda)",
+        "Niacinamida (iluminación y mejora de la textura)"
+    ],
+    "beneficios": [
+        "Revitaliza y fortalece la piel.",
+        "Aporta hidratación duradera.",
+        "Promueve un tono uniforme y radiante.",
+        "Formato práctico para viaje o primeras pruebas."
+    ],
+    "textura": [
+        "Texturas ligeras y de rápida absorción en cada paso."
+    ],
+    "contenido": [
+        "Noni Ampoule 10ml",
+        "Noni Cream 10ml",
+        "Noni Toner 20ml"
+    ],
+    "image": "/img/products/47.1.jpeg",
+    "image2": "/img/products/47.1.jpeg",
+    "marcaimage": "/img/marcas/celimax.png",
+    "status": "Nuevo"
 }
 ]
