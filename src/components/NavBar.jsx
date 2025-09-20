@@ -117,6 +117,7 @@ const NavBar = () => {
     { title: "Serums", path: "/shop?category=Serums" },
     { title: "Tonicos", path: "/shop?category=Tonicos" },
     { title: "Perfumes", path: "/shop?category=Perfumes" },
+    { title: "Packs", path: "/shop?category=Packs" },
     { title: "Preguntas Frecuentes", path: "/FAQ" },
     { title: "¿Qué tipo de Piel tengo?", path: "/TipoPiel" },
   ];

@@ -156,6 +156,7 @@ const Products = () => {
     { name: "Serums", value: "Serums" },
     { name: "Tónicos", value: "Tonicos" },
     { name: "Perfumes", value: "Perfumes" },
+    { name: "Packs", value: "Packs"}
 
   ];
 

@@ -317,5 +317,33 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Nuevos productos agregados -->
+  <url>
+    <loc>https://hyalurope.com/shop/purito-oat-in-calming-gel-cream-100ml</loc>
+    <lastmod>2025-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hyalurope.com/shop/celimax-the-vita-a-retinol-shot-tightening-serum</loc>
+    <lastmod>2025-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hyalurope.com/shop/skin1004-madagascar-centella-poremizing-clear-toner-210ml</loc>
+    <lastmod>2025-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hyalurope.com/shop/skin1004-pack-rosado-madagascar-centella-poremizing</loc>
+    <lastmod>2025-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>
